@@ -1,0 +1,85 @@
+/* Halloween theme for Orca (app UI)
+ *
+ * Orca's built-in appearance only switches Light/Dark/System, so this CSS is
+ * meant to be injected by Orca's early-access theme feature (or applied
+ * manually) to recolor the app surfaces. It overrides the CSS custom
+ * properties Orca keeps on :root / .dark (see stablyai/orca discussion #25456).
+ *
+ * Palette: deep purple night + pumpkin orange + bone white.
+ */
+
+:root.halloween,
+.halloween {
+  --background: #1a0d2e;
+  --foreground: #f4e7d3;
+
+  --card: #241340;
+  --card-foreground: #f4e7d3;
+
+  --popover: #241340;
+  --popover-foreground: #f4e7d3;
+
+  --primary: #ff6b35;
+  --primary-foreground: #1a0d2e;
+
+  --secondary: #2d1b4e;
+  --secondary-foreground: #f4e7d3;
+
+  --muted: #2d1b4e;
+  --muted-foreground: #b8a9d9;
+
+  --accent: #ff6b35;
+  --accent-foreground: #1a0d2e;
+
+  --destructive: #ff4d6d;
+  --destructive-foreground: #f4e7d3;
+
+  --border: #3d2a5e;
+  --input: #2d1b4e;
+  --ring: #ff6b35;
+
+  --radius: 0.5rem;
+
+  --sidebar-background: #150a24;
+  --sidebar-foreground: #f4e7d3;
+  --sidebar-primary: #ff6b35;
+  --sidebar-primary-foreground: #1a0d2e;
+  --sidebar-accent: #2d1b4e;
+  --sidebar-accent-foreground: #f4e7d3;
+  --sidebar-border: #3d2a5e;
+  --sidebar-ring: #ff6b35;
+
+  --worktree-sidebar-background: #150a24;
+  --worktree-sidebar-foreground: #f4e7d3;
+}
+
+/* Dark-mode variant keeps the same Halloween palette (it is already dark). */
+.dark.halloween {
+  --background: #1a0d2e;
+  --foreground: #f4e7d3;
+  --card: #241340;
+  --card-foreground: #f4e7d3;
+  --popover: #241340;
+  --popover-foreground: #f4e7d3;
+  --primary: #ff6b35;
+  --primary-foreground: #1a0d2e;
+  --secondary: #2d1b4e;
+  --secondary-foreground: #f4e7d3;
+  --muted: #2d1b4e;
+  --muted-foreground: #b8a9d9;
+  --accent: #ff6b35;
+  --accent-foreground: #1a0d2e;
+  --destructive: #ff4d6d;
+  --destructive-foreground: #f4e7d3;
+  --border: #3d2a5e;
+  --input: #2d1b4e;
+  --ring: #ff6b35;
+  --sidebar-background: #150a24;
+  --sidebar-foreground: #f4e7d3;
+  --sidebar-primary: #ff6b35;
+  --sidebar-primary-foreground: #1a0d2e;
+  --sidebar-accent: #2d1b4e;
+  --sidebar-accent-foreground: #f4e7d3;
+  --sidebar-border: #3d2a5e;
+  --sidebar-ring: #ff6b35;
+}
