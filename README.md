@@ -36,11 +36,29 @@ A Halloween-themed color set for Orca (stablyai/orca) and friends.
 - `themes/app/halloween.tmux.conf` — tmux
 - `themes/app/halloween.zsh` — zsh prompt
 
-## Regenerate
+## 🚀 Quick start
+
+Download `bin/halloween-gen` (or build from source) and run:
+
+```bash
+./halloween-gen                # writes to ./themes/
+./halloween-gen --out DIR      # custom output dir
+```
+
+No Python required — it's a single self-contained binary (macOS arm64).
+
+## 🔧 Regenerate / customize (from source)
 
 ```bash
 python3 generate.py            # writes to ./themes/
 python3 generate.py --out DIR  # custom output dir
+```
+
+To rebuild the single binary:
+```bash
+pip install pyinstaller
+pyinstaller --onefile --name halloween-gen generate.py
+cp dist/halloween-gen bin/
 ```
 
 Edit the palette in `generate.py` (the `P`, `ANSI`, `BRIGHT` dicts) and re-run to produce a new variant.
