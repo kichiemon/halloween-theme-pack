@@ -19,6 +19,23 @@ Download `bin/halloween-gen` (or grab cross-platform binaries from [GitHub Relea
 ./bin/halloween-gen --out DIR  # custom output directory
 ```
 
+### Interactive Installer
+Talk to the tool and install themes to only the apps you choose:
+
+```bash
+./bin/halloween-gen install
+```
+
+The installer will:
+1. Ask which variant (dark / light / oled / pastel / cyberpunk)
+2. Detect installed apps and show their config paths
+3. Let you pick which apps to install to (comma-separated numbers, or "all")
+4. Show a summary and ask for confirmation before writing anything
+
+```bash
+./bin/halloween-gen install --variant dark --dry-run  # preview without writing
+```
+
 No Python required — single self-contained binary.
 
 ---

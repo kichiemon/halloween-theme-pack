@@ -1,0 +1,18 @@
+/* Halloween Vampire Velvet theme for Spicetify */
+:root {
+  --spice-text: #f7ebdc;
+  --spice-subtext: #bfa3a8;
+  --spice-main: #4a0e17;
+  --spice-sidebar: #2d070d;
+  --spice-player: #380a11;
+  --spice-card: #380a11;
+  --spice-shadow: #2d070d;
+  --spice-selected-row: #631724;
+  --spice-button: #d4af37;
+  --spice-button-active: #2ebd6e;
+  --spice-button-disabled: #6a1b28;
+  --spice-tab-active: #5a131f;
+  --spice-notification: #d4af37;
+  --spice-notification-error: #ff4d6d;
+  --spice-misc: #d47ae8;
+}

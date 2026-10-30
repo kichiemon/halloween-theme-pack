@@ -1,0 +1,22 @@
+{
+  "version": "1",
+  "name": "Halloween Phantom Mint",
+  "appearance": "dark",
+  "colors": {
+    "background": "#0e1626",
+    "backgroundSecondary": "#152033",
+    "text": "#e6edf5",
+    "textMuted": "#8fa2b8",
+    "selection": "#223859",
+    "accent": "#2ef8a0",
+    "red": "#ff5277",
+    "orange": "#2ef8a0",
+    "yellow": "#ffd166",
+    "green": "#48f78b",
+    "blue": "#64b5f6",
+    "purple": "#cf8eff",
+    "magenta": "#cf8eff",
+    "cyan": "#2ef8a0"
+  },
+  "shareUrl": "raycast://theme?data=%7B%22version%22%3A%20%221%22%2C%20%22name%22%3A%20%22Halloween%20Phantom%20Mint%22%2C%20%22appearance%22%3A%20%22dark%22%2C%20%22colors%22%3A%20%7B%22background%22%3A%20%22%230e1626%22%2C%20%22backgroundSecondary%22%3A%20%22%23152033%22%2C%20%22text%22%3A%20%22%23e6edf5%22%2C%20%22textMuted%22%3A%20%22%238fa2b8%22%2C%20%22selection%22%3A%20%22%23223859%22%2C%20%22accent%22%3A%20%22%232ef8a0%22%2C%20%22red%22%3A%20%22%23ff5277%22%2C%20%22orange%22%3A%20%22%232ef8a0%22%2C%20%22yellow%22%3A%20%22%23ffd166%22%2C%20%22green%22%3A%20%22%2348f78b%22%2C%20%22blue%22%3A%20%22%2364b5f6%22%2C%20%22purple%22%3A%20%22%23cf8eff%22%2C%20%22magenta%22%3A%20%22%23cf8eff%22%2C%20%22cyan%22%3A%20%22%232ef8a0%22%7D%7D"
+}

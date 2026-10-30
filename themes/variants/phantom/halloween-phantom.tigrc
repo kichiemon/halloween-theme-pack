@@ -1,0 +1,13 @@
+# Halloween Phantom Mint theme for tig
+color default "#e6edf5" "#0e1626" normal
+color cursor "#0e1626" "#2ef8a0" bold
+color status.untracked "#ff5277" default
+color status.modified "#ffd166" default
+color diff-header "#2ef8a0" default bold
+color diff-index "#2ef8a0" default
+color diff-chunk "#cf8eff" default
+color diff-add "#48f78b" default
+color diff-del "#ff5277" default
+color line-number "#8fa2b8" default
+color title-blur "#8fa2b8" "#152033"
+color title-focus "#2ef8a0" "#152033" bold

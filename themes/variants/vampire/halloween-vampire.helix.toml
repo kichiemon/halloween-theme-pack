@@ -1,0 +1,33 @@
+# Halloween Vampire Velvet theme for Helix
+"ui.background" = "#4a0e17"
+"ui.text" = "#f7ebdc"
+"ui.text.focus" = "#d4af37"
+"ui.selection" = { bg = "#631724" }
+"ui.cursor" = { bg = "#d4af37", fg = "#4a0e17" }
+"ui.linenr" = "#bfa3a8"
+"ui.linenr.selected" = "#d4af37"
+"ui.statusline" = { fg = "#f7ebdc", bg = "#5a131f" }
+"ui.popup" = { bg = "#380a11", fg = "#f7ebdc" }
+"ui.menu" = { bg = "#380a11", fg = "#f7ebdc" }
+"ui.menu.selected" = { bg = "#d4af37", fg = "#4a0e17" }
+"ui.help" = { bg = "#380a11", fg = "#f7ebdc" }
+
+"comment" = { fg = "#bfa3a8", modifiers = ["italic"] }
+"keyword" = { fg = "#d4af37", modifiers = ["bold"] }
+"string" = "#2ebd6e"
+"constant.numeric" = "#ff4d6d"
+"function" = "#6ba3ff"
+"type" = "#d47ae8"
+"operator" = "#45dfdf"
+"variable" = "#f7ebdc"
+"punctuation" = "#bfa3a8"
+
+"diagnostic.error" = "#ff4d6d"
+"diagnostic.warning" = "#e5b842"
+"diagnostic.info" = "#6ba3ff"
+"diagnostic.hint" = "#2ebd6e"
+
+[palette]
+background = "#4a0e17"
+foreground = "#f7ebdc"
+accent = "#d4af37"

@@ -1,0 +1,13 @@
+# Halloween Vampire Velvet theme for tig
+color default "#f7ebdc" "#4a0e17" normal
+color cursor "#4a0e17" "#d4af37" bold
+color status.untracked "#ff4d6d" default
+color status.modified "#e5b842" default
+color diff-header "#d4af37" default bold
+color diff-index "#45dfdf" default
+color diff-chunk "#d47ae8" default
+color diff-add "#2ebd6e" default
+color diff-del "#ff4d6d" default
+color line-number "#bfa3a8" default
+color title-blur "#bfa3a8" "#380a11"
+color title-focus "#d4af37" "#380a11" bold

@@ -1,0 +1,35 @@
+# Halloween Phantom Mint theme for Yazi
+[mgr]
+cwd = { fg = "#2ef8a0" }
+hovered = { fg = "#0e1626", bg = "#2ef8a0" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#ffd166", bold = true }
+marker_copied = { fg = "#48f78b", bg = "#152033" }
+marker_cut = { fg = "#ff5277", bg = "#152033" }
+marker_selected = { fg = "#2ef8a0", bg = "#152033" }
+tab_active = { fg = "#0e1626", bg = "#2ef8a0" }
+tab_inactive = { fg = "#8fa2b8", bg = "#152033" }
+border_style = { fg = "#273a5a" }
+
+[status]
+separator_open = ""
+separator_close = ""
+progress_label = { fg = "#e6edf5", bold = true }
+progress_normal = { fg = "#64b5f6", bg = "#152033" }
+progress_error = { fg = "#ff5277", bg = "#152033" }
+
+[select]
+border = { fg = "#2ef8a0" }
+active = { fg = "#ffd166" }
+inactive = { fg = "#e6edf5" }
+
+[input]
+border = { fg = "#2ef8a0" }
+title = { fg = "#e6edf5" }
+value = { fg = "#e6edf5" }
+selected = { bg = "#223859" }
+
+[completion]
+border = { fg = "#2ef8a0" }
+active = { fg = "#0e1626", bg = "#2ef8a0" }
+inactive = { fg = "#e6edf5" }

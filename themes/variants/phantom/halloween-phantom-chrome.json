@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Phantom Mint Theme",
+  "version": "1.0.0",
+  "description": "A dark Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        14,
+        22,
+        38
+      ],
+      "frame_inactive": [
+        28,
+        43,
+        69
+      ],
+      "toolbar": [
+        21,
+        32,
+        51
+      ],
+      "tab_text": [
+        230,
+        237,
+        245
+      ],
+      "tab_background_text": [
+        143,
+        162,
+        184
+      ],
+      "bookmark_text": [
+        230,
+        237,
+        245
+      ],
+      "ntp_background": [
+        14,
+        22,
+        38
+      ],
+      "ntp_text": [
+        230,
+        237,
+        245
+      ],
+      "button_background": [
+        46,
+        248,
+        160
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

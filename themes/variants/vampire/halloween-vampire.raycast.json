@@ -1,0 +1,22 @@
+{
+  "version": "1",
+  "name": "Halloween Vampire Velvet",
+  "appearance": "dark",
+  "colors": {
+    "background": "#4a0e17",
+    "backgroundSecondary": "#380a11",
+    "text": "#f7ebdc",
+    "textMuted": "#bfa3a8",
+    "selection": "#631724",
+    "accent": "#d4af37",
+    "red": "#ff4d6d",
+    "orange": "#d4af37",
+    "yellow": "#e5b842",
+    "green": "#2ebd6e",
+    "blue": "#6ba3ff",
+    "purple": "#d47ae8",
+    "magenta": "#d47ae8",
+    "cyan": "#45dfdf"
+  },
+  "shareUrl": "raycast://theme?data=%7B%22version%22%3A%20%221%22%2C%20%22name%22%3A%20%22Halloween%20Vampire%20Velvet%22%2C%20%22appearance%22%3A%20%22dark%22%2C%20%22colors%22%3A%20%7B%22background%22%3A%20%22%234a0e17%22%2C%20%22backgroundSecondary%22%3A%20%22%23380a11%22%2C%20%22text%22%3A%20%22%23f7ebdc%22%2C%20%22textMuted%22%3A%20%22%23bfa3a8%22%2C%20%22selection%22%3A%20%22%23631724%22%2C%20%22accent%22%3A%20%22%23d4af37%22%2C%20%22red%22%3A%20%22%23ff4d6d%22%2C%20%22orange%22%3A%20%22%23d4af37%22%2C%20%22yellow%22%3A%20%22%23e5b842%22%2C%20%22green%22%3A%20%22%232ebd6e%22%2C%20%22blue%22%3A%20%22%236ba3ff%22%2C%20%22purple%22%3A%20%22%23d47ae8%22%2C%20%22magenta%22%3A%20%22%23d47ae8%22%2C%20%22cyan%22%3A%20%22%2345dfdf%22%7D%7D"
+}

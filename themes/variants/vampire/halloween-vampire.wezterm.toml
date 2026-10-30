@@ -1,0 +1,11 @@
+# Halloween Vampire Velvet theme for WezTerm
+[colors]
+background = "#4a0e17"
+foreground = "#f7ebdc"
+cursor_bg = "#d4af37"
+cursor_fg = "#4a0e17"
+selection_bg = "#631724"
+selection_fg = "#f7ebdc"
+
+ansi = ["#380a11", "#ff4d6d", "#2ebd6e", "#e5b842", "#6ba3ff", "#d47ae8", "#45dfdf", "#f7ebdc"]
+brights = ["#6a1b28", "#ff758f", "#52e896", "#ffd166", "#9bc4ff", "#ebb2f7", "#82f7f7", "#ffffff"]

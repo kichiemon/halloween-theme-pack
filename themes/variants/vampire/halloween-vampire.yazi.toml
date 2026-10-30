@@ -1,0 +1,35 @@
+# Halloween Vampire Velvet theme for Yazi
+[mgr]
+cwd = { fg = "#45dfdf" }
+hovered = { fg = "#4a0e17", bg = "#d4af37" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#e5b842", bold = true }
+marker_copied = { fg = "#2ebd6e", bg = "#380a11" }
+marker_cut = { fg = "#ff4d6d", bg = "#380a11" }
+marker_selected = { fg = "#d4af37", bg = "#380a11" }
+tab_active = { fg = "#4a0e17", bg = "#d4af37" }
+tab_inactive = { fg = "#bfa3a8", bg = "#380a11" }
+border_style = { fg = "#6a1b28" }
+
+[status]
+separator_open = ""
+separator_close = ""
+progress_label = { fg = "#f7ebdc", bold = true }
+progress_normal = { fg = "#6ba3ff", bg = "#380a11" }
+progress_error = { fg = "#ff4d6d", bg = "#380a11" }
+
+[select]
+border = { fg = "#d4af37" }
+active = { fg = "#e5b842" }
+inactive = { fg = "#f7ebdc" }
+
+[input]
+border = { fg = "#d4af37" }
+title = { fg = "#f7ebdc" }
+value = { fg = "#f7ebdc" }
+selected = { bg = "#631724" }
+
+[completion]
+border = { fg = "#d4af37" }
+active = { fg = "#4a0e17", bg = "#d4af37" }
+inactive = { fg = "#f7ebdc" }

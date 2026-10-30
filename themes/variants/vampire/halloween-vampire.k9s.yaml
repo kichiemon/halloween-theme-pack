@@ -1,0 +1,68 @@
+# Halloween Vampire Velvet theme for K9s
+k9s:
+  body:
+    fgColor: "#f7ebdc"
+    bgColor: "#4a0e17"
+    logoColor: "#d4af37"
+  prompt:
+    fgColor: "#f7ebdc"
+    bgColor: "#380a11"
+    suggestColor: "#e5b842"
+  info:
+    fgColor: "#bfa3a8"
+    sectionColor: "#d4af37"
+  dialog:
+    fgColor: "#f7ebdc"
+    bgColor: "#380a11"
+    buttonFgColor: "#4a0e17"
+    buttonBgColor: "#d4af37"
+    buttonActiveFgColor: "#f7ebdc"
+    buttonActiveBgColor: "#ff4d6d"
+    labelFgColor: "#e5b842"
+    fieldFgColor: "#f7ebdc"
+  frame:
+    border:
+      fgColor: "#6a1b28"
+      focusColor: "#d4af37"
+    menu:
+      fgColor: "#f7ebdc"
+      keyColor: "#d4af37"
+      numKeyColor: "#d47ae8"
+    crumbs:
+      fgColor: "#4a0e17"
+      bgColor: "#d4af37"
+      activeColor: "#2ebd6e"
+    status:
+      completedColor: "#2ebd6e"
+      errorColor: "#ff4d6d"
+      highlightColor: "#d4af37"
+    title:
+      fgColor: "#d4af37"
+      bgColor: "#380a11"
+      highlightColor: "#2ebd6e"
+      counterColor: "#d47ae8"
+  views:
+    table:
+      fgColor: "#f7ebdc"
+      bgColor: "#4a0e17"
+      cursorFgColor: "#4a0e17"
+      cursorBgColor: "#d4af37"
+      markColor: "#e5b842"
+      header:
+        fgColor: "#d4af37"
+        bgColor: "#380a11"
+        sorterColor: "#45dfdf"
+    xray:
+      fgColor: "#f7ebdc"
+      bgColor: "#4a0e17"
+      cursorColor: "#d4af37"
+    yaml:
+      keyColor: "#d47ae8"
+      colonColor: "#6a1b28"
+      valueColor: "#f7ebdc"
+    logs:
+      fgColor: "#f7ebdc"
+      bgColor: "#4a0e17"
+      indicator:
+        fgColor: "#d4af37"
+        bgColor: "#380a11"

@@ -1,0 +1,14 @@
+# Halloween Vampire Velvet theme for Lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#d4af37"
+      - bold
+    inactiveBorderColor:
+      - "#6a1b28"
+    selectedLineBgColor:
+      - "#5a131f"
+    selectedRangeBgColor:
+      - "#631724"
+    optionsTextColor:
+      - "#6ba3ff"

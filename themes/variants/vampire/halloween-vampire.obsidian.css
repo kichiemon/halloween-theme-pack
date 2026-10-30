@@ -1,0 +1,19 @@
+/* Halloween Vampire Velvet theme for Obsidian */
+.theme-dark {
+  --background-primary: #4a0e17;
+  --background-primary-alt: #2d070d;
+  --background-secondary: #380a11;
+  --background-secondary-alt: #5a131f;
+  --background-modifier-border: #6a1b28;
+  --text-normal: #f7ebdc;
+  --text-muted: #bfa3a8;
+  --text-faint: #bfa3a8;
+  --text-accent: #d4af37;
+  --text-accent-hover: #e5b842;
+  --interactive-accent: #d4af37;
+  --interactive-accent-hover: #e5b842;
+  --interactive-normal: #380a11;
+  --interactive-hover: #5a131f;
+  --scrollbar-bg: #4a0e17;
+  --scrollbar-thumb-bg: #6a1b28;
+}

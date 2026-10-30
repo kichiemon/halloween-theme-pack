@@ -1,0 +1,17 @@
+# Halloween Phantom Mint palette for Starship
+palette = "halloween-phantom"
+
+[palettes.halloween-phantom]
+background = "#0e1626"
+foreground = "#e6edf5"
+accent = "#2ef8a0"
+success = "#48f78b"
+destructive = "#ff5277"
+card = "#152033"
+secondary = "#1c2b45"
+muted = "#8fa2b8"
+border = "#273a5a"
+blue = "#64b5f6"
+magenta = "#cf8eff"
+cyan = "#2ef8a0"
+yellow = "#ffd166"

@@ -1,0 +1,26 @@
+name: Halloween Vampire Velvet
+accent: '#d4af37'
+cursor: '#d4af37'
+background: '#4a0e17'
+details: darker
+foreground: '#f7ebdc'
+
+terminal_colors:
+  normal:
+    black: '#380a11'
+    red: '#ff4d6d'
+    green: '#2ebd6e'
+    yellow: '#e5b842'
+    blue: '#6ba3ff'
+    magenta: '#d47ae8'
+    cyan: '#45dfdf'
+    white: '#f7ebdc'
+  bright:
+    black: '#6a1b28'
+    red: '#ff758f'
+    green: '#52e896'
+    yellow: '#ffd166'
+    blue: '#9bc4ff'
+    magenta: '#ebb2f7'
+    cyan: '#82f7f7'
+    white: '#ffffff'

@@ -1,0 +1,21 @@
+# Halloween Vampire Velvet theme for Ghostty
+background = 4a0e17
+foreground = f7ebdc
+cursor-color = d4af37
+selection-background = 631724
+palette = 0=#380a11
+palette = 1=#ff4d6d
+palette = 2=#2ebd6e
+palette = 3=#e5b842
+palette = 4=#6ba3ff
+palette = 5=#d47ae8
+palette = 6=#45dfdf
+palette = 7=#f7ebdc
+palette = 8=#6a1b28
+palette = 9=#ff758f
+palette = 10=#52e896
+palette = 11=#ffd166
+palette = 12=#9bc4ff
+palette = 13=#ebb2f7
+palette = 14=#82f7f7
+palette = 15=#ffffff

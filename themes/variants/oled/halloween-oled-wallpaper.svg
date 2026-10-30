@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" width="3840" height="2160">
+  <defs>
+    <radialGradient id="halloweenBgGradient" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#1a0a2a" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#08040d"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ffb347" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="3840" height="2160" fill="url(#halloweenBgGradient)"/>
+
+  <!-- Subtle Digital Cyber-Gothic Grid -->
+  <g stroke="#2c1845" stroke-width="1" opacity="0.15">
+    <line x1="0" y1="0" x2="0" y2="2160"/><line x1="160" y1="0" x2="160" y2="2160"/><line x1="320" y1="0" x2="320" y2="2160"/><line x1="480" y1="0" x2="480" y2="2160"/><line x1="640" y1="0" x2="640" y2="2160"/><line x1="800" y1="0" x2="800" y2="2160"/><line x1="960" y1="0" x2="960" y2="2160"/><line x1="1120" y1="0" x2="1120" y2="2160"/><line x1="1280" y1="0" x2="1280" y2="2160"/><line x1="1440" y1="0" x2="1440" y2="2160"/><line x1="1600" y1="0" x2="1600" y2="2160"/><line x1="1760" y1="0" x2="1760" y2="2160"/><line x1="1920" y1="0" x2="1920" y2="2160"/><line x1="2080" y1="0" x2="2080" y2="2160"/><line x1="2240" y1="0" x2="2240" y2="2160"/><line x1="2400" y1="0" x2="2400" y2="2160"/><line x1="2560" y1="0" x2="2560" y2="2160"/><line x1="2720" y1="0" x2="2720" y2="2160"/><line x1="2880" y1="0" x2="2880" y2="2160"/><line x1="3040" y1="0" x2="3040" y2="2160"/><line x1="3200" y1="0" x2="3200" y2="2160"/><line x1="3360" y1="0" x2="3360" y2="2160"/><line x1="3520" y1="0" x2="3520" y2="2160"/><line x1="3680" y1="0" x2="3680" y2="2160"/>
+    <line x1="0" y1="0" x2="3840" y2="0"/><line x1="0" y1="120" x2="3840" y2="120"/><line x1="0" y1="240" x2="3840" y2="240"/><line x1="0" y1="360" x2="3840" y2="360"/><line x1="0" y1="480" x2="3840" y2="480"/><line x1="0" y1="600" x2="3840" y2="600"/><line x1="0" y1="720" x2="3840" y2="720"/><line x1="0" y1="840" x2="3840" y2="840"/><line x1="0" y1="960" x2="3840" y2="960"/><line x1="0" y1="1080" x2="3840" y2="1080"/><line x1="0" y1="1200" x2="3840" y2="1200"/><line x1="0" y1="1320" x2="3840" y2="1320"/><line x1="0" y1="1440" x2="3840" y2="1440"/><line x1="0" y1="1560" x2="3840" y2="1560"/><line x1="0" y1="1680" x2="3840" y2="1680"/><line x1="0" y1="1800" x2="3840" y2="1800"/><line x1="0" y1="1920" x2="3840" y2="1920"/><line x1="0" y1="2040" x2="3840" y2="2040"/>
+  </g>
+
+  <!-- Starry Constellations -->
+  <g fill="#f4e7d3" opacity="0.6">
+    <circle cx="480" cy="320" r="4"/>
+    <circle cx="890" cy="180" r="3"/>
+    <circle cx="1200" cy="450" r="5" fill="#5ffbf1"/>
+    <circle cx="1650" cy="220" r="3"/>
+    <circle cx="2100" cy="380" r="4"/>
+    <circle cx="2600" cy="190" r="3"/>
+    <circle cx="3100" cy="420" r="5" fill="#ff6b35"/>
+    <circle cx="3450" cy="280" r="3"/>
+    <circle cx="320" cy="850" r="3"/>
+    <circle cx="3550" cy="950" r="4"/>
+    <circle cx="720" cy="1100" r="3"/>
+    <circle cx="2980" cy="1250" r="3"/>
+  </g>
+
+  <!-- Glowing Harvest Moon / Phantom Aura -->
+  <circle cx="1920" cy="850" r="520" fill="url(#moonGlow)" filter="url(#blurGlow)"/>
+  <circle cx="1920" cy="850" r="340" fill="#12091c" stroke="#ff6b35" stroke-width="4"/>
+
+  <!-- Flying Bats -->
+  <g fill="#ff6b35" opacity="0.85">
+    <path transform="translate(1420, 620) scale(1.4)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+    <path transform="translate(2300, 540) scale(1.1)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+    <path transform="translate(1820, 420) scale(0.9)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+  </g>
+
+  <!-- Floating Cute Ghost Mascot (Left) -->
+  <g transform="translate(950, 880) scale(2.2)" opacity="0.9">
+    <path d="M50,20 C25,20 15,45 15,75 C15,100 20,115 30,110 C40,105 45,115 55,110 C65,105 70,115 80,110 C90,115 95,95 95,75 C95,45 75,20 50,20 Z" fill="#12091c" stroke="#5ffbf1" stroke-width="3"/>
+    <ellipse cx="40" cy="55" rx="5" ry="7" fill="#5ffbf1"/>
+    <ellipse cx="65" cy="55" rx="5" ry="7" fill="#5ffbf1"/>
+    <circle cx="32" cy="65" r="4" fill="#ff4d6d" opacity="0.6"/>
+    <circle cx="73" cy="65" r="4" fill="#ff4d6d" opacity="0.6"/>
+  </g>
+
+  <!-- Glowing Jack-o'-Lantern Mascot (Center/Bottom) -->
+  <g transform="translate(1920, 1420) scale(3.5)">
+    <path d="M-8,-85 C-5,-105 10,-115 12,-110 C15,-100 5,-85 2,-80 Z" fill="#39ff14"/>
+    <ellipse cx="-45" cy="-20" rx="45" ry="65" fill="#1a0a2a" stroke="#2c1845" stroke-width="2"/>
+    <ellipse cx="45" cy="-20" rx="45" ry="65" fill="#1a0a2a" stroke="#2c1845" stroke-width="2"/>
+    <ellipse cx="-25" cy="-15" rx="45" ry="70" fill="#12091c" stroke="#2c1845" stroke-width="2"/>
+    <ellipse cx="25" cy="-15" rx="45" ry="70" fill="#12091c" stroke="#2c1845" stroke-width="2"/>
+    <ellipse cx="0" cy="-10" rx="42" ry="72" fill="#000000" stroke="#2c1845" stroke-width="2"/>
+    <polygon points="-30,-40 -12,-35 -24,-20" fill="#ff6b35"/>
+    <polygon points="30,-40 12,-35 24,-20" fill="#ff6b35"/>
+    <polygon points="0,-22 -7,-12 7,-12" fill="#ffb347"/>
+    <path d="M-45,5 C-25,30 25,30 45,5 C35,15 25,12 18,6 C14,14 6,15 0,8 C-6,15 -14,14 -18,6 C-25,12 -35,15 -45,5 Z" fill="#ff6b35"/>
+  </g>
+
+  <!-- Bottom Horizon Hill Silhouette -->
+  <path d="M0,1850 Q960,1720 1920,1780 T3840,1850 L3840,2160 L0,2160 Z" fill="#08040d" opacity="0.95"/>
+
+  <!-- Brand Typography -->
+  <g font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <text x="1920" y="1960" font-size="38" font-weight="800" letter-spacing="14" fill="#f4e7d3">HALLOWEEN OLED</text>
+    <text x="1920" y="2020" font-size="20" font-weight="600" letter-spacing="8" fill="#b8a9d9">HALLOWEEN THEME PACK • 4K ULTRA HD</text>
+  </g>
+</svg>

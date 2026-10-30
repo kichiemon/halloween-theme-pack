@@ -1,0 +1,117 @@
+{
+  "name": "Halloween Vampire Velvet",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#4a0e17",
+    "editor.foreground": "#f7ebdc",
+    "editorCursor.foreground": "#d4af37",
+    "editor.selectionBackground": "#631724",
+    "editorLineNumber.foreground": "#bfa3a8",
+    "editorLineNumber.activeForeground": "#d4af37",
+    "activityBar.background": "#2d070d",
+    "activityBar.foreground": "#f7ebdc",
+    "activityBar.activeBorder": "#d4af37",
+    "sideBar.background": "#2d070d",
+    "sideBar.foreground": "#f7ebdc",
+    "sideBarTitle.foreground": "#d4af37",
+    "statusBar.background": "#5a131f",
+    "statusBar.foreground": "#f7ebdc",
+    "titleBar.activeBackground": "#4a0e17",
+    "titleBar.activeForeground": "#f7ebdc",
+    "panel.background": "#4a0e17",
+    "terminal.background": "#4a0e17",
+    "terminal.foreground": "#f7ebdc",
+    "terminal.ansiBlack": "#380a11",
+    "terminal.ansiRed": "#ff4d6d",
+    "terminal.ansiGreen": "#2ebd6e",
+    "terminal.ansiYellow": "#e5b842",
+    "terminal.ansiBlue": "#6ba3ff",
+    "terminal.ansiMagenta": "#d47ae8",
+    "terminal.ansiCyan": "#45dfdf",
+    "terminal.ansiWhite": "#f7ebdc",
+    "button.background": "#d4af37",
+    "button.foreground": "#4a0e17",
+    "input.background": "#5a131f",
+    "input.border": "#6a1b28",
+    "focusBorder": "#d4af37",
+    "list.activeSelectionBackground": "#5a131f",
+    "list.hoverBackground": "#380a11",
+    "badge.background": "#d4af37",
+    "badge.foreground": "#4a0e17"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#bfa3a8",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "#d4af37"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "string.quoted"
+      ],
+      "settings": {
+        "foreground": "#2ebd6e"
+      }
+    },
+    {
+      "scope": [
+        "constant.numeric"
+      ],
+      "settings": {
+        "foreground": "#ff4d6d"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function"
+      ],
+      "settings": {
+        "foreground": "#6ba3ff"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "variable.other"
+      ],
+      "settings": {
+        "foreground": "#f7ebdc"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#d47ae8"
+      }
+    },
+    {
+      "scope": [
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#45dfdf"
+      }
+    }
+  ]
+}

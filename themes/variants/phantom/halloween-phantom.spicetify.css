@@ -1,0 +1,18 @@
+/* Halloween Phantom Mint theme for Spicetify */
+:root {
+  --spice-text: #e6edf5;
+  --spice-subtext: #8fa2b8;
+  --spice-main: #0e1626;
+  --spice-sidebar: #0a101d;
+  --spice-player: #152033;
+  --spice-card: #152033;
+  --spice-shadow: #0a101d;
+  --spice-selected-row: #223859;
+  --spice-button: #2ef8a0;
+  --spice-button-active: #48f78b;
+  --spice-button-disabled: #273a5a;
+  --spice-tab-active: #1c2b45;
+  --spice-notification: #2ef8a0;
+  --spice-notification-error: #ff5277;
+  --spice-misc: #cf8eff;
+}

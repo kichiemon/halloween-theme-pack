@@ -1,0 +1,33 @@
+# Halloween Phantom Mint theme for Helix
+"ui.background" = "#0e1626"
+"ui.text" = "#e6edf5"
+"ui.text.focus" = "#2ef8a0"
+"ui.selection" = { bg = "#223859" }
+"ui.cursor" = { bg = "#2ef8a0", fg = "#0e1626" }
+"ui.linenr" = "#8fa2b8"
+"ui.linenr.selected" = "#2ef8a0"
+"ui.statusline" = { fg = "#e6edf5", bg = "#1c2b45" }
+"ui.popup" = { bg = "#152033", fg = "#e6edf5" }
+"ui.menu" = { bg = "#152033", fg = "#e6edf5" }
+"ui.menu.selected" = { bg = "#2ef8a0", fg = "#0e1626" }
+"ui.help" = { bg = "#152033", fg = "#e6edf5" }
+
+"comment" = { fg = "#8fa2b8", modifiers = ["italic"] }
+"keyword" = { fg = "#2ef8a0", modifiers = ["bold"] }
+"string" = "#48f78b"
+"constant.numeric" = "#ff5277"
+"function" = "#64b5f6"
+"type" = "#cf8eff"
+"operator" = "#2ef8a0"
+"variable" = "#e6edf5"
+"punctuation" = "#8fa2b8"
+
+"diagnostic.error" = "#ff5277"
+"diagnostic.warning" = "#ffd166"
+"diagnostic.info" = "#64b5f6"
+"diagnostic.hint" = "#48f78b"
+
+[palette]
+background = "#0e1626"
+foreground = "#e6edf5"
+accent = "#2ef8a0"

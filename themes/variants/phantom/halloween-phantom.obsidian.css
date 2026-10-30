@@ -1,0 +1,19 @@
+/* Halloween Phantom Mint theme for Obsidian */
+.theme-dark {
+  --background-primary: #0e1626;
+  --background-primary-alt: #0a101d;
+  --background-secondary: #152033;
+  --background-secondary-alt: #1c2b45;
+  --background-modifier-border: #273a5a;
+  --text-normal: #e6edf5;
+  --text-muted: #8fa2b8;
+  --text-faint: #8fa2b8;
+  --text-accent: #2ef8a0;
+  --text-accent-hover: #ffd166;
+  --interactive-accent: #2ef8a0;
+  --interactive-accent-hover: #ffd166;
+  --interactive-normal: #152033;
+  --interactive-hover: #1c2b45;
+  --scrollbar-bg: #0e1626;
+  --scrollbar-thumb-bg: #273a5a;
+}

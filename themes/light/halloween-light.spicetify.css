@@ -1,0 +1,18 @@
+/* Halloween Day theme for Spicetify */
+:root {
+  --spice-text: #241432;
+  --spice-subtext: #756388;
+  --spice-main: #faf4eb;
+  --spice-sidebar: #f4ece1;
+  --spice-player: #f2e7d8;
+  --spice-card: #f2e7d8;
+  --spice-shadow: #f4ece1;
+  --spice-selected-row: #e5d0b5;
+  --spice-button: #bf4904;
+  --spice-button-active: #1b772d;
+  --spice-button-disabled: #d8c8b4;
+  --spice-tab-active: #e8dcce;
+  --spice-notification: #bf4904;
+  --spice-notification-error: #b81438;
+  --spice-misc: #7e22ce;
+}

@@ -1,0 +1,18 @@
+/* Halloween Cyberpunk theme for Spicetify */
+:root {
+  --spice-text: #fcf7ff;
+  --spice-subtext: #9d79bc;
+  --spice-main: #0d0221;
+  --spice-sidebar: #090014;
+  --spice-player: #19053b;
+  --spice-card: #19053b;
+  --spice-shadow: #090014;
+  --spice-selected-row: #3c096c;
+  --spice-button: #ff6d00;
+  --spice-button-active: #00f5d4;
+  --spice-button-disabled: #5a189a;
+  --spice-tab-active: #240046;
+  --spice-notification: #ff6d00;
+  --spice-notification-error: #ff0054;
+  --spice-misc: #c77dff;
+}

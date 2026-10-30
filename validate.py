@@ -376,6 +376,75 @@ class Validator:
         for k in ["selected_tab =", "command_fg =", "selection_bg =", "diff_line_add =", "diff_line_delete ="]:
             self.assert_true(k in content, f"gitui key '{k}' in {filepath}", f"Missing key {k}")
 
+    def validate_zed(self, filepath: str, expected_name: str, expected_appearance: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true(data.get("name") == expected_name, f"Zed theme root name in {filepath}", f"Expected name {expected_name}")
+            themes_list = data.get("themes", [])
+            self.assert_true(len(themes_list) > 0, f"Zed themes array in {filepath}", "Empty themes list")
+            theme = themes_list[0]
+            self.assert_true(theme.get("appearance") == expected_appearance, f"Zed appearance in {filepath}", f"Expected {expected_appearance}")
+            style = theme.get("style", {})
+            for k in ["background", "editor.foreground", "editor.background", "terminal.background", "syntax"]:
+                self.assert_true(k in style, f"Zed style key '{k}' in {filepath}", f"Missing style key {k}")
+            syntax = style.get("syntax", {})
+            for sk in ["comment", "keyword", "string", "function", "number"]:
+                self.assert_true(sk in syntax, f"Zed syntax key '{sk}' in {filepath}", f"Missing syntax key {sk}")
+        except Exception as e:
+            self.assert_true(False, f"Zed JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_spicetify_ini(self, filepath: str, expected_section: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true(f"[{expected_section}]" in content, f"Spicetify INI section [{expected_section}] in {filepath}", f"Missing section [{expected_section}]")
+        for k in ["text", "subtext", "main", "sidebar", "player", "card", "button", "notification"]:
+            self.assert_true(f"{k} " in content or f"{k}=" in content, f"Spicetify INI key '{k}' in {filepath}", f"Missing key {k}")
+
+    def validate_spicetify_css(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true(":root {" in content, f"Spicetify CSS :root in {filepath}", "Missing :root block")
+        for var in ["--spice-text:", "--spice-main:", "--spice-sidebar:", "--spice-button:", "--spice-card:"]:
+            self.assert_true(var in content, f"Spicetify CSS var '{var}' in {filepath}", f"Missing var {var}")
+
+    def validate_wallpaper_svg(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true("<svg" in content and "</svg>" in content, f"SVG tag structure in {filepath}", "Missing svg tags")
+        self.assert_true('viewBox="0 0 3840 2160"' in content, f"SVG 4K viewBox in {filepath}", "Missing 4K viewBox")
+        self.assert_true("halloweenBgGradient" in content, f"SVG background gradient in {filepath}", "Missing halloweenBgGradient")
+
+    def validate_chrome(self, filepath: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true(data.get("manifest_version") in (2, 3), f"Chrome manifest_version in {filepath}", "Invalid manifest_version")
+            theme = data.get("theme", {})
+            self.assert_true("colors" in theme, f"Chrome theme colors in {filepath}", "Missing colors")
+        except Exception as e:
+            self.assert_true(False, f"Chrome JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_nvim(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true("vim.cmd" in content or "vim.api" in content or "highlight" in content, f"Neovim Lua structure in {filepath}", "Missing nvim lua syntax")
+
+    def validate_helix(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for k in ["background =", "foreground =", "accent ="]:
+            self.assert_true(k in content, f"Helix key '{k}' in {filepath}", f"Missing key {k}")
+
+    def validate_sublime(self, filepath: str, expected_name: str):
+        try:
+            with open(filepath, "rb") as f:
+                plist = plistlib.load(f)
+            self.assert_true(plist.get("name") == expected_name, f"Sublime theme name in {filepath}", f"Expected name {expected_name}")
+            self.assert_true("settings" in plist, f"Sublime settings array in {filepath}", "Missing settings")
+        except Exception as e:
+            self.assert_true(False, f"Sublime plist valid in {filepath}", f"Invalid plist: {e}")
+
     def run_all(self) -> bool:
         print("=" * 60)
         print("🎃 Halloween Theme Pack - Validation Suite")
@@ -383,7 +452,7 @@ class Validator:
 
         # 1. Palette Contrast Validation (WCAG AA: >= 4.5:1)
         print("\n[1/5] Checking WCAG AA Contrast Ratios (text >= 4.5:1)...")
-        from generate import DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE
+        from generate import DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE, VAMPIRE_PALETTE, PHANTOM_PALETTE
 
         palettes_to_check = [
             ("Dark (Halloween)", DARK_PALETTE),
@@ -391,6 +460,8 @@ class Validator:
             ("OLED (Pure Void)", OLED_PALETTE),
             ("Pastel (Spooky Kawaii)", PASTEL_PALETTE),
             ("Cyberpunk (Neon Pumpkin)", CYBERPUNK_PALETTE),
+            ("Vampire Velvet", VAMPIRE_PALETTE),
+            ("Phantom Mint", PHANTOM_PALETTE),
         ]
 
         for pal_label, pal in palettes_to_check:
@@ -412,7 +483,7 @@ class Validator:
 
         # 2. Duplicate Theme Names
         print("\n[2/5] Checking Theme Names (No duplicate collisions)...")
-        all_pals = [DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE]
+        all_pals = [DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE, VAMPIRE_PALETTE, PHANTOM_PALETTE]
         names = [p["name"] for p in all_pals]
         self.assert_true(len(names) == len(set(names)), "Distinct theme names for all variants", f"Duplicate theme names detected: {names}")
         for p in all_pals:
@@ -441,6 +512,10 @@ class Validator:
             ("editor/halloween.obsidian.css", "obsidian_css"),
             ("editor/halloween-obsidian-manifest.json", "obsidian_manifest"),
             ("editor/halloween.xccolortheme", "xcode"),
+            ("editor/halloween.nvim.lua", "nvim"),
+            ("editor/halloween.helix.toml", "helix"),
+            ("editor/halloween.sublime-tmTheme", "sublime"),
+            ("editor/halloween-zed.json", "zed"),
             ("app/halloween-slack.txt", "slack"),
             ("app/halloween-discord.css", "discord"),
             ("app/halloween.tmux.conf", "tmux"),
@@ -453,6 +528,10 @@ class Validator:
             ("app/halloween.omp.json", "omp"),
             ("app/halloween.tigrc", "tig"),
             ("app/halloween.gitui.toml", "gitui"),
+            ("app/halloween-chrome.json", "chrome"),
+            ("app/halloween.spicetify.ini", "spicetify_ini"),
+            ("app/halloween.spicetify.css", "spicetify_css"),
+            ("app/halloween-wallpaper.svg", "wallpaper_svg"),
         ]
 
         expected_light_files = [
@@ -476,6 +555,10 @@ class Validator:
             ("light/halloween-light.obsidian.css", "obsidian_css"),
             ("light/halloween-light-obsidian-manifest.json", "obsidian_manifest"),
             ("light/halloween-light.xccolortheme", "xcode"),
+            ("light/halloween-light.nvim.lua", "nvim"),
+            ("light/halloween-light.helix.toml", "helix"),
+            ("light/halloween-light.sublime-tmTheme", "sublime"),
+            ("light/halloween-light-zed.json", "zed"),
             ("light/halloween-light-slack.txt", "slack"),
             ("light/halloween-light-discord.css", "discord"),
             ("light/halloween-light.tmux.conf", "tmux"),
@@ -488,6 +571,10 @@ class Validator:
             ("light/halloween-light.omp.json", "omp"),
             ("light/halloween-light.tigrc", "tig"),
             ("light/halloween-light.gitui.toml", "gitui"),
+            ("light/halloween-light-chrome.json", "chrome"),
+            ("light/halloween-light.spicetify.ini", "spicetify_ini"),
+            ("light/halloween-light.spicetify.css", "spicetify_css"),
+            ("light/halloween-light-wallpaper.svg", "wallpaper_svg"),
         ]
 
         all_files_to_check = []
@@ -506,6 +593,8 @@ class Validator:
             ("oled", OLED_PALETTE),
             ("pastel", PASTEL_PALETTE),
             ("cyberpunk", CYBERPUNK_PALETTE),
+            ("vampire", VAMPIRE_PALETTE),
+            ("phantom", PHANTOM_PALETTE),
         ]
         for var_id, pal in variant_specs:
             pfx = pal["id"]
@@ -531,6 +620,10 @@ class Validator:
                 (f"{var_dir}/{pfx}.obsidian.css", "obsidian_css"),
                 (f"{var_dir}/{pfx}-obsidian-manifest.json", "obsidian_manifest"),
                 (f"{var_dir}/{pfx}.xccolortheme", "xcode"),
+                (f"{var_dir}/{pfx}.nvim.lua", "nvim"),
+                (f"{var_dir}/{pfx}.helix.toml", "helix"),
+                (f"{var_dir}/{pfx}.sublime-tmTheme", "sublime"),
+                (f"{var_dir}/{pfx}-zed.json", "zed"),
                 (f"{var_dir}/{pfx}-slack.txt", "slack"),
                 (f"{var_dir}/{pfx}-discord.css", "discord"),
                 (f"{var_dir}/{pfx}.tmux.conf", "tmux"),
@@ -543,6 +636,10 @@ class Validator:
                 (f"{var_dir}/{pfx}.omp.json", "omp"),
                 (f"{var_dir}/{pfx}.tigrc", "tig"),
                 (f"{var_dir}/{pfx}.gitui.toml", "gitui"),
+                (f"{var_dir}/{pfx}-chrome.json", "chrome"),
+                (f"{var_dir}/{pfx}.spicetify.ini", "spicetify_ini"),
+                (f"{var_dir}/{pfx}.spicetify.css", "spicetify_css"),
+                (f"{var_dir}/{pfx}-wallpaper.svg", "wallpaper_svg"),
             ]
             for rel_path, kind in var_files:
                 full = os.path.join(self.themes_dir, rel_path)
@@ -621,6 +718,23 @@ class Validator:
                 self.validate_tig(full)
             elif kind == "gitui":
                 self.validate_gitui(full)
+            elif kind == "zed":
+                self.validate_zed(full, theme_name, variant)
+            elif kind == "spicetify_ini":
+                expected_sec = theme_name.replace(" ", "_")
+                self.validate_spicetify_ini(full, expected_sec)
+            elif kind == "spicetify_css":
+                self.validate_spicetify_css(full)
+            elif kind == "wallpaper_svg":
+                self.validate_wallpaper_svg(full)
+            elif kind == "chrome":
+                self.validate_chrome(full)
+            elif kind == "nvim":
+                self.validate_nvim(full)
+            elif kind == "helix":
+                self.validate_helix(full)
+            elif kind == "sublime":
+                self.validate_sublime(full, theme_name)
 
         print(f"  ✓ File structure and required fields validated for all {len(all_files_to_check)} formats")
 

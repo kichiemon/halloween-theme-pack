@@ -1,0 +1,17 @@
+# Halloween Vampire Velvet palette for Starship
+palette = "halloween-vampire"
+
+[palettes.halloween-vampire]
+background = "#4a0e17"
+foreground = "#f7ebdc"
+accent = "#d4af37"
+success = "#2ebd6e"
+destructive = "#ff4d6d"
+card = "#380a11"
+secondary = "#5a131f"
+muted = "#bfa3a8"
+border = "#6a1b28"
+blue = "#6ba3ff"
+magenta = "#d47ae8"
+cyan = "#45dfdf"
+yellow = "#e5b842"

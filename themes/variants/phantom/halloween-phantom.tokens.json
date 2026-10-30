@@ -1,0 +1,65 @@
+{
+  "color": {
+    "background": {
+      "$value": "#0e1626",
+      "$type": "color",
+      "$description": "Canvas background"
+    },
+    "foreground": {
+      "$value": "#e6edf5",
+      "$type": "color",
+      "$description": "Primary readable text"
+    },
+    "accent": {
+      "$value": "#2ef8a0",
+      "$type": "color",
+      "$description": "Pumpkin orange brand accent"
+    },
+    "success": {
+      "$value": "#48f78b",
+      "$type": "color",
+      "$description": "Slime green success indicator"
+    },
+    "destructive": {
+      "$value": "#ff5277",
+      "$type": "color",
+      "$description": "Blood red error and warning"
+    },
+    "secondary": {
+      "$value": "#1c2b45",
+      "$type": "color"
+    },
+    "card": {
+      "$value": "#152033",
+      "$type": "color"
+    },
+    "muted": {
+      "$value": "#8fa2b8",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "#273a5a",
+      "$type": "color"
+    },
+    "sidebar": {
+      "$value": "#0a101d",
+      "$type": "color"
+    },
+    "blue": {
+      "$value": "#64b5f6",
+      "$type": "color"
+    },
+    "magenta": {
+      "$value": "#cf8eff",
+      "$type": "color"
+    },
+    "cyan": {
+      "$value": "#2ef8a0",
+      "$type": "color"
+    },
+    "yellow": {
+      "$value": "#ffd166",
+      "$type": "color"
+    }
+  }
+}

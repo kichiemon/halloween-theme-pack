@@ -1,0 +1,11 @@
+# Halloween Phantom Mint theme for WezTerm
+[colors]
+background = "#0e1626"
+foreground = "#e6edf5"
+cursor_bg = "#2ef8a0"
+cursor_fg = "#0e1626"
+selection_bg = "#223859"
+selection_fg = "#e6edf5"
+
+ansi = ["#1c2b45", "#ff5277", "#48f78b", "#ffd166", "#64b5f6", "#cf8eff", "#2ef8a0", "#e6edf5"]
+brights = ["#344b70", "#ff7595", "#72ffaa", "#ffe08a", "#90caf9", "#e1b5ff", "#7affce", "#ffffff"]

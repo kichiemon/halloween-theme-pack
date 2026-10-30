@@ -1,0 +1,16 @@
+/* Halloween Phantom Mint theme for Discord (BetterDiscord) */
+.theme-dark {
+  --background-primary: #0e1626;
+  --background-secondary: #1c2b45;
+  --background-secondary-alt: #152033;
+  --background-tertiary: #0a101d;
+  --background-accent: #2ef8a0;
+  --text-normal: #e6edf5;
+  --text-muted: #8fa2b8;
+  --interactive-normal: #8fa2b8;
+  --interactive-hover: #e6edf5;
+  --interactive-active: #2ef8a0;
+  --brand-experiment: #2ef8a0;
+  --status-positive: #48f78b;
+  --status-danger: #ff5277;
+}

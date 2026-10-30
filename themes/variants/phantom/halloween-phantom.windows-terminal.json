@@ -1,0 +1,23 @@
+{
+  "name": "Halloween Phantom Mint",
+  "background": "#0e1626",
+  "foreground": "#e6edf5",
+  "cursorColor": "#2ef8a0",
+  "selectionBackground": "#223859",
+  "black": "#1c2b45",
+  "red": "#ff5277",
+  "green": "#48f78b",
+  "yellow": "#ffd166",
+  "blue": "#64b5f6",
+  "purple": "#cf8eff",
+  "cyan": "#2ef8a0",
+  "white": "#e6edf5",
+  "brightBlack": "#344b70",
+  "brightRed": "#ff7595",
+  "brightGreen": "#72ffaa",
+  "brightYellow": "#ffe08a",
+  "brightBlue": "#90caf9",
+  "brightPurple": "#e1b5ff",
+  "brightCyan": "#7affce",
+  "brightWhite": "#ffffff"
+}

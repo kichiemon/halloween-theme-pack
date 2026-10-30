@@ -237,6 +237,96 @@ CYBERPUNK_PALETTE = {
     },
 }
 
+# Variant: Halloween Vampire Velvet (Velvet Bordeaux, Crimson Wine & Antique Gold)
+VAMPIRE_PALETTE = {
+    "id": "halloween-vampire",
+    "name": "Halloween Vampire Velvet",
+    "type": "dark",
+    "details": "darker",
+    "background": "#4a0e17",
+    "foreground": "#f7ebdc",
+    "card": "#380a11",
+    "secondary": "#5a131f",
+    "muted": "#bfa3a8",
+    "border": "#6a1b28",
+    "sidebar": "#2d070d",
+    "accent": "#d4af37",
+    "success": "#2ebd6e",
+    "destructive": "#ff4d6d",
+    "cursor": "#d4af37",
+    "selection": "#631724",
+    "selection_text": "#f7ebdc",
+    "blue": "#6ba3ff",
+    "magenta": "#d47ae8",
+    "cyan": "#45dfdf",
+    "yellow": "#e5b842",
+    "ansi": {
+        "black": "#380a11",
+        "red": "#ff4d6d",
+        "green": "#2ebd6e",
+        "yellow": "#e5b842",
+        "blue": "#6ba3ff",
+        "magenta": "#d47ae8",
+        "cyan": "#45dfdf",
+        "white": "#f7ebdc",
+    },
+    "bright": {
+        "black": "#6a1b28",
+        "red": "#ff758f",
+        "green": "#52e896",
+        "yellow": "#ffd166",
+        "blue": "#9bc4ff",
+        "magenta": "#ebb2f7",
+        "cyan": "#82f7f7",
+        "white": "#ffffff",
+    },
+}
+
+# Variant: Halloween Phantom Mint (Slate Navy, Ghost Silver & Mint Cyan)
+PHANTOM_PALETTE = {
+    "id": "halloween-phantom",
+    "name": "Halloween Phantom Mint",
+    "type": "dark",
+    "details": "darker",
+    "background": "#0e1626",
+    "foreground": "#e6edf5",
+    "card": "#152033",
+    "secondary": "#1c2b45",
+    "muted": "#8fa2b8",
+    "border": "#273a5a",
+    "sidebar": "#0a101d",
+    "accent": "#2ef8a0",
+    "success": "#48f78b",
+    "destructive": "#ff5277",
+    "cursor": "#2ef8a0",
+    "selection": "#223859",
+    "selection_text": "#e6edf5",
+    "blue": "#64b5f6",
+    "magenta": "#cf8eff",
+    "cyan": "#2ef8a0",
+    "yellow": "#ffd166",
+    "ansi": {
+        "black": "#1c2b45",
+        "red": "#ff5277",
+        "green": "#48f78b",
+        "yellow": "#ffd166",
+        "blue": "#64b5f6",
+        "magenta": "#cf8eff",
+        "cyan": "#2ef8a0",
+        "white": "#e6edf5",
+    },
+    "bright": {
+        "black": "#344b70",
+        "red": "#ff7595",
+        "green": "#72ffaa",
+        "yellow": "#ffe08a",
+        "blue": "#90caf9",
+        "magenta": "#e1b5ff",
+        "cyan": "#7affce",
+        "white": "#ffffff",
+    },
+}
+
 # Backwards compatibility aliases
 P = DARK_PALETTE
 ANSI = DARK_PALETTE["ansi"]
@@ -1444,6 +1534,316 @@ def gen_sublime(pal, out_path):
         plistlib.dump(theme, f)
 
 
+def gen_zed(pal, out_path):
+    """Generate Zed Editor theme JSON."""
+    ansi = pal["ansi"]
+    bright = pal["bright"]
+    style_data = {
+        "border": pal["border"],
+        "border.variant": pal["secondary"],
+        "border.focused": pal["accent"],
+        "border.selected": pal["accent"],
+        "border.transparent": pal["background"],
+        "border.disabled": pal["border"],
+        "elevated_surface.background": pal["card"],
+        "surface.background": pal["card"],
+        "background": pal["background"],
+        "element.background": pal["card"],
+        "element.hover": pal["secondary"],
+        "element.active": pal["border"],
+        "element.selected": pal["selection"],
+        "element.disabled": pal["card"],
+        "drop_target.background": pal["selection"],
+        "ghost_element.background": pal["background"],
+        "ghost_element.hover": pal["secondary"],
+        "ghost_element.active": pal["card"],
+        "ghost_element.selected": pal["selection"],
+        "ghost_element.disabled": pal["background"],
+        "text": pal["foreground"],
+        "text.muted": pal["muted"],
+        "text.placeholder": pal["muted"],
+        "text.disabled": pal["muted"],
+        "text.accent": pal["accent"],
+        "icon": pal["foreground"],
+        "icon.muted": pal["muted"],
+        "icon.disabled": pal["muted"],
+        "icon.placeholder": pal["muted"],
+        "icon.accent": pal["accent"],
+        "status_bar.background": pal["sidebar"],
+        "title_bar.background": pal["sidebar"],
+        "toolbar.background": pal["card"],
+        "tab_bar.background": pal["sidebar"],
+        "tab.inactive_background": pal["sidebar"],
+        "tab.active_background": pal["card"],
+        "search.match_background": pal["selection"],
+        "panel.background": pal["sidebar"],
+        "panel.focused_border": pal["accent"],
+        "pane.focused_border": pal["accent"],
+        "scrollbar.thumb.background": pal["border"],
+        "scrollbar.thumb.hover_background": pal["muted"],
+        "scrollbar.thumb.border": pal["card"],
+        "scrollbar.track.background": pal["background"],
+        "scrollbar.track.border": pal["border"],
+        "editor.foreground": pal["foreground"],
+        "editor.background": pal["background"],
+        "editor.gutter.background": pal["background"],
+        "editor.subheader.background": pal["sidebar"],
+        "editor.active_line.background": pal["secondary"],
+        "editor.highlighted_line.background": pal["secondary"],
+        "editor.line_number": pal["muted"],
+        "editor.active_line_number": pal["accent"],
+        "editor.invisible": pal["border"],
+        "editor.wrap_guide": pal["border"],
+        "editor.active_wrap_guide": pal["muted"],
+        "editor.document_highlight.read_background": pal["selection"],
+        "editor.document_highlight.write_background": pal["selection"],
+        "terminal.background": pal["background"],
+        "terminal.foreground": pal["foreground"],
+        "terminal.bright_foreground": bright["white"],
+        "terminal.dim_foreground": pal["muted"],
+        "terminal.ansi.black": ansi["black"],
+        "terminal.ansi.red": ansi["red"],
+        "terminal.ansi.green": ansi["green"],
+        "terminal.ansi.yellow": ansi["yellow"],
+        "terminal.ansi.blue": ansi["blue"],
+        "terminal.ansi.magenta": ansi["magenta"],
+        "terminal.ansi.cyan": ansi["cyan"],
+        "terminal.ansi.white": ansi["white"],
+        "terminal.ansi.bright_black": bright["black"],
+        "terminal.ansi.bright_red": bright["red"],
+        "terminal.ansi.bright_green": bright["green"],
+        "terminal.ansi.bright_yellow": bright["yellow"],
+        "terminal.ansi.bright_blue": bright["blue"],
+        "terminal.ansi.bright_magenta": bright["magenta"],
+        "terminal.ansi.bright_cyan": bright["cyan"],
+        "terminal.ansi.bright_white": bright["white"],
+        "link_text.hover": pal["accent"],
+        "conflict": pal["destructive"],
+        "conflict.background": pal["card"],
+        "conflict.border": pal["destructive"],
+        "created": pal["success"],
+        "created.background": pal["card"],
+        "created.border": pal["success"],
+        "deleted": pal["destructive"],
+        "deleted.background": pal["card"],
+        "deleted.border": pal["destructive"],
+        "error": pal["destructive"],
+        "error.background": pal["card"],
+        "error.border": pal["destructive"],
+        "hidden": pal["muted"],
+        "hidden.background": pal["card"],
+        "hidden.border": pal["border"],
+        "hint": pal["cyan"],
+        "hint.background": pal["card"],
+        "hint.border": pal["cyan"],
+        "ignored": pal["muted"],
+        "ignored.background": pal["card"],
+        "ignored.border": pal["border"],
+        "info": pal["blue"],
+        "info.background": pal["card"],
+        "info.border": pal["blue"],
+        "modified": pal["yellow"],
+        "modified.background": pal["card"],
+        "modified.border": pal["yellow"],
+        "predictive": pal["muted"],
+        "predictive.background": pal["card"],
+        "predictive.border": pal["border"],
+        "renamed": pal["blue"],
+        "renamed.background": pal["card"],
+        "renamed.border": pal["blue"],
+        "success": pal["success"],
+        "success.background": pal["card"],
+        "success.border": pal["success"],
+        "unreachable": pal["muted"],
+        "unreachable.background": pal["card"],
+        "unreachable.border": pal["border"],
+        "warning": pal["yellow"],
+        "warning.background": pal["card"],
+        "warning.border": pal["yellow"],
+        "syntax": {
+            "boolean": {"color": pal["destructive"]},
+            "comment": {"color": pal["muted"], "font_style": "italic"},
+            "comment.doc": {"color": pal["muted"], "font_style": "italic"},
+            "constant": {"color": pal["yellow"]},
+            "function": {"color": pal["blue"]},
+            "keyword": {"color": pal["accent"]},
+            "number": {"color": pal["cyan"]},
+            "operator": {"color": pal["accent"]},
+            "property": {"color": pal["foreground"]},
+            "punctuation": {"color": pal["foreground"]},
+            "punctuation.bracket": {"color": pal["muted"]},
+            "punctuation.delimiter": {"color": pal["muted"]},
+            "string": {"color": pal["success"]},
+            "string.escape": {"color": pal["cyan"]},
+            "string.regex": {"color": pal["yellow"]},
+            "string.special": {"color": pal["magenta"]},
+            "tag": {"color": pal["destructive"]},
+            "type": {"color": pal["magenta"]},
+            "variable": {"color": pal["foreground"]},
+            "variable.special": {"color": pal["accent"]},
+        },
+    }
+    theme_data = {
+        "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
+        "name": pal["name"],
+        "author": "Halloween Theme Pack",
+        "appearance": pal["type"],
+        "style": style_data,
+        "themes": [
+            {
+                "name": pal["name"],
+                "appearance": pal["type"],
+                "style": style_data,
+            }
+        ],
+    }
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(theme_data, f, indent=2)
+
+
+def gen_spicetify(pal, ini_out_path, css_out_path):
+    """Generate Spicetify (Spotify) color.ini and user.css."""
+    sec_name = pal["name"].replace(" ", "_")
+    ini_content = f"""[{sec_name}]
+text               = {pal['foreground']}
+subtext            = {pal['muted']}
+main               = {pal['background']}
+sidebar            = {pal['sidebar']}
+player             = {pal['card']}
+card               = {pal['card']}
+shadow             = {pal['sidebar']}
+selected-row       = {pal['selection']}
+button             = {pal['accent']}
+button-active      = {pal['success']}
+button-disabled    = {pal['border']}
+tab-active         = {pal['secondary']}
+notification       = {pal['accent']}
+notification-error = {pal['destructive']}
+misc               = {pal['magenta']}
+"""
+    css_content = f"""/* {pal['name']} theme for Spicetify */
+:root {{
+  --spice-text: {pal['foreground']};
+  --spice-subtext: {pal['muted']};
+  --spice-main: {pal['background']};
+  --spice-sidebar: {pal['sidebar']};
+  --spice-player: {pal['card']};
+  --spice-card: {pal['card']};
+  --spice-shadow: {pal['sidebar']};
+  --spice-selected-row: {pal['selection']};
+  --spice-button: {pal['accent']};
+  --spice-button-active: {pal['success']};
+  --spice-button-disabled: {pal['border']};
+  --spice-tab-active: {pal['secondary']};
+  --spice-notification: {pal['accent']};
+  --spice-notification-error: {pal['destructive']};
+  --spice-misc: {pal['magenta']};
+}}
+"""
+    with open(ini_out_path, "w", encoding="utf-8") as f:
+        f.write(ini_content)
+    with open(css_out_path, "w", encoding="utf-8") as f:
+        f.write(css_content)
+
+
+def gen_wallpaper(pal, out_path):
+    """Generate high-resolution 4K SVG wallpaper featuring theme colors and spooky mascot."""
+    grid_x = "".join(f'<line x1="{x}" y1="0" x2="{x}" y2="2160"/>' for x in range(0, 3840, 160))
+    grid_y = "".join(f'<line x1="0" y1="{y}" x2="3840" y2="{y}"/>' for y in range(0, 2160, 120))
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" width="3840" height="2160">
+  <defs>
+    <radialGradient id="halloweenBgGradient" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="{pal['secondary']}" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="{pal['background']}"/>
+      <stop offset="100%" stop-color="{pal['sidebar']}"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="{pal['accent']}" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="{pal['yellow']}" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="{pal['background']}" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="3840" height="2160" fill="url(#halloweenBgGradient)"/>
+
+  <!-- Subtle Digital Cyber-Gothic Grid -->
+  <g stroke="{pal['border']}" stroke-width="1" opacity="0.15">
+    {grid_x}
+    {grid_y}
+  </g>
+
+  <!-- Starry Constellations -->
+  <g fill="{pal['foreground']}" opacity="0.6">
+    <circle cx="480" cy="320" r="4"/>
+    <circle cx="890" cy="180" r="3"/>
+    <circle cx="1200" cy="450" r="5" fill="{pal['cyan']}"/>
+    <circle cx="1650" cy="220" r="3"/>
+    <circle cx="2100" cy="380" r="4"/>
+    <circle cx="2600" cy="190" r="3"/>
+    <circle cx="3100" cy="420" r="5" fill="{pal['accent']}"/>
+    <circle cx="3450" cy="280" r="3"/>
+    <circle cx="320" cy="850" r="3"/>
+    <circle cx="3550" cy="950" r="4"/>
+    <circle cx="720" cy="1100" r="3"/>
+    <circle cx="2980" cy="1250" r="3"/>
+  </g>
+
+  <!-- Glowing Harvest Moon / Phantom Aura -->
+  <circle cx="1920" cy="850" r="520" fill="url(#moonGlow)" filter="url(#blurGlow)"/>
+  <circle cx="1920" cy="850" r="340" fill="{pal['card']}" stroke="{pal['accent']}" stroke-width="4"/>
+
+  <!-- Flying Bats -->
+  <g fill="{pal['accent']}" opacity="0.85">
+    <path transform="translate(1420, 620) scale(1.4)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+    <path transform="translate(2300, 540) scale(1.1)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+    <path transform="translate(1820, 420) scale(0.9)" d="M0,0 C15,-20 40,-15 50,5 C40,0 25,10 20,20 C15,10 0,0 0,0 Z M50,5 C60,-15 85,-20 100,0 C100,0 85,10 80,20 C75,10 60,0 50,5 Z"/>
+  </g>
+
+  <!-- Floating Cute Ghost Mascot (Left) -->
+  <g transform="translate(950, 880) scale(2.2)" opacity="0.9">
+    <path d="M50,20 C25,20 15,45 15,75 C15,100 20,115 30,110 C40,105 45,115 55,110 C65,105 70,115 80,110 C90,115 95,95 95,75 C95,45 75,20 50,20 Z" fill="{pal['card']}" stroke="{pal['cyan']}" stroke-width="3"/>
+    <ellipse cx="40" cy="55" rx="5" ry="7" fill="{pal['cyan']}"/>
+    <ellipse cx="65" cy="55" rx="5" ry="7" fill="{pal['cyan']}"/>
+    <circle cx="32" cy="65" r="4" fill="{pal['destructive']}" opacity="0.6"/>
+    <circle cx="73" cy="65" r="4" fill="{pal['destructive']}" opacity="0.6"/>
+  </g>
+
+  <!-- Glowing Jack-o'-Lantern Mascot (Center/Bottom) -->
+  <g transform="translate(1920, 1420) scale(3.5)">
+    <path d="M-8,-85 C-5,-105 10,-115 12,-110 C15,-100 5,-85 2,-80 Z" fill="{pal['success']}"/>
+    <ellipse cx="-45" cy="-20" rx="45" ry="65" fill="{pal['secondary']}" stroke="{pal['border']}" stroke-width="2"/>
+    <ellipse cx="45" cy="-20" rx="45" ry="65" fill="{pal['secondary']}" stroke="{pal['border']}" stroke-width="2"/>
+    <ellipse cx="-25" cy="-15" rx="45" ry="70" fill="{pal['card']}" stroke="{pal['border']}" stroke-width="2"/>
+    <ellipse cx="25" cy="-15" rx="45" ry="70" fill="{pal['card']}" stroke="{pal['border']}" stroke-width="2"/>
+    <ellipse cx="0" cy="-10" rx="42" ry="72" fill="{pal['background']}" stroke="{pal['border']}" stroke-width="2"/>
+    <polygon points="-30,-40 -12,-35 -24,-20" fill="{pal['accent']}"/>
+    <polygon points="30,-40 12,-35 24,-20" fill="{pal['accent']}"/>
+    <polygon points="0,-22 -7,-12 7,-12" fill="{pal['yellow']}"/>
+    <path d="M-45,5 C-25,30 25,30 45,5 C35,15 25,12 18,6 C14,14 6,15 0,8 C-6,15 -14,14 -18,6 C-25,12 -35,15 -45,5 Z" fill="{pal['accent']}"/>
+  </g>
+
+  <!-- Bottom Horizon Hill Silhouette -->
+  <path d="M0,1850 Q960,1720 1920,1780 T3840,1850 L3840,2160 L0,2160 Z" fill="{pal['sidebar']}" opacity="0.95"/>
+
+  <!-- Brand Typography -->
+  <g font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <text x="1920" y="1960" font-size="38" font-weight="800" letter-spacing="14" fill="{pal['foreground']}">{pal['name'].upper()}</text>
+    <text x="1920" y="2020" font-size="20" font-weight="600" letter-spacing="8" fill="{pal['muted']}">HALLOWEEN THEME PACK • 4K ULTRA HD</text>
+  </g>
+</svg>
+'''
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(svg)
+
+
 def generate_dark_variant(base_dir):
     term = os.path.join(base_dir, "terminal")
     edit = os.path.join(base_dir, "editor")
@@ -1478,6 +1878,7 @@ def generate_dark_variant(base_dir):
     gen_nvim(DARK_PALETTE, os.path.join(edit, "halloween.nvim.lua"))
     gen_helix(DARK_PALETTE, os.path.join(edit, "halloween.helix.toml"))
     gen_sublime(DARK_PALETTE, os.path.join(edit, "halloween.sublime-tmTheme"))
+    gen_zed(DARK_PALETTE, os.path.join(edit, "halloween-zed.json"))
 
     # Existing app formats
     gen_slack(DARK_PALETTE, os.path.join(app, "halloween-slack.txt"))
@@ -1495,6 +1896,8 @@ def generate_dark_variant(base_dir):
     gen_tig(DARK_PALETTE, os.path.join(app, "halloween.tigrc"))
     gen_gitui(DARK_PALETTE, os.path.join(app, "halloween.gitui.toml"))
     gen_chrome(DARK_PALETTE, os.path.join(app, "halloween-chrome.json"))
+    gen_spicetify(DARK_PALETTE, os.path.join(app, "halloween.spicetify.ini"), os.path.join(app, "halloween.spicetify.css"))
+    gen_wallpaper(DARK_PALETTE, os.path.join(app, "halloween-wallpaper.svg"))
 
 
 def generate_light_variant(base_dir):
@@ -1534,6 +1937,7 @@ def generate_light_variant(base_dir):
     gen_nvim(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.nvim.lua"))
     gen_helix(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.helix.toml"))
     gen_sublime(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.sublime-tmTheme"))
+    gen_zed(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light-zed.json"))
 
     # New app formats
     gen_raycast(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.raycast.json"))
@@ -1545,6 +1949,8 @@ def generate_light_variant(base_dir):
     gen_tig(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.tigrc"))
     gen_gitui(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.gitui.toml"))
     gen_chrome(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light-chrome.json"))
+    gen_spicetify(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.spicetify.ini"), os.path.join(light_dir, "halloween-light.spicetify.css"))
+    gen_wallpaper(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light-wallpaper.svg"))
 
 
 def generate_extra_variant(pal, out_dir):
@@ -1579,12 +1985,15 @@ def generate_extra_variant(pal, out_dir):
     gen_nvim(pal, os.path.join(out_dir, f"{pfx}.nvim.lua"))
     gen_helix(pal, os.path.join(out_dir, f"{pfx}.helix.toml"))
     gen_sublime(pal, os.path.join(out_dir, f"{pfx}.sublime-tmTheme"))
+    gen_zed(pal, os.path.join(out_dir, f"{pfx}-zed.json"))
     gen_obsidian(pal, os.path.join(out_dir, f"{pfx}.obsidian.css"), os.path.join(out_dir, f"{pfx}-obsidian-manifest.json"))
     gen_slack(pal, os.path.join(out_dir, f"{pfx}-slack.txt"))
     gen_discord(pal, os.path.join(out_dir, f"{pfx}-discord.css"))
     gen_hyper(pal, os.path.join(out_dir, f"{pfx}.hyper.js"))
     gen_tabby(pal, os.path.join(out_dir, f"{pfx}.tabby.yaml"))
     gen_rio(pal, os.path.join(out_dir, f"{pfx}.rio.toml"))
+    gen_spicetify(pal, os.path.join(out_dir, f"{pfx}.spicetify.ini"), os.path.join(out_dir, f"{pfx}.spicetify.css"))
+    gen_wallpaper(pal, os.path.join(out_dir, f"{pfx}-wallpaper.svg"))
 
 
 def generate_all_variants(base_dir):
@@ -1596,6 +2005,19 @@ def generate_all_variants(base_dir):
     generate_extra_variant(OLED_PALETTE, os.path.join(variants_dir, "oled"))
     generate_extra_variant(PASTEL_PALETTE, os.path.join(variants_dir, "pastel"))
     generate_extra_variant(CYBERPUNK_PALETTE, os.path.join(variants_dir, "cyberpunk"))
+    generate_extra_variant(VAMPIRE_PALETTE, os.path.join(variants_dir, "vampire"))
+    generate_extra_variant(PHANTOM_PALETTE, os.path.join(variants_dir, "phantom"))
+
+    # Also copy wallpapers to assets/wallpapers for quick access
+    wp_dir = os.path.join("assets", "wallpapers")
+    ensure(wp_dir)
+    shutil.copyfile(os.path.join(base_dir, "app", "halloween-wallpaper.svg"), os.path.join(wp_dir, "halloween-wallpaper.svg"))
+    shutil.copyfile(os.path.join(base_dir, "light", "halloween-light-wallpaper.svg"), os.path.join(wp_dir, "halloween-light-wallpaper.svg"))
+    shutil.copyfile(os.path.join(variants_dir, "oled", "halloween-oled-wallpaper.svg"), os.path.join(wp_dir, "halloween-oled-wallpaper.svg"))
+    shutil.copyfile(os.path.join(variants_dir, "pastel", "halloween-pastel-wallpaper.svg"), os.path.join(wp_dir, "halloween-pastel-wallpaper.svg"))
+    shutil.copyfile(os.path.join(variants_dir, "cyberpunk", "halloween-cyberpunk-wallpaper.svg"), os.path.join(wp_dir, "halloween-cyberpunk-wallpaper.svg"))
+    shutil.copyfile(os.path.join(variants_dir, "vampire", "halloween-vampire-wallpaper.svg"), os.path.join(wp_dir, "halloween-vampire-wallpaper.svg"))
+    shutil.copyfile(os.path.join(variants_dir, "phantom", "halloween-phantom-wallpaper.svg"), os.path.join(wp_dir, "halloween-phantom-wallpaper.svg"))
 
 
 # ---------- Apply CLI Command ----------
@@ -1658,6 +2080,14 @@ def apply_themes(variant="dark", dry_run=False):
          os.path.join(home, ".tmux"),
          f"{pfx}.tmux.conf",
          get_src("app", "tmux.conf")),
+        ("Zed",
+         os.path.join(home, ".config", "zed", "themes"),
+         f"{pfx}.json",
+         f"themes/editor/{pfx}-zed.json" if variant == "dark" else (f"themes/light/{pfx}-zed.json" if variant == "light" else f"themes/variants/{variant}/{pfx}-zed.json")),
+        ("Spicetify",
+         os.path.join(home, ".config", "spicetify", "Themes", pfx),
+         "color.ini",
+         f"themes/app/{pfx}.spicetify.ini" if variant == "dark" else (f"themes/light/{pfx}.spicetify.ini" if variant == "light" else f"themes/variants/{variant}/{pfx}.spicetify.ini")),
     ]
 
     print(f"🎃 Scanning installed applications for Halloween Theme auto-apply (variant: {variant})...\n")
@@ -1696,20 +2126,224 @@ def apply_themes(variant="dark", dry_run=False):
     print(f"\n✨ Done! {applied} themes {mode_str}.")
 
 
+# ---------- Ambient Auto-Switcher ----------
+
+def detect_os_dark_mode():
+    """Detect whether OS is in Dark Mode (macOS, Linux GNOME, Windows)."""
+    system = sys.platform
+    if system == "darwin":
+        try:
+            import subprocess
+            res = subprocess.run(["defaults", "read", "-g", "AppleInterfaceStyle"], capture_output=True, text=True)
+            return (res.returncode == 0 and "Dark" in res.stdout)
+        except Exception:
+            return True
+    elif system.startswith("linux"):
+        try:
+            import subprocess
+            res = subprocess.run(["gsettings", "get", "org.gnome.desktop.interface", "color-scheme"], capture_output=True, text=True)
+            if res.returncode == 0 and "prefer-dark" in res.stdout:
+                return True
+            res2 = subprocess.run(["gsettings", "get", "org.gnome.desktop.interface", "gtk-theme"], capture_output=True, text=True)
+            if res2.returncode == 0 and "dark" in res2.stdout.lower():
+                return True
+        except Exception:
+            pass
+        return True
+    elif system == "win32":
+        try:
+            import winreg
+            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize")
+            val, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
+            return val == 0
+        except Exception:
+            return True
+    return True
+
+
+def run_ambient_switcher(dark_variant="dark", light_variant="light", daemon=False, interval=5, dry_run=False):
+    """Run OS ambient auto-switcher (once or as daemon)."""
+    import time
+    last_mode = None
+    print("🎃 Halloween Ambient Theme Auto-Switcher Daemon")
+    print(f"   Dark Variant:  {dark_variant}")
+    print(f"   Light Variant: {light_variant}")
+    print(f"   Mode:          {'Daemon (polling every ' + str(interval) + 's)' if daemon else 'One-shot'}")
+    if dry_run:
+        print("   Flags:         DRY RUN")
+
+    while True:
+        is_dark = detect_os_dark_mode()
+        current_mode = "dark" if is_dark else "light"
+        chosen_variant = dark_variant if is_dark else light_variant
+        if current_mode != last_mode:
+            print(f"\n✨ OS Appearance: {current_mode.upper()} mode detected -> applying variant '{chosen_variant}'")
+            apply_themes(variant=chosen_variant, dry_run=dry_run)
+            last_mode = current_mode
+
+        if not daemon:
+            break
+        try:
+            time.sleep(interval)
+        except KeyboardInterrupt:
+            print("\n👋 Ambient Auto-Switcher stopped.")
+            break
+
+
 # ---------- Main ----------
 
+# ---------- Interactive Installer ----------
+
+def interactive_install(variant=None, dry_run=False):
+    """Interactive installer: detect apps, let user choose, and apply themes."""
+    home = os.path.expanduser("~")
+
+    # Variant selection
+    if variant is None:
+        print("🎃 Halloween Theme Pack — Interactive Installer")
+        print("=" * 50)
+        print()
+        print("Choose a variant:")
+        print("  1) dark       — Halloween (deep purple night)")
+        print("  2) light      — Halloween Day (warm cream)")
+        print("  3) oled       — Halloween OLED (pure black)")
+        print("  4) pastel     — Halloween Pastel (spooky kawaii)")
+        print("  5) cyberpunk  — Halloween Cyberpunk (neon plasma)")
+        choice = input("Variant [1]: ").strip() or "1"
+        variant_map = {"1": "dark", "2": "light", "3": "oled", "4": "pastel", "5": "cyberpunk"}
+        variant = variant_map.get(choice, "dark")
+
+    # Build candidate list with install paths
+    if variant == "dark":
+        pfx = "halloween"
+        base_sub = "themes"
+    elif variant == "light":
+        pfx = "halloween-light"
+        base_sub = "themes/light"
+    else:
+        pfx = f"halloween-{variant}"
+        base_sub = f"themes/variants/{variant}"
+
+    def src(cat, fn):
+        return f"{base_sub}/{cat}/{pfx}.{fn}" if cat != "app" else f"{base_sub}/app/{pfx}.{fn}"
+
+    candidates = [
+        ("Ghostty", os.path.join(home, ".config", "ghostty", "themes"), f"{pfx}.ghostty", "terminal/ghostty"),
+        ("Alacritty", os.path.join(home, ".config", "alacritty"), "config.toml", "terminal/alacritty.toml"),
+        ("Kitty", os.path.join(home, ".config", "kitty"), "theme.conf", "terminal/kitty.conf"),
+        ("WezTerm", os.path.join(home, ".config", "wezterm", "colors"), f"{pfx}.toml", "terminal/wezterm.toml"),
+        ("K9s", os.path.join(home, ".config", "k9s", "skins"), "skin.yaml", "terminal/k9s.yaml"),
+        ("Yazi", os.path.join(home, ".config", "yazi"), "theme.toml", "terminal/yazi.toml"),
+        ("Btop", os.path.join(home, ".config", "btop", "themes"), f"{pfx}.theme", "terminal/btop.theme"),
+        ("Lazydocker", os.path.join(home, ".config", "lazydocker"), "config.yml", "app/lazydocker.yaml"),
+        ("Fish", os.path.join(home, ".config", "fish", "conf.d"), f"{pfx}.fish", "app/fish"),
+        ("tmux", os.path.join(home, ".tmux"), f"{pfx}.tmux.conf", "app/tmux.conf"),
+        ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", "editor/zed.json"),
+        ("VS Code", os.path.join(home, ".vscode", "extensions", f"halloween-theme-{variant}"), "package.json", "editor/vscode.json"),
+    ]
+
+    # Detect installed apps
+    print(f"\n🎃 Detecting installed applications (variant: {variant})...\n")
+    detected = []
+    for name, target_dir, target_fn, src_rel in candidates:
+        parent = os.path.dirname(target_dir) if target_dir.endswith((".toml", ".yaml", ".conf", ".json")) else target_dir
+        exists = os.path.exists(target_dir) or os.path.exists(parent)
+        status = "✓ found" if exists else "✗ not found"
+        detected.append((name, target_dir, target_fn, src_rel, exists))
+        print(f"  [{len(detected)}] {name:15s} {status:12s} → {target_dir}")
+
+    print()
+    print("Enter app numbers to install (comma-separated), or 'all' for detected apps, or 'none' to cancel:")
+    selection = input("Selection [all]: ").strip() or "all"
+
+    if selection.lower() == "none":
+        print("Cancelled.")
+        return
+
+    if selection.lower() == "all":
+        selected = [d for d in detected if d[4]]  # only detected
+    else:
+        indices = [int(x.strip()) - 1 for x in selection.split(",") if x.strip().isdigit()]
+        selected = [detected[i] for i in indices if 0 <= i < len(detected)]
+
+    if not selected:
+        print("No apps selected.")
+        return
+
+    print(f"\nWill install to {len(selected)} app(s):")
+    for name, target_dir, target_fn, src_rel, _ in selected:
+        print(f"  - {name}: {os.path.join(target_dir, target_fn)}")
+
+    if dry_run:
+        print("\n[DRY-RUN] No files will be modified.")
+        return
+
+    confirm = input("\nProceed? [Y/n]: ").strip().lower()
+    if confirm not in ("", "y", "yes"):
+        print("Cancelled.")
+        return
+
+    # Resolve base repo
+    if getattr(sys, "frozen", False):
+        base_repo = os.getcwd()
+        if not os.path.isdir(os.path.join(base_repo, "themes")):
+            bin_dir = os.path.dirname(os.path.abspath(sys.executable))
+            parent_dir = os.path.dirname(bin_dir)
+            if os.path.isdir(os.path.join(parent_dir, "themes")):
+                base_repo = parent_dir
+            elif os.path.isdir(os.path.join(bin_dir, "themes")):
+                base_repo = bin_dir
+    else:
+        base_repo = os.path.dirname(os.path.abspath(__file__))
+
+    applied = 0
+    for name, target_dir, target_fn, src_rel, _ in selected:
+        src_path = os.path.join(base_repo, src_rel)
+        if not os.path.exists(src_path):
+            print(f"  ✗ {name}: source file not found ({src_path})")
+            continue
+        try:
+            os.makedirs(target_dir, exist_ok=True)
+            shutil.copyfile(src_path, os.path.join(target_dir, target_fn))
+            print(f"  ✓ {name}: installed → {os.path.join(target_dir, target_fn)}")
+            applied += 1
+        except Exception as e:
+            print(f"  ✗ {name}: error — {e}")
+
+    print(f"\n✨ Done! {applied}/{len(selected)} themes applied successfully.")
+
+
 def main():
-    # If the first non-option argument is 'apply', run apply
     args_list = sys.argv[1:]
+    if "switcher" in args_list:
+        ap_switch = argparse.ArgumentParser(description="Ambient Auto-Switcher daemon based on OS appearance.")
+        ap_switch.add_argument("switcher_cmd", nargs="?", default="switcher")
+        ap_switch.add_argument("--once", action="store_true", help="Run once and exit")
+        ap_switch.add_argument("--interval", type=int, default=5, help="Polling interval in seconds (default: 5)")
+        ap_switch.add_argument("--dark-variant", default="dark", help="Variant for Dark mode (default: dark)")
+        ap_switch.add_argument("--light-variant", default="light", help="Variant for Light mode (default: light)")
+        ap_switch.add_argument("--dry-run", action="store_true", help="Preview without modifying")
+        parsed = ap_switch.parse_args(args_list)
+        run_ambient_switcher(dark_variant=parsed.dark_variant, light_variant=parsed.light_variant, daemon=not parsed.once, interval=parsed.interval, dry_run=parsed.dry_run)
+        return
+
     if "apply" in args_list:
         ap_apply = argparse.ArgumentParser(description="Auto-detect installed apps and apply Halloween themes.")
         ap_apply.add_argument("apply_cmd", nargs="?", default="apply")
-        ap_apply.add_argument("--variant", default="dark", choices=["dark", "light", "oled", "pastel", "cyberpunk"], help="Theme variant (default: dark)")
+        ap_apply.add_argument("--variant", default="dark", choices=["dark", "light", "oled", "pastel", "cyberpunk", "vampire", "phantom"], help="Theme variant (default: dark)")
         ap_apply.add_argument("--dry-run", action="store_true", help="Preview actions without modifying files")
         parsed = ap_apply.parse_args(args_list)
         apply_themes(variant=parsed.variant, dry_run=parsed.dry_run)
         return
 
+    if "install" in args_list:
+        ap_install = argparse.ArgumentParser(description="Interactive installer: detect apps, choose variant, and apply themes.")
+        ap_install.add_argument("install_cmd", nargs="?", default="install")
+        ap_install.add_argument("--variant", default=None, help="Theme variant (skip prompt)")
+        ap_install.add_argument("--dry-run", action="store_true", help="Preview without modifying")
+        parsed = ap_install.parse_args(args_list)
+        interactive_install(variant=parsed.variant, dry_run=parsed.dry_run)
+        return
     ap = argparse.ArgumentParser(description="Generate Halloween theme files.")
     ap.add_argument("--out", default="themes", help="Output directory (default: themes)")
     args = ap.parse_args()

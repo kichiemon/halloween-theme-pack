@@ -1,0 +1,68 @@
+# Halloween Phantom Mint theme for K9s
+k9s:
+  body:
+    fgColor: "#e6edf5"
+    bgColor: "#0e1626"
+    logoColor: "#2ef8a0"
+  prompt:
+    fgColor: "#e6edf5"
+    bgColor: "#152033"
+    suggestColor: "#ffd166"
+  info:
+    fgColor: "#8fa2b8"
+    sectionColor: "#2ef8a0"
+  dialog:
+    fgColor: "#e6edf5"
+    bgColor: "#152033"
+    buttonFgColor: "#0e1626"
+    buttonBgColor: "#2ef8a0"
+    buttonActiveFgColor: "#e6edf5"
+    buttonActiveBgColor: "#ff5277"
+    labelFgColor: "#ffd166"
+    fieldFgColor: "#e6edf5"
+  frame:
+    border:
+      fgColor: "#273a5a"
+      focusColor: "#2ef8a0"
+    menu:
+      fgColor: "#e6edf5"
+      keyColor: "#2ef8a0"
+      numKeyColor: "#cf8eff"
+    crumbs:
+      fgColor: "#0e1626"
+      bgColor: "#2ef8a0"
+      activeColor: "#48f78b"
+    status:
+      completedColor: "#48f78b"
+      errorColor: "#ff5277"
+      highlightColor: "#2ef8a0"
+    title:
+      fgColor: "#2ef8a0"
+      bgColor: "#152033"
+      highlightColor: "#48f78b"
+      counterColor: "#cf8eff"
+  views:
+    table:
+      fgColor: "#e6edf5"
+      bgColor: "#0e1626"
+      cursorFgColor: "#0e1626"
+      cursorBgColor: "#2ef8a0"
+      markColor: "#ffd166"
+      header:
+        fgColor: "#2ef8a0"
+        bgColor: "#152033"
+        sorterColor: "#2ef8a0"
+    xray:
+      fgColor: "#e6edf5"
+      bgColor: "#0e1626"
+      cursorColor: "#2ef8a0"
+    yaml:
+      keyColor: "#cf8eff"
+      colonColor: "#273a5a"
+      valueColor: "#e6edf5"
+    logs:
+      fgColor: "#e6edf5"
+      bgColor: "#0e1626"
+      indicator:
+        fgColor: "#2ef8a0"
+        bgColor: "#152033"

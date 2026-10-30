@@ -1,0 +1,117 @@
+{
+  "name": "Halloween Phantom Mint",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0e1626",
+    "editor.foreground": "#e6edf5",
+    "editorCursor.foreground": "#2ef8a0",
+    "editor.selectionBackground": "#223859",
+    "editorLineNumber.foreground": "#8fa2b8",
+    "editorLineNumber.activeForeground": "#2ef8a0",
+    "activityBar.background": "#0a101d",
+    "activityBar.foreground": "#e6edf5",
+    "activityBar.activeBorder": "#2ef8a0",
+    "sideBar.background": "#0a101d",
+    "sideBar.foreground": "#e6edf5",
+    "sideBarTitle.foreground": "#2ef8a0",
+    "statusBar.background": "#1c2b45",
+    "statusBar.foreground": "#e6edf5",
+    "titleBar.activeBackground": "#0e1626",
+    "titleBar.activeForeground": "#e6edf5",
+    "panel.background": "#0e1626",
+    "terminal.background": "#0e1626",
+    "terminal.foreground": "#e6edf5",
+    "terminal.ansiBlack": "#1c2b45",
+    "terminal.ansiRed": "#ff5277",
+    "terminal.ansiGreen": "#48f78b",
+    "terminal.ansiYellow": "#ffd166",
+    "terminal.ansiBlue": "#64b5f6",
+    "terminal.ansiMagenta": "#cf8eff",
+    "terminal.ansiCyan": "#2ef8a0",
+    "terminal.ansiWhite": "#e6edf5",
+    "button.background": "#2ef8a0",
+    "button.foreground": "#0e1626",
+    "input.background": "#1c2b45",
+    "input.border": "#273a5a",
+    "focusBorder": "#2ef8a0",
+    "list.activeSelectionBackground": "#1c2b45",
+    "list.hoverBackground": "#152033",
+    "badge.background": "#2ef8a0",
+    "badge.foreground": "#0e1626"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#8fa2b8",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "#2ef8a0"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "string.quoted"
+      ],
+      "settings": {
+        "foreground": "#48f78b"
+      }
+    },
+    {
+      "scope": [
+        "constant.numeric"
+      ],
+      "settings": {
+        "foreground": "#ff5277"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function"
+      ],
+      "settings": {
+        "foreground": "#64b5f6"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "variable.other"
+      ],
+      "settings": {
+        "foreground": "#e6edf5"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#cf8eff"
+      }
+    },
+    {
+      "scope": [
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#2ef8a0"
+      }
+    }
+  ]
+}

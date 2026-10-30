@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Vampire Velvet Theme",
+  "version": "1.0.0",
+  "description": "A dark Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        74,
+        14,
+        23
+      ],
+      "frame_inactive": [
+        90,
+        19,
+        31
+      ],
+      "toolbar": [
+        56,
+        10,
+        17
+      ],
+      "tab_text": [
+        247,
+        235,
+        220
+      ],
+      "tab_background_text": [
+        191,
+        163,
+        168
+      ],
+      "bookmark_text": [
+        247,
+        235,
+        220
+      ],
+      "ntp_background": [
+        74,
+        14,
+        23
+      ],
+      "ntp_text": [
+        247,
+        235,
+        220
+      ],
+      "button_background": [
+        212,
+        175,
+        55
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

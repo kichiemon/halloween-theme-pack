@@ -1,0 +1,14 @@
+# Halloween Phantom Mint theme for Lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#2ef8a0"
+      - bold
+    inactiveBorderColor:
+      - "#273a5a"
+    selectedLineBgColor:
+      - "#1c2b45"
+    selectedRangeBgColor:
+      - "#223859"
+    optionsTextColor:
+      - "#64b5f6"

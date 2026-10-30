@@ -1,0 +1,23 @@
+{
+  "name": "Halloween Vampire Velvet",
+  "background": "#4a0e17",
+  "foreground": "#f7ebdc",
+  "cursorColor": "#d4af37",
+  "selectionBackground": "#631724",
+  "black": "#380a11",
+  "red": "#ff4d6d",
+  "green": "#2ebd6e",
+  "yellow": "#e5b842",
+  "blue": "#6ba3ff",
+  "purple": "#d47ae8",
+  "cyan": "#45dfdf",
+  "white": "#f7ebdc",
+  "brightBlack": "#6a1b28",
+  "brightRed": "#ff758f",
+  "brightGreen": "#52e896",
+  "brightYellow": "#ffd166",
+  "brightBlue": "#9bc4ff",
+  "brightPurple": "#ebb2f7",
+  "brightCyan": "#82f7f7",
+  "brightWhite": "#ffffff"
+}

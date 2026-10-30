@@ -1,0 +1,18 @@
+/* Halloween OLED theme for Spicetify */
+:root {
+  --spice-text: #f4e7d3;
+  --spice-subtext: #b8a9d9;
+  --spice-main: #000000;
+  --spice-sidebar: #08040d;
+  --spice-player: #12091c;
+  --spice-card: #12091c;
+  --spice-shadow: #08040d;
+  --spice-selected-row: #2c1845;
+  --spice-button: #ff6b35;
+  --spice-button-active: #39ff14;
+  --spice-button-disabled: #2c1845;
+  --spice-tab-active: #1a0a2a;
+  --spice-notification: #ff6b35;
+  --spice-notification-error: #ff4d6d;
+  --spice-misc: #c77dff;
+}
