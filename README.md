@@ -6,7 +6,6 @@ A Halloween-themed color set for Orca (stablyai/orca), modern terminals, editors
 
 ![Preview](assets/preview.png)
 
-![Demo](demo.gif)
 
 Open `preview/index.html` in your browser for an **interactive live preview & theme studio** featuring 5 theme variants, live hex tweaker with multi-format export, real-time WCAG AA/AAA contrast inspector, colorblind vision simulator, and clickable palette swatches (pure HTML/CSS/JS, zero dependencies).
 

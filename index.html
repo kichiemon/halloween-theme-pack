@@ -21,12 +21,6 @@
     body.theme-cyberpunk { --bg: #070318; --term: #04010f; --card: rgba(20,14,52,.75); --p: #39ff14; --s: #ff007f; --brd: rgba(57,255,20,.3); --glow: 0 2px 8px rgba(57,255,20,.4), 0 8px 24px rgba(57,255,20,.2); }
     body.theme-pastel { --bg: #251b36; --term: #1b1328; --card: rgba(50,36,73,.65); --p: #ff9e79; --s: #98ff88; --b: #ff85a1; --brd: rgba(255,158,121,.3); --glow: 0 2px 8px rgba(255,158,121,.35), 0 8px 24px rgba(255,158,121,.2); }
     body.theme-light { --bg: #f4ece1; --term: #eae0d0; --card: rgba(255,255,255,.8); --card-h: #fff; --w: #22123b; --mut: #5e4c75; --brd: rgba(255,107,53,.35); --glow: 0 2px 8px rgba(255,107,53,.25), 0 8px 24px rgba(255,107,53,.15); }
-    body.theme-bloodmoon { --bg: #140206; --term: #0b0103; --card: rgba(45,6,15,.75); --card-h: rgba(65,10,22,.9); --p: #ff1744; --s: #ff7597; --b: #ff0055; --cyan: #ff5252; --brd: rgba(255,23,68,.35); --glow: 0 2px 8px rgba(255,23,68,.45), 0 8px 24px rgba(255,23,68,.25); }
-    body.secret-mode { animation: spooky-pulse 3s ease-in-out infinite alternate; background-image: radial-gradient(circle at 50% 10%, rgba(255,0,85,.25) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(57,255,20,.2) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(199,125,255,.2) 0%, transparent 50%) !important; }
-    @keyframes spooky-pulse { 0% { filter: hue-rotate(0deg) saturate(1.2); } 100% { filter: hue-rotate(50deg) saturate(1.8); } }
-    body.trick-active { animation: screen-shake .45s ease-in-out, screen-invert .45s ease-in-out; }
-    @keyframes screen-shake { 0%, 100% { transform: translate(0,0); } 20% { transform: translate(-8px, 6px) rotate(-1deg); } 40% { transform: translate(8px, -6px) rotate(1deg); } 60% { transform: translate(-6px, -4px); } 80% { transform: translate(6px, 4px); } }
-    @keyframes screen-invert { 0%, 100% { filter: none; } 30%, 70% { filter: invert(0.9) hue-rotate(180deg); } }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -60,21 +54,6 @@
     .btn-primary:hover { box-shadow: 0 4px 12px rgba(255,107,53,.6), 0 10px 30px rgba(255,107,53,.3); transform: translateY(-2px); }
     .btn-ghost { background: var(--card); color: var(--w); border-color: var(--brd); backdrop-filter: blur(8px); }
     .btn-ghost:hover { border-color: var(--p); box-shadow: var(--glow); color: var(--p); transform: translateY(-2px); }
-    .btn-tot { background: linear-gradient(135deg, #ff007f, #9b00e8); color: #fff; box-shadow: 0 2px 8px rgba(255,0,127,.45), 0 8px 24px rgba(255,0,127,.2); border: 1px solid rgba(255,255,255,.25); }
-    .btn-tot:hover { box-shadow: 0 4px 12px rgba(255,0,127,.7), 0 10px 30px rgba(255,0,127,.3); transform: translateY(-2px); }
-    .candy-badge { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: var(--card); border: 1px solid var(--brd); border-radius: 20px; font-size: .88rem; font-weight: 800; color: var(--yel); }
-    .candy-badge.unlocked { border-color: var(--s); color: var(--s); box-shadow: 0 2px 8px rgba(57,255,20,.4), 0 6px 18px rgba(57,255,20,.2); }
-    .ghost-cursor { position: fixed; pointer-events: none; z-index: 9999; top: 0; left: 0; transform: translate(-50%, -50%); transition: transform .1s var(--ease-organic), opacity .2s var(--ease-organic); opacity: .85; user-select: none; }
-    .ghost-cursor.hidden { opacity: 0; transform: translate(-50%, -50%); }
-    .flying-ghost { position: fixed; top: 35%; left: -120px; z-index: 10000; pointer-events: none; opacity: 0; }
-    .flying-ghost.fly { animation: ghost-fly 1.2s cubic-bezier(.25,.46,.45,.94) forwards; }
-    @keyframes ghost-fly { 0% { left: -120px; top: 45%; transform: scale(.7) rotate(-10deg); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: 105vw; top: 20%; transform: scale(1.5) rotate(15deg); opacity: 0; } }
-    .spooky-overlay { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--fc); font-size: clamp(3.2rem, 9vw, 6.5rem); z-index: 10001; pointer-events: none; opacity: 0; transition: opacity .25s var(--ease-organic), transform .25s var(--ease-organic); text-align: center; }
-    .spooky-overlay.show { opacity: 1; transform: translate(-50%, -50%); }
-    .spooky-overlay.trick { color: var(--b); text-shadow: 0 0 30px var(--b), 0 0 60px #fff; }
-    .spooky-overlay.treat { color: var(--s); text-shadow: 0 0 30px var(--s), 0 0 60px #fff; }
-    .candy-drop { position: fixed; z-index: 9998; pointer-events: none; animation: candy-fall 1.5s linear forwards; font-size: 1.6rem; }
-    @keyframes candy-fall { 0% { transform: translateY(-40px) rotate(0deg); opacity: 1; } 100% { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
     .terminal-section { padding: 30px 0; }
     .variant-bar { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
     .variant-bar span { font-size: .85rem; color: var(--mut); font-weight: 800; text-transform: uppercase; margin-right: 6px; }
@@ -142,8 +121,7 @@
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-      .ascii-pumpkin, body.secret-mode, body.trick-active, .flying-ghost, .candy-drop { animation: none !important; }
-      .ghost-cursor, .flying-ghost, .candy-drop { display: none !important; }
+      .ascii-pumpkin { animation: none !important; }
     }
     @media (max-width: 768px) { .nav-links { display: none; } }
     @media (max-width: 640px) { .code-row { flex-direction: column; align-items: stretch; } .copy-btn { width: 100%; text-align: center; } }
@@ -186,10 +164,8 @@
       <h1 data-i18n="hero_title">HALLOWEEN THEME PACK</h1>
       <p class="tagline" data-i18n="hero_tagline">A dark atmospheric, high-contrast Halloween theme crafted for modern terminals, editors, TUIs, and shell prompts.</p>
       <div class="hero-actions">
-        <button id="tot-btn" class="btn btn-tot"><svg class="ui-icon" width="18" height="18"><use href="#icon-pumpkin"/></svg> <span data-i18n="hero_btn_tot">Trick or Treat!</span></button>
         <a href="#install" class="btn btn-primary"><svg class="ui-icon" width="18" height="18"><use href="#icon-bolt"/></svg> <span data-i18n="hero_btn_summon">Summon Theme</span></a>
         <a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener" class="btn btn-ghost"><span data-i18n="hero_btn_repo">GitHub Repo</span> <svg class="ui-icon" width="16" height="16"><use href="#icon-star"/></svg></a>
-        <span id="candy-badge" class="candy-badge" title="Treats collected"><svg class="ui-icon" width="16" height="16" style="color:var(--yel);"><use href="#icon-candy"/></svg> <span id="candy-label" data-i18n="candy_label">Treats:</span> <strong id="candy-count">0</strong>/3</span>
       </div>
     </section>
     <section id="terminal" class="terminal-section">
@@ -200,7 +176,6 @@
         <button class="variant-btn" data-variant="cyberpunk">Cyberpunk <svg class="ui-icon" width="14" height="14"><use href="#icon-potion"/></svg></button>
         <button class="variant-btn" data-variant="pastel">Pastel <svg class="ui-icon" width="14" height="14"><use href="#icon-candy"/></svg></button>
         <button class="variant-btn" data-variant="light">Candlelight <svg class="ui-icon" width="14" height="14"><use href="#icon-candle"/></svg></button>
-        <button id="variant-btn-bloodmoon" class="variant-btn" data-variant="bloodmoon" style="display:none;">Blood Moon <svg class="ui-icon" width="14" height="14"><use href="#icon-blood"/></svg></button>
       </div>
       <div class="terminal-window">
         <div class="terminal-header">
@@ -246,7 +221,6 @@
         <div class="variant-card" data-variant="cyberpunk"><span class="variant-badge" data-i18n="var_cyber_badge">High Voltage</span><h3>Cyberpunk</h3><p data-i18n="var_cyber_desc">Acid neon slime green accents floating over an ultra-deep midnight blue canvas.</p><div class="variant-pills"><span class="v-pill" style="background:#070318;"></span><span class="v-pill" style="background:#39ff14;"></span><span class="v-pill" style="background:#00f0ff;"></span></div></div>
         <div class="variant-card" data-variant="pastel"><span class="variant-badge" data-i18n="var_pastel_badge">Soft & Cozy</span><h3>Pastel</h3><p data-i18n="var_pastel_desc">Desaturated cozy candy tones designed for gentle eye strain relief during long sessions.</p><div class="variant-pills"><span class="v-pill" style="background:#251b36;"></span><span class="v-pill" style="background:#ff9e79;"></span><span class="v-pill" style="background:#98ff88;"></span></div></div>
         <div class="variant-card" data-variant="light"><span class="variant-badge" data-i18n="var_light_badge">Daylight</span><h3>Candlelight</h3><p data-i18n="var_light_desc">Warm parchment cream background with rich antique pumpkin and deep eggplant ink.</p><div class="variant-pills"><span class="v-pill" style="background:#f4ece1;"></span><span class="v-pill" style="background:#d94e18;"></span><span class="v-pill" style="background:#22123b;"></span></div></div>
-        <div class="variant-card" id="variant-card-bloodmoon" data-variant="bloodmoon" style="display:none;"><span class="variant-badge" style="background:rgba(255,23,68,.3);color:#ff1744;" data-i18n="var_blood_badge">Secret</span><h3>Blood Moon</h3><p data-i18n="var_blood_desc">Forbidden crimson glow over pitch darkness unlocked by gathering treats.</p><div class="variant-pills"><span class="v-pill" style="background:#140206;"></span><span class="v-pill" style="background:#ff1744;"></span><span class="v-pill" style="background:#ff7597;"></span></div></div>
       </div>
     </section>
     <section id="features">
@@ -300,18 +274,13 @@
   <footer>
     <p><span data-i18n="footer_text">Crafted with spooky magic for developers • MIT License • </span><a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener">GitHub</a> &bull; <a href="preview/index.html" data-i18n="footer_studio">Live Theme Studio</a></p>
   </footer>
-  <div id="ghost-cursor" class="ghost-cursor" aria-hidden="true"><svg class="ui-icon" width="24" height="24" style="color:var(--w);filter:drop-shadow(0 0 6px rgba(255,255,255,.7));"><use href="#icon-ghost"/></svg></div>
-  <div id="flying-ghost" class="flying-ghost" aria-hidden="true"><svg class="ui-icon" width="76" height="76" style="color:var(--w);filter:drop-shadow(0 0 20px rgba(199,125,255,.9));"><use href="#icon-ghost"/></svg></div>
-  <div id="spooky-overlay" class="spooky-overlay" aria-hidden="true"></div>
   <div id="toast" class="toast">Copied to clipboard!</div>
   <script>
     const i18n = {
       en: {
         nav_terminal: "Terminal", nav_palette: "Palette", nav_variants: "Variants", nav_features: "Features", nav_apps: "Apps", nav_install: "Install",
         hero_title: "HALLOWEEN THEME PACK", hero_tagline: "A dark atmospheric, high-contrast Halloween theme crafted for modern terminals, editors, TUIs, and shell prompts.",
-        hero_btn_summon: "Summon Theme", hero_btn_repo: "GitHub Repo", hero_btn_tot: "Trick or Treat!", candy_label: "Treats:",
-        trick_boo: "BOO! \u{1F47B}", treat_sweet: "SWEET! \u{1F36C}", secret_mode_on: "\u{1F383} Secret Halloween Mode activated! \u{1F987}", secret_mode_off: "Secret Halloween Mode deactivated.",
-        secret_unlocked: "\u{1F389} Secret Variant Unlocked: Blood Moon! \u{1FA78}", pumpkin_carved: "Carved Jack-o'-Lantern: {face}! \u{1F383}",
+        hero_btn_summon: "Summon Theme", hero_btn_repo: "GitHub Repo", pumpkin_carved: "Carved Jack-o'-Lantern: {face}! \u{1F383}",
         face_classic: "Classic", face_happy: "Grinning", face_scary: "Terrifying", face_wink: "Winking", face_spooked: "Spooked",
         term_bar_label: "Preview Variant:", term_detected_label: "Installed apps detected:", term_bg_label: "Background:", term_accent_label: "Accent:", term_status_label: "Status:",
         term_status_val: "WCAG AAA compliant, zero dependencies, ready to haunt! \u{1F987}",
@@ -323,7 +292,6 @@
         var_cyber_badge: "High Voltage", var_cyber_desc: "Acid neon slime green accents floating over an ultra-deep midnight blue canvas.",
         var_pastel_badge: "Soft & Cozy", var_pastel_desc: "Desaturated cozy candy tones designed for gentle eye strain relief during long sessions.",
         var_light_badge: "Daylight", var_light_desc: "Warm parchment cream background with rich antique pumpkin and deep eggplant ink.",
-        var_blood_badge: "Secret", var_blood_desc: "Forbidden crimson glow over pitch darkness unlocked by gathering treats.",
         features_title: "Features", features_desc: "Meticulously engineered for developer workflows and visual delight",
         feat_1_title: "30+ Supported Apps", feat_1_desc: "Instant support for terminals (Orca, Ghostty, iTerm2, Alacritty), editors (VS Code, Neovim, Obsidian), and TUIs.",
         feat_2_title: "WCAG AAA Contrast", feat_2_desc: "Every foreground and syntax token satisfies stringent contrast thresholds for flawless legibility in dim rooms.",
@@ -341,9 +309,7 @@
       ja: {
         nav_terminal: "ターミナル", nav_palette: "パレット", nav_variants: "バリエーション", nav_features: "特長", nav_apps: "対応アプリ", nav_install: "インストール",
         hero_title: "HALLOWEEN THEME PACK", hero_tagline: "モダンなターミナル、エディタ、TUI、シェルのための、妖しく高コントラストなハロウィンカラーテーマ。",
-        hero_btn_summon: "テーマを召喚する", hero_btn_repo: "GitHub リポジトリ", hero_btn_tot: "トリック・オア・トリート！", candy_label: "お菓子:",
-        trick_boo: "ばぁ！ \u{1F47B}", treat_sweet: "お菓子ゲット！ \u{1F36C}", secret_mode_on: "\u{1F383} シークレット・ハロウィンモード起動！ \u{1F987}", secret_mode_off: "シークレット・ハロウィンモード解除。",
-        secret_unlocked: "\u{1F389} シークレットバリエーション「ブラッドムーン」解放！ \u{1FA78}", pumpkin_carved: "カボチャを彫りました: {face}！ \u{1F383}",
+        hero_btn_summon: "テーマを召喚する", hero_btn_repo: "GitHub リポジトリ", pumpkin_carved: "カボチャを彫りました: {face}！ \u{1F383}",
         face_classic: "クラシック", face_happy: "満面スマイル", face_scary: "凶悪フェイス", face_wink: "ウインク", face_spooked: "絶叫フェイス",
         term_bar_label: "プレビュー切り替え:", term_detected_label: "検出されたアプリ:", term_bg_label: "背景色:", term_accent_label: "アクセント:", term_status_label: "状態:",
         term_status_val: "WCAG AAA準拠・外部依存ゼロ・召喚準備完了！ \u{1F987}",
@@ -355,7 +321,6 @@
         var_cyber_badge: "ハイボルテージ", var_cyber_desc: "深夜の濃紺にアシッドネオンスライムが怪しく発光するサイバーパンク調。",
         var_pastel_badge: "ソフト＆コージー", var_pastel_desc: "長時間の作業でも目に優しい、スイーツのような淡いハロウィンカラー。",
         var_light_badge: "デイライト", var_light_desc: "温かみある羊皮紙クリーム地にアンティークパンプキンが映える昼用テーマ。",
-        var_blood_badge: "シークレット", var_blood_desc: "お菓子を捧げて封印を解いた、禁断のクリムゾン＆漆黒テーマ。",
         features_title: "主な特長", features_desc: "開発者のワークフローと視覚的快感をとことん追求した設計",
         feat_1_title: "30+ 以上のアプリ対応", feat_1_desc: "Orca, Ghostty, iTerm2, Alacrittyなどのターミナル、VS Code, Obsidian等のエディタ、主要TUIに即時対応。",
         feat_2_title: "WCAG AAA 準拠コントラスト", feat_2_desc: "すべての構文トークンが厳格なコントラスト基準をクリア。薄暗い部屋でも圧倒的な可読性を実現。",
@@ -385,8 +350,7 @@
       oled: { name: 'OLED', cmd: 'oled', bg: '#000000 (Pure Pitch Black)', accent: '#ff4d6d (Blood Red)' },
       cyberpunk: { name: 'Cyberpunk', cmd: 'cyberpunk', bg: '#070318 (Midnight Blue)', accent: '#39ff14 (Acid Slime)' },
       pastel: { name: 'Pastel', cmd: 'pastel', bg: '#251b36 (Muted Lavender)', accent: '#ff9e79 (Peach Orange)' },
-      light: { name: 'Candlelight', cmd: 'light', bg: '#f4ece1 (Parchment Cream)', accent: '#d94e18 (Antique Pumpkin)' },
-      bloodmoon: { name: 'Blood Moon', cmd: 'bloodmoon', bg: '#140206 (Crimson Abyss)', accent: '#ff1744 (Blood Neon)' }
+      light: { name: 'Candlelight', cmd: 'light', bg: '#f4ece1 (Parchment Cream)', accent: '#d94e18 (Antique Pumpkin)' }
     };
     let currentLang = 'en', currentVariant = 'dark', toastTimeout;
     const toast = document.getElementById('toast');
@@ -470,97 +434,6 @@
         if (targetEl) copyText(targetEl.textContent.trim());
       });
     });
-    let treatCount = parseInt(localStorage.getItem('halloween_treats') || '0', 10);
-    const candyBadge = document.getElementById('candy-badge');
-    const candyCountEl = document.getElementById('candy-count');
-    function updateTreatBadge(unlockedToast = false) {
-      if (candyCountEl) candyCountEl.textContent = treatCount;
-      if (treatCount >= 3) {
-        if (candyBadge) candyBadge.classList.add('unlocked');
-        const sBtn = document.getElementById('variant-btn-bloodmoon');
-        const sCard = document.getElementById('variant-card-bloodmoon');
-        if (sBtn) sBtn.style.display = 'inline-flex';
-        if (sCard) sCard.style.display = 'block';
-        if (unlockedToast) {
-          showToast(i18n[currentLang].secret_unlocked || 'Secret Variant Unlocked! \u{1FA78}');
-          updateVariantDisplay('bloodmoon', false);
-        }
-      }
-    }
-    updateTreatBadge(false);
-    const totBtn = document.getElementById('tot-btn');
-    const flyingGhost = document.getElementById('flying-ghost');
-    const spookyOverlay = document.getElementById('spooky-overlay');
-    let totActive = false;
-    function dropCandies() {
-      const items = ['\u{1F36C}', '\u{1F36D}', '\u{1F36B}', '\u{1F383}', '\u{2728}', '\u{1F9C1}', '\u{1F36A}'];
-      for (let i = 0; i < 28; i++) {
-        const el = document.createElement('div');
-        el.className = 'candy-drop';
-        el.textContent = items[Math.floor(Math.random() * items.length)];
-        el.style.left = (Math.random() * 94) + 'vw';
-        el.style.top = '-30px';
-        el.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
-        el.style.animationDuration = (1.0 + Math.random() * 1.0) + 's';
-        el.style.animationDelay = (Math.random() * 0.4) + 's';
-        document.body.appendChild(el);
-        setTimeout(() => el.remove(), 2500);
-      }
-    }
-    if (totBtn) {
-      totBtn.addEventListener('click', () => {
-        if (totActive) return;
-        totActive = true;
-        if (Math.random() < 0.5) {
-          document.body.classList.add('trick-active');
-          spookyOverlay.textContent = i18n[currentLang].trick_boo || 'BOO! \u{1F47B}';
-          spookyOverlay.className = 'spooky-overlay trick show';
-          if (flyingGhost) {
-            flyingGhost.classList.remove('fly');
-            void flyingGhost.offsetWidth;
-            flyingGhost.classList.add('fly');
-          }
-          setTimeout(() => {
-            document.body.classList.remove('trick-active');
-            spookyOverlay.classList.remove('show');
-            totActive = false;
-          }, 1250);
-        } else {
-          treatCount++;
-          localStorage.setItem('halloween_treats', treatCount);
-          const justUnlocked = (treatCount === 3);
-          updateTreatBadge(false);
-          spookyOverlay.textContent = i18n[currentLang].treat_sweet || 'SWEET! \u{1F36C}';
-          spookyOverlay.className = 'spooky-overlay treat show';
-          dropCandies();
-          setTimeout(() => {
-            spookyOverlay.classList.remove('show');
-            totActive = false;
-            if (justUnlocked) updateTreatBadge(true);
-          }, 1250);
-        }
-      });
-    }
-    let eggBuffer = '';
-    window.addEventListener('keydown', e => {
-      if (['INPUT', 'TEXTAREA'].includes(e.target?.tagName)) return;
-      eggBuffer = (eggBuffer + e.key.toLowerCase()).slice(-12);
-      if (eggBuffer === 'trickortreat') {
-        const active = document.body.classList.toggle('secret-mode');
-        showToast(i18n[currentLang][active ? 'secret_mode_on' : 'secret_mode_off']);
-        eggBuffer = '';
-      }
-    });
-    const ghostCursor = document.getElementById('ghost-cursor');
-    if (ghostCursor && window.matchMedia('(pointer: fine)').matches) {
-      window.addEventListener('mousemove', e => {
-        ghostCursor.style.transform = `translate(${e.clientX + 14}px, ${e.clientY + 14}px)`;
-      });
-      window.addEventListener('mousedown', () => {
-        ghostCursor.classList.add('hidden');
-        setTimeout(() => ghostCursor.classList.remove('hidden'), 350);
-      });
-    }
     const PUMPKIN_FACES = [
       { key: 'face_classic', art: "   .-\"\"\"-.\n .'  \\ /  '.\n/   ▲   ▲   \\\n:     \\_/     :\n|  \\_______/  |\n:   \\  |  /   :\n \\   `-'-'   /\n  '.       .'\n    '-...-'" },
       { key: 'face_happy', art: "   .-\"\"\"-.\n .'  ^   ^  '.\n/   \u2605   \u2605   \\\n:     ▽     :\n|   \\_____/   |\n:   /vvvvv\\   :\n \\   `---'   /\n  '.       .'\n    '-...-'" },
