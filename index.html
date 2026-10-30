@@ -29,11 +29,17 @@
                         radial-gradient(circle at 85% 30%, rgba(255,107,53,.08) 0%, transparent 40%),
                         radial-gradient(circle at 15% 70%, rgba(57,255,20,.06) 0%, transparent 40%);
     }
-    header { padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    header { padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; gap: 16px; flex-wrap: wrap; }
     .logo { display: flex; align-items: center; gap: 10px; font-family: var(--fc); font-size: 1.65rem; color: var(--p); text-decoration: none; text-shadow: 0 0 12px rgba(255,107,53,.5); }
+    .nav-right { display: flex; align-items: center; gap: 18px; }
     .nav-links { display: flex; gap: 20px; list-style: none; }
     .nav-links a { color: var(--mut); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s, text-shadow .2s; }
     .nav-links a:hover { color: var(--p); text-shadow: 0 0 10px var(--p); }
+
+    .lang-switcher { display: inline-flex; align-items: center; background: var(--card); border: 1px solid var(--brd); border-radius: 20px; padding: 3px; gap: 2px; }
+    .lang-btn { background: transparent; border: none; color: var(--mut); padding: 4px 10px; font-size: .8rem; font-weight: 700; border-radius: 14px; cursor: pointer; font-family: var(--fs); transition: all .2s; }
+    .lang-btn:hover:not(.active) { color: var(--w); }
+    .lang-btn.active { background: var(--p); color: #1a0d2e; box-shadow: 0 0 10px rgba(255,107,53,.45); }
 
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
     .hero { text-align: center; padding: 40px 0 50px; }
@@ -79,8 +85,8 @@
     .swatch-hex { font-size: .76rem; font-family: monospace; color: var(--mut); }
 
     .variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 16px; margin-bottom: 50px; }
-    .variant-card { background: var(--card); border: 1px solid var(--brd); border-radius: 14px; padding: 18px; transition: all .25s; }
-    .variant-card:hover { border-color: var(--p); box-shadow: var(--glow); transform: translateY(-3px); }
+    .variant-card { background: var(--card); border: 1px solid var(--brd); border-radius: 14px; padding: 18px; transition: all .25s; cursor: pointer; }
+    .variant-card:hover, .variant-card.active { border-color: var(--p); box-shadow: var(--glow); transform: translateY(-3px); }
     .variant-badge { display: inline-block; font-size: .72rem; padding: 2px 7px; border-radius: 4px; background: rgba(255,107,53,.2); color: var(--p); font-weight: 700; margin-bottom: 8px; }
     .variant-card h3 { font-size: 1.1rem; margin-bottom: 6px; color: var(--w); }
     .variant-card p { font-size: .82rem; color: var(--mut); line-height: 1.45; margin-bottom: 12px; }
@@ -98,12 +104,20 @@
     .app-chip { background: var(--card); border: 1px solid var(--brd); padding: 7px 15px; border-radius: 25px; font-size: .85rem; font-weight: 500; color: var(--w); transition: all .2s; }
     .app-chip:hover { border-color: var(--s); color: var(--s); box-shadow: 0 0 14px rgba(57,255,20,.3); transform: scale(1.04); }
 
-    .install-box { max-width: 740px; margin: 0 auto 50px; background: var(--card); border: 1px solid var(--brd); border-radius: 16px; padding: 24px; box-shadow: var(--glow); text-align: center; }
-    .code-row { display: flex; align-items: center; background: var(--term); border: 1px solid var(--brd); border-radius: 8px; padding: 10px 14px; margin: 14px 0; gap: 10px; }
-    .code-text { font-family: monospace; font-size: .88rem; color: var(--w); text-align: left; flex: 1; overflow-x: auto; white-space: nowrap; }
-    .copy-btn { background: var(--p); color: #1a0d2e; border: none; border-radius: 6px; padding: 7px 14px; font-size: .82rem; font-weight: 700; cursor: pointer; font-family: var(--fs); transition: opacity .2s, transform .2s; flex-shrink: 0; }
-    .copy-btn:hover { opacity: .9; transform: scale(1.02); }
-    .install-note { font-size: .82rem; color: var(--mut); margin-top: 8px; }
+    .install-box { max-width: 760px; margin: 0 auto 50px; background: var(--card); border: 1px solid var(--brd); border-radius: 16px; padding: 24px; box-shadow: var(--glow); }
+    .install-variant-banner { display: flex; align-items: center; justify-content: space-between; background: rgba(255,107,53,.12); border: 1px solid var(--brd); padding: 8px 16px; border-radius: 10px; margin-bottom: 16px; font-size: .88rem; flex-wrap: wrap; gap: 8px; }
+    .install-badge-tag { background: var(--p); color: #1a0d2e; font-weight: 700; padding: 2px 10px; border-radius: 12px; font-size: .82rem; text-transform: uppercase; }
+    .code-label { font-size: .82rem; font-weight: 600; color: var(--cyan); text-align: left; margin: 12px 0 6px; display: flex; align-items: center; gap: 6px; }
+    .code-row { display: flex; align-items: center; background: var(--term); border: 1px solid var(--brd); border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; gap: 10px; }
+    .code-text { font-family: monospace; font-size: .86rem; color: var(--w); text-align: left; flex: 1; overflow-x: auto; white-space: nowrap; }
+    .copy-btn { background: var(--p); color: #1a0d2e; border: none; border-radius: 6px; padding: 7px 14px; font-size: .82rem; font-weight: 700; cursor: pointer; font-family: var(--fs); transition: all .2s; flex-shrink: 0; }
+    .copy-btn:hover { opacity: .9; transform: scale(1.02); box-shadow: 0 0 10px rgba(255,107,53,.5); }
+    .files-preview-box { margin-top: 18px; text-align: left; background: var(--term); border: 1px solid var(--brd); border-radius: 10px; padding: 14px 18px; }
+    .files-preview-head { font-size: .84rem; font-weight: 700; color: var(--s); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .files-preview-list { font-family: monospace; font-size: .8rem; line-height: 1.6; color: var(--mut); max-height: 140px; overflow-y: auto; padding-left: 2px; }
+    .files-preview-list div { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+    .files-preview-list div::before { content: '🎃 '; font-size: .75rem; }
+    .install-note { font-size: .82rem; color: var(--mut); margin-top: 12px; text-align: center; }
 
     footer { border-top: 1px solid var(--brd); padding: 30px 24px; text-align: center; color: var(--mut); font-size: .85rem; }
     footer a { color: var(--p); text-decoration: none; }
@@ -114,24 +128,30 @@
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
     @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } .ascii-pumpkin { animation: none !important; } }
-    @media (max-width: 640px) { .code-row { flex-direction: column; align-items: stretch; } .copy-btn { width: 100%; text-align: center; } .nav-links { display: none; } }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    @media (max-width: 640px) { .code-row { flex-direction: column; align-items: stretch; } .copy-btn { width: 100%; text-align: center; } }
   </style>
 </head>
 <body>
   <header>
     <a href="#" class="logo">🎃 HALLOWEEN</a>
-    <ul class="nav-links">
-      <li><a href="#terminal">Terminal</a></li>
-      <li><a href="#palette">Palette</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#apps">Apps</a></li>
-      <li><a href="#install">Install</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#terminal" data-i18n="nav_terminal">Terminal</a></li>
+        <li><a href="#palette" data-i18n="nav_palette">Palette</a></li>
+        <li><a href="#variants" data-i18n="nav_variants">Variants</a></li>
+        <li><a href="#features" data-i18n="nav_features">Features</a></li>
+        <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
+        <li><a href="#install" data-i18n="nav_install">Install</a></li>
+      </ul>
+      <div class="lang-switcher" role="group" aria-label="Language selection">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">JA</button>
+      </div>
+    </div>
   </header>
 
   <main class="container">
-    <!-- Hero Section -->
     <section class="hero">
       <div class="ascii-pumpkin" aria-label="ASCII Jack-o-Lantern">
          .-"""-.
@@ -144,38 +164,30 @@
        '.       .'
          '-...-'
       </div>
-      <h1>HALLOWEEN THEME PACK</h1>
-      <p class="tagline">A dark atmospheric, high-contrast Halloween theme crafted for modern terminals, editors, TUIs, and shell prompts.</p>
+      <h1 data-i18n="hero_title">HALLOWEEN THEME PACK</h1>
+      <p class="tagline" data-i18n="hero_tagline">A dark atmospheric, high-contrast Halloween theme crafted for modern terminals, editors, TUIs, and shell prompts.</p>
       <div class="hero-actions">
-        <a href="#install" class="btn btn-primary">⚡ Summon Theme</a>
-        <a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener" class="btn btn-ghost">GitHub Repo ★</a>
+        <a href="#install" class="btn btn-primary" data-i18n="hero_btn_summon">⚡ Summon Theme</a>
+        <a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero_btn_repo">GitHub Repo ★</a>
       </div>
     </section>
 
-    <!-- Terminal Section -->
     <section id="terminal" class="terminal-section">
       <div class="variant-bar">
-        <span>Preview Variant:</span>
+        <span data-i18n="term_bar_label">Preview Variant:</span>
         <button class="variant-btn active" data-variant="dark">Dark 🎃</button>
         <button class="variant-btn" data-variant="oled">OLED 🌑</button>
         <button class="variant-btn" data-variant="cyberpunk">Cyberpunk 🧪</button>
         <button class="variant-btn" data-variant="pastel">Pastel 🍬</button>
         <button class="variant-btn" data-variant="light">Candlelight 🕯️</button>
       </div>
-
       <div class="terminal-window">
         <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          </div>
+          <div class="terminal-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
           <div class="terminal-title">spooky@ghost-machine: ~/halloween-theme-pack</div>
         </div>
         <div class="terminal-body">
-          <div class="t-row">
-            <span class="t-prompt">🎃 spooky@orca</span>
-            <span class="t-branch">on main [!]</span>
-            <span class="t-cmd">$ halloween-gen apply --variant <span id="term-variant-name" class="t-accent">dark</span></span>
-          </div>
+          <div class="t-row"><span class="t-prompt">🎃 spooky@orca</span> <span class="t-branch">on main [!]</span> <span class="t-cmd">$ halloween-gen apply --variant <span id="term-variant-name" class="t-accent">dark</span></span></div>
           <div class="t-art">
    _   _       _ _                                _____ _                              
   | | | | __ _| | | _____      _____  ___ _ __   |_   _| |__   ___ _ __ ___   ___ 
@@ -183,213 +195,317 @@
   |  _  | (_| | | | (_) \ V  V /  __/  __/ | | |   | | | | | |  __/ | | | | |  __/
   |_| |_|\__,_|_|_|\___/ \_/\_/ \___|\___|_| |_|   |_| |_| |_|\___|_| |_| |_|\___|
           </div>
-          <div class="t-row"><span class="t-highlight">✔ Installed apps detected:</span> <span class="t-info">Orca, Ghostty, Alacritty, VS Code, K9s, Starship</span></div>
-          <div class="t-row"><span class="t-blood">✔ Background:</span> <span id="term-bg-val" class="t-info">#1a0d2e (Abyss Purple)</span></div>
-          <div class="t-row"><span class="t-accent">✔ Accent:</span> <span id="term-accent-val" class="t-info">#ff6b35 (Pumpkin Orange)</span></div>
-          <div class="t-row"><span class="t-prompt">✔ Status:</span> <span class="t-info">WCAG AAA compliant, zero dependencies, ready to haunt! 🦇</span></div>
+          <div class="t-row"><span class="t-highlight" data-i18n="term_detected_label">✔ Installed apps detected:</span> <span class="t-info">Orca, Ghostty, Alacritty, VS Code, K9s, Starship</span></div>
+          <div class="t-row"><span class="t-blood" data-i18n="term_bg_label">✔ Background:</span> <span id="term-bg-val" class="t-info">#1a0d2e (Abyss Purple)</span></div>
+          <div class="t-row"><span class="t-accent" data-i18n="term_accent_label">✔ Accent:</span> <span id="term-accent-val" class="t-info">#ff6b35 (Pumpkin Orange)</span></div>
+          <div class="t-row"><span class="t-prompt" data-i18n="term_status_label">✔ Status:</span> <span class="t-info" data-i18n="term_status_val">WCAG AAA compliant, zero dependencies, ready to haunt! 🦇</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Color Palette Section -->
     <section id="palette">
-      <h2 class="section-title">Color Palette</h2>
-      <p class="section-desc">Click any swatch to copy its hexadecimal code directly to your clipboard</p>
+      <h2 class="section-title" data-i18n="palette_title">Color Palette</h2>
+      <p class="section-desc" data-i18n="palette_desc">Click any swatch to copy its hexadecimal code directly to your clipboard</p>
       <div class="palette-grid">
-        <div class="swatch-card" data-hex="#1a0d2e">
-          <div class="swatch-color" style="background:#1a0d2e;"></div>
-          <div class="swatch-name">Abyss Purple</div>
-          <div class="swatch-hex">#1a0d2e</div>
-        </div>
-        <div class="swatch-card" data-hex="#ff6b35">
-          <div class="swatch-color" style="background:#ff6b35;"></div>
-          <div class="swatch-name">Pumpkin</div>
-          <div class="swatch-hex">#ff6b35</div>
-        </div>
-        <div class="swatch-card" data-hex="#39ff14">
-          <div class="swatch-color" style="background:#39ff14;"></div>
-          <div class="swatch-name">Slime Green</div>
-          <div class="swatch-hex">#39ff14</div>
-        </div>
-        <div class="swatch-card" data-hex="#ff4d6d">
-          <div class="swatch-color" style="background:#ff4d6d;"></div>
-          <div class="swatch-name">Blood Red</div>
-          <div class="swatch-hex">#ff4d6d</div>
-        </div>
-        <div class="swatch-card" data-hex="#c77dff">
-          <div class="swatch-color" style="background:#c77dff;"></div>
-          <div class="swatch-name">Witch Purple</div>
-          <div class="swatch-hex">#c77dff</div>
-        </div>
-        <div class="swatch-card" data-hex="#5ffbf1">
-          <div class="swatch-color" style="background:#5ffbf1;"></div>
-          <div class="swatch-name">Ghost Cyan</div>
-          <div class="swatch-hex">#5ffbf1</div>
-        </div>
-        <div class="swatch-card" data-hex="#ffb347">
-          <div class="swatch-color" style="background:#ffb347;"></div>
-          <div class="swatch-name">Harvest Gold</div>
-          <div class="swatch-hex">#ffb347</div>
-        </div>
-        <div class="swatch-card" data-hex="#f4e7d3">
-          <div class="swatch-color" style="background:#f4e7d3;"></div>
-          <div class="swatch-name">Bone White</div>
-          <div class="swatch-hex">#f4e7d3</div>
-        </div>
+        <div class="swatch-card" data-hex="#1a0d2e"><div class="swatch-color" style="background:#1a0d2e;"></div><div class="swatch-name" data-i18n="color_abyss">Abyss Purple</div><div class="swatch-hex">#1a0d2e</div></div>
+        <div class="swatch-card" data-hex="#ff6b35"><div class="swatch-color" style="background:#ff6b35;"></div><div class="swatch-name" data-i18n="color_pumpkin">Pumpkin</div><div class="swatch-hex">#ff6b35</div></div>
+        <div class="swatch-card" data-hex="#39ff14"><div class="swatch-color" style="background:#39ff14;"></div><div class="swatch-name" data-i18n="color_slime">Slime Green</div><div class="swatch-hex">#39ff14</div></div>
+        <div class="swatch-card" data-hex="#ff4d6d"><div class="swatch-color" style="background:#ff4d6d;"></div><div class="swatch-name" data-i18n="color_blood">Blood Red</div><div class="swatch-hex">#ff4d6d</div></div>
+        <div class="swatch-card" data-hex="#c77dff"><div class="swatch-color" style="background:#c77dff;"></div><div class="swatch-name" data-i18n="color_witch">Witch Purple</div><div class="swatch-hex">#c77dff</div></div>
+        <div class="swatch-card" data-hex="#5ffbf1"><div class="swatch-color" style="background:#5ffbf1;"></div><div class="swatch-name" data-i18n="color_ghost">Ghost Cyan</div><div class="swatch-hex">#5ffbf1</div></div>
+        <div class="swatch-card" data-hex="#ffb347"><div class="swatch-color" style="background:#ffb347;"></div><div class="swatch-name" data-i18n="color_harvest">Harvest Gold</div><div class="swatch-hex">#ffb347</div></div>
+        <div class="swatch-card" data-hex="#f4e7d3"><div class="swatch-color" style="background:#f4e7d3;"></div><div class="swatch-name" data-i18n="color_bone">Bone White</div><div class="swatch-hex">#f4e7d3</div></div>
       </div>
     </section>
 
-    <!-- 5 Variants Section -->
     <section id="variants">
-      <h2 class="section-title">5 Variants</h2>
-      <p class="section-desc">Tailored flavors tuned for late-night hacking, OLED displays, and daytime coding</p>
+      <h2 class="section-title" data-i18n="variants_title">5 Variants</h2>
+      <p class="section-desc" data-i18n="variants_desc">Tailored flavors tuned for late-night hacking, OLED displays, and daytime coding</p>
       <div class="variants-grid">
-        <div class="variant-card">
-          <span class="variant-badge">Default</span>
+        <div class="variant-card active" data-variant="dark">
+          <span class="variant-badge" data-i18n="var_dark_badge">Default</span>
           <h3>Dark</h3>
-          <p>Canonical atmospheric deep purple abyss paired with vibrant pumpkin orange glow.</p>
+          <p data-i18n="var_dark_desc">Canonical atmospheric deep purple abyss paired with vibrant pumpkin orange glow.</p>
           <div class="variant-pills"><span class="v-pill" style="background:#1a0d2e;"></span><span class="v-pill" style="background:#ff6b35;"></span><span class="v-pill" style="background:#39ff14;"></span></div>
         </div>
-        <div class="variant-card">
-          <span class="variant-badge">Pure Black</span>
+        <div class="variant-card" data-variant="oled">
+          <span class="variant-badge" data-i18n="var_oled_badge">Pure Black</span>
           <h3>OLED</h3>
-          <p>Pitch true black for maximum power savings and razor-sharp contrast on OLED panels.</p>
+          <p data-i18n="var_oled_desc">Pitch true black for maximum power savings and razor-sharp contrast on OLED panels.</p>
           <div class="variant-pills"><span class="v-pill" style="background:#000000;"></span><span class="v-pill" style="background:#ff4d6d;"></span><span class="v-pill" style="background:#ff6b35;"></span></div>
         </div>
-        <div class="variant-card">
-          <span class="variant-badge">High Voltage</span>
+        <div class="variant-card" data-variant="cyberpunk">
+          <span class="variant-badge" data-i18n="var_cyber_badge">High Voltage</span>
           <h3>Cyberpunk</h3>
-          <p>Acid neon slime green accents floating over an ultra-deep midnight blue canvas.</p>
+          <p data-i18n="var_cyber_desc">Acid neon slime green accents floating over an ultra-deep midnight blue canvas.</p>
           <div class="variant-pills"><span class="v-pill" style="background:#070318;"></span><span class="v-pill" style="background:#39ff14;"></span><span class="v-pill" style="background:#00f0ff;"></span></div>
         </div>
-        <div class="variant-card">
-          <span class="variant-badge">Soft & Cozy</span>
+        <div class="variant-card" data-variant="pastel">
+          <span class="variant-badge" data-i18n="var_pastel_badge">Soft & Cozy</span>
           <h3>Pastel</h3>
-          <p>Desaturated cozy candy tones designed for gentle eye strain relief during long sessions.</p>
+          <p data-i18n="var_pastel_desc">Desaturated cozy candy tones designed for gentle eye strain relief during long sessions.</p>
           <div class="variant-pills"><span class="v-pill" style="background:#251b36;"></span><span class="v-pill" style="background:#ff9e79;"></span><span class="v-pill" style="background:#98ff88;"></span></div>
         </div>
-        <div class="variant-card">
-          <span class="variant-badge">Daylight</span>
+        <div class="variant-card" data-variant="light">
+          <span class="variant-badge" data-i18n="var_light_badge">Daylight</span>
           <h3>Candlelight</h3>
-          <p>Warm parchment cream background with rich antique pumpkin and deep eggplant ink.</p>
+          <p data-i18n="var_light_desc">Warm parchment cream background with rich antique pumpkin and deep eggplant ink.</p>
           <div class="variant-pills"><span class="v-pill" style="background:#f4ece1;"></span><span class="v-pill" style="background:#d94e18;"></span><span class="v-pill" style="background:#22123b;"></span></div>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
-      <h2 class="section-title">Features</h2>
-      <p class="section-desc">Meticulously engineered for developer workflows and visual delight</p>
+      <h2 class="section-title" data-i18n="features_title">Features</h2>
+      <p class="section-desc" data-i18n="features_desc">Meticulously engineered for developer workflows and visual delight</p>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎃</div>
-          <h3>30+ Supported Apps</h3>
-          <p>Instant support for terminals (Orca, Ghostty, iTerm2, Alacritty), editors (VS Code, Neovim, Obsidian), and TUIs.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">👁️</div>
-          <h3>WCAG AAA Contrast</h3>
-          <p>Every foreground and syntax token satisfies stringent contrast thresholds for flawless legibility in dim rooms.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>1-Line Auto Apply</h3>
-          <p>Smart CLI automatically scans your workstation, detects installed apps, and installs configuration without pain.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🦇</div>
-          <h3>Rich TUI & Shell Polish</h3>
-          <p>Tailored skins for Starship prompts, K9s Kubernetes TUI, Yazi file manager, btop++ monitor, and lazygit.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">👻</div>
-          <h3>Colorblind Balanced</h3>
-          <p>Carefully spaced hues ensure syntax distinctions remain crystal clear under Deuteranopia and Protanopia.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧪</div>
-          <h3>Zero External Runtime</h3>
-          <p>Single self-contained native binary or pure shell installer. No Node.js or Python runtime required.</p>
-        </div>
+        <div class="feature-card"><div class="feature-icon">🎃</div><h3 data-i18n="feat_1_title">30+ Supported Apps</h3><p data-i18n="feat_1_desc">Instant support for terminals (Orca, Ghostty, iTerm2, Alacritty), editors (VS Code, Neovim, Obsidian), and TUIs.</p></div>
+        <div class="feature-card"><div class="feature-icon">👁️</div><h3 data-i18n="feat_2_title">WCAG AAA Contrast</h3><p data-i18n="feat_2_desc">Every foreground and syntax token satisfies stringent contrast thresholds for flawless legibility in dim rooms.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3 data-i18n="feat_3_title">1-Line Auto Apply</h3><p data-i18n="feat_3_desc">Smart CLI automatically scans your workstation, detects installed apps, and installs configuration without pain.</p></div>
+        <div class="feature-card"><div class="feature-icon">🦇</div><h3 data-i18n="feat_4_title">Rich TUI & Shell Polish</h3><p data-i18n="feat_4_desc">Tailored skins for Starship prompts, K9s Kubernetes TUI, Yazi file manager, btop++ monitor, and lazygit.</p></div>
+        <div class="feature-card"><div class="feature-icon">👻</div><h3 data-i18n="feat_5_title">Colorblind Balanced</h3><p data-i18n="feat_5_desc">Carefully spaced hues ensure syntax distinctions remain crystal clear under Deuteranopia and Protanopia.</p></div>
+        <div class="feature-card"><div class="feature-icon">🧪</div><h3 data-i18n="feat_6_title">Zero External Runtime</h3><p data-i18n="feat_6_desc">Single self-contained native binary or pure shell installer. No Node.js or Python runtime required.</p></div>
       </div>
     </section>
 
-    <!-- Supported Apps Section -->
     <section id="apps">
-      <h2 class="section-title">Supported Apps</h2>
-      <p class="section-desc">One cohesive spooky aesthetic across your entire development environment</p>
+      <h2 class="section-title" data-i18n="apps_title">Supported Apps</h2>
+      <p class="section-desc" data-i18n="apps_desc">One cohesive spooky aesthetic across your entire development environment</p>
       <div class="apps-chips">
         <span class="app-chip">Orca Terminal</span><span class="app-chip">Ghostty</span><span class="app-chip">iTerm2</span><span class="app-chip">Alacritty</span><span class="app-chip">Kitty</span><span class="app-chip">WezTerm</span><span class="app-chip">Windows Terminal</span><span class="app-chip">tmux</span><span class="app-chip">VS Code</span><span class="app-chip">Neovim</span><span class="app-chip">Obsidian</span><span class="app-chip">Xcode</span><span class="app-chip">K9s</span><span class="app-chip">Yazi</span><span class="app-chip">btop++</span><span class="app-chip">Lazydocker</span><span class="app-chip">gitui</span><span class="app-chip">Starship</span><span class="app-chip">fish</span><span class="app-chip">zsh</span><span class="app-chip">Raycast</span><span class="app-chip">Discord</span><span class="app-chip">Slack</span>
       </div>
     </section>
 
-    <!-- Install Section -->
     <section id="install">
-      <h2 class="section-title">Summon The Theme</h2>
-      <p class="section-desc">Run this single command in your terminal to install or launch interactive setup</p>
+      <h2 class="section-title" data-i18n="install_title">Summon The Theme</h2>
+      <p class="section-desc" data-i18n="install_desc">Run the install command below for your selected variant</p>
       <div class="install-box">
-        <div class="code-row">
-          <code class="code-text" id="install-cmd">curl -fsSL https://raw.githubusercontent.com/kichiemon/halloween-theme-pack/main/install.sh | bash</code>
-          <button class="copy-btn" id="copy-install-btn">Copy Command</button>
+        <div class="install-variant-banner">
+          <div><span data-i18n="install_variant_prefix">Selected Variant:</span> <strong id="install-variant-name">Dark</strong></div>
+          <span class="install-badge-tag" id="install-variant-badge">dark</span>
         </div>
+        <div class="code-label" data-i18n="install_curl_label">🌐 Remote One-Line Installer (curl):</div>
         <div class="code-row">
-          <code class="code-text">./bin/halloween-gen apply --variant dark</code>
-          <button class="copy-btn" onclick="copyText('./bin/halloween-gen apply --variant dark')">Copy CLI</button>
+          <code class="code-text" id="cmd-curl">curl -fsSL https://raw.githubusercontent.com/kichiemon/halloween-theme-pack/main/install.sh | bash -s -- --variant dark</code>
+          <button class="copy-btn" data-target="cmd-curl" data-i18n="copy_btn">Copy</button>
         </div>
-        <p class="install-note">Works natively on macOS, Linux, and Windows WSL. Automatically backs up existing configs.</p>
+        <div class="code-label" data-i18n="install_cli_label">⚡ Local CLI Installer:</div>
+        <div class="code-row">
+          <code class="code-text" id="cmd-cli">./bin/halloween-gen install --variant dark</code>
+          <button class="copy-btn" data-target="cmd-cli" data-i18n="copy_btn">Copy</button>
+        </div>
+        <div class="files-preview-box">
+          <div class="files-preview-head">
+            <span>📁 <span data-i18n="preview_title">Generated Files Preview</span> (<span id="preview-variant-tag">dark</span>)</span>
+            <span class="files-preview-count" data-i18n="preview_count">42+ config files</span>
+          </div>
+          <div class="files-preview-list" id="files-preview-list"></div>
+        </div>
+        <p class="install-note" data-i18n="install_note">Works natively on macOS, Linux, and Windows WSL. Automatically backs up existing configs.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>🎃 Crafted with spooky magic for developers &bull; MIT License &bull; <a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener">GitHub</a> &bull; <a href="preview/index.html">Live Theme Studio</a></p>
+    <p><span data-i18n="footer_text">🎃 Crafted with spooky magic for developers • MIT License • </span><a href="https://github.com/kichiemon/halloween-theme-pack" target="_blank" rel="noopener">GitHub</a> &bull; <a href="preview/index.html" data-i18n="footer_studio">Live Theme Studio</a></p>
   </footer>
 
   <div id="toast" class="toast">Copied to clipboard! 🎃</div>
 
   <script>
+    const i18n = {
+      en: {
+        nav_terminal: "Terminal", nav_palette: "Palette", nav_variants: "Variants", nav_features: "Features", nav_apps: "Apps", nav_install: "Install",
+        hero_title: "HALLOWEEN THEME PACK",
+        hero_tagline: "A dark atmospheric, high-contrast Halloween theme crafted for modern terminals, editors, TUIs, and shell prompts.",
+        hero_btn_summon: "⚡ Summon Theme", hero_btn_repo: "GitHub Repo ★",
+        term_bar_label: "Preview Variant:",
+        term_detected_label: "✔ Installed apps detected:", term_bg_label: "✔ Background:", term_accent_label: "✔ Accent:", term_status_label: "✔ Status:",
+        term_status_val: "WCAG AAA compliant, zero dependencies, ready to haunt! 🦇",
+        palette_title: "Color Palette", palette_desc: "Click any swatch to copy its hexadecimal code directly to your clipboard",
+        color_abyss: "Abyss Purple", color_pumpkin: "Pumpkin", color_slime: "Slime Green", color_blood: "Blood Red",
+        color_witch: "Witch Purple", color_ghost: "Ghost Cyan", color_harvest: "Harvest Gold", color_bone: "Bone White",
+        variants_title: "5 Variants", variants_desc: "Tailored flavors tuned for late-night hacking, OLED displays, and daytime coding",
+        var_dark_badge: "Default", var_dark_desc: "Canonical atmospheric deep purple abyss paired with vibrant pumpkin orange glow.",
+        var_oled_badge: "Pure Black", var_oled_desc: "Pitch true black for maximum power savings and razor-sharp contrast on OLED panels.",
+        var_cyber_badge: "High Voltage", var_cyber_desc: "Acid neon slime green accents floating over an ultra-deep midnight blue canvas.",
+        var_pastel_badge: "Soft & Cozy", var_pastel_desc: "Desaturated cozy candy tones designed for gentle eye strain relief during long sessions.",
+        var_light_badge: "Daylight", var_light_desc: "Warm parchment cream background with rich antique pumpkin and deep eggplant ink.",
+        features_title: "Features", features_desc: "Meticulously engineered for developer workflows and visual delight",
+        feat_1_title: "30+ Supported Apps", feat_1_desc: "Instant support for terminals (Orca, Ghostty, iTerm2, Alacritty), editors (VS Code, Neovim, Obsidian), and TUIs.",
+        feat_2_title: "WCAG AAA Contrast", feat_2_desc: "Every foreground and syntax token satisfies stringent contrast thresholds for flawless legibility in dim rooms.",
+        feat_3_title: "1-Line Auto Apply", feat_3_desc: "Smart CLI automatically scans your workstation, detects installed apps, and installs configuration without pain.",
+        feat_4_title: "Rich TUI & Shell Polish", feat_4_desc: "Tailored skins for Starship prompts, K9s Kubernetes TUI, Yazi file manager, btop++ monitor, and lazygit.",
+        feat_5_title: "Colorblind Balanced", feat_5_desc: "Carefully spaced hues ensure syntax distinctions remain crystal clear under Deuteranopia and Protanopia.",
+        feat_6_title: "Zero External Runtime", feat_6_desc: "Single self-contained native binary or pure shell installer. No Node.js or Python runtime required.",
+        apps_title: "Supported Apps", apps_desc: "One cohesive spooky aesthetic across your entire development environment",
+        install_title: "Summon The Theme", install_desc: "Run the install command below for your selected variant",
+        install_variant_prefix: "Selected Variant:",
+        install_curl_label: "🌐 Remote One-Line Installer (curl):",
+        install_cli_label: "⚡ Local CLI Installer:",
+        copy_btn: "Copy",
+        preview_title: "Generated Files Preview", preview_count: "42+ config files",
+        install_note: "Works natively on macOS, Linux, and Windows WSL. Automatically backs up existing configs.",
+        footer_text: "🎃 Crafted with spooky magic for developers • MIT License • ",
+        footer_studio: "Live Theme Studio",
+        toast_copied: "Copied to clipboard! 🎃",
+        toast_variant_switched: "Switched preview to {name} variant! 🦇"
+      },
+      ja: {
+        nav_terminal: "ターミナル", nav_palette: "パレット", nav_variants: "バリエーション", nav_features: "特長", nav_apps: "対応アプリ", nav_install: "インストール",
+        hero_title: "HALLOWEEN THEME PACK",
+        hero_tagline: "モダンなターミナル、エディタ、TUI、シェルのための、妖しく高コントラストなハロウィンカラーテーマ。",
+        hero_btn_summon: "⚡ テーマを召喚する", hero_btn_repo: "GitHub リポジトリ ★",
+        term_bar_label: "プレビュー切り替え:",
+        term_detected_label: "✔ 検出されたアプリ:", term_bg_label: "✔ 背景色:", term_accent_label: "✔ アクセント:", term_status_label: "✔ 状態:",
+        term_status_val: "WCAG AAA準拠・外部依存ゼロ・召喚準備完了！ 🦇",
+        palette_title: "カラーパレット", palette_desc: "スウォッチをクリックするとカラーコード（HEX）をクリップボードにコピーできます",
+        color_abyss: "アビスパープル", color_pumpkin: "パンプキン", color_slime: "スライムグリーン", color_blood: "ブラッドレッド",
+        color_witch: "ウィッチパープル", color_ghost: "ゴーストシアン", color_harvest: "ハーベストゴールド", color_bone: "ボーンホワイト",
+        variants_title: "5つのバリエーション", variants_desc: "深夜のハッキング、OLEDパネル、日中の作業まで最適化された5種のフレーバー",
+        var_dark_badge: "デフォルト", var_dark_desc: "深淵の紫と鮮烈なパンプキンオレンジが闇に灯る正統派ハロウィン。",
+        var_oled_badge: "完全漆黒", var_oled_desc: "OLEDパネルの超省電力と極限のコントラストを誇るピュアブラック。",
+        var_cyber_badge: "ハイボルテージ", var_cyber_desc: "深夜の濃紺にアシッドネオンスライムが怪しく発光するサイバーパンク調。",
+        var_pastel_badge: "ソフト＆コージー", var_pastel_desc: "長時間の作業でも目に優しい、スイーツのような淡いハロウィンカラー。",
+        var_light_badge: "デイライト", var_light_desc: "温かみある羊皮紙クリーム地にアンティークパンプキンが映える昼用テーマ。",
+        features_title: "主な特長", features_desc: "開発者のワークフローと視覚的快感をとことん追求した設計",
+        feat_1_title: "30+ 以上のアプリ対応", feat_1_desc: "Orca, Ghostty, iTerm2, Alacrittyなどのターミナル、VS Code, Obsidian等のエディタ、主要TUIに即時対応。",
+        feat_2_title: "WCAG AAA 準拠コントラスト", feat_2_desc: "すべての構文トークンが厳格なコントラスト基準をクリア。薄暗い部屋でも圧倒的な可読性を実現。",
+        feat_3_title: "1行で自動検出＆適用", feat_3_desc: "スマートCLIがワークステーションのインストール済みアプリを自動検出。面倒な手作業なしで配備可能。",
+        feat_4_title: "TUI & シェルの細部調整", feat_4_desc: "Starshipプロンプト、K9s (K8s)、Yaziファイラー、btop++、lazygit専用スキンを同梱。",
+        feat_5_title: "色覚多様性への配慮", feat_5_desc: "緻密に計算された色相差により、1型・2型色覚でもシンタックスのハイライトが明瞭に判別可能。",
+        feat_6_title: "外部ランタイム不要", feat_6_desc: "単一の自己完結型ネイティブバイナリまたは純粋なシェル。Node.jsやPython環境は不要。",
+        apps_title: "対応アプリケーション", apps_desc: "開発環境の隅々まで、妖しく統一された世界観を構築",
+        install_title: "テーマを召喚する", install_desc: "選択したバリエーションを端末で即座にインストール・適用できます",
+        install_variant_prefix: "選択中バリエーション:",
+        install_curl_label: "🌐 リモート1行インストーラー (curl):",
+        install_cli_label: "⚡ ローカルCLIインストーラー:",
+        copy_btn: "コピー",
+        preview_title: "生成ファイルプレビュー", preview_count: "全42以上の設定ファイル",
+        install_note: "macOS、Linux、Windows WSLにネイティブ対応。既存の設定は自動でバックアップされます。",
+        footer_text: "🎃 開発者のための妖しい魔法を込めて • MITライセンス • ",
+        footer_studio: "ライブテーマスタジオ",
+        toast_copied: "クリップボードにコピーしました！ 🎃",
+        toast_variant_switched: "{name} バリエーションに切り替えました！ 🦇"
+      }
+    };
+
+    function getVariantFiles(v) {
+      const p = v === 'dark' ? 'themes/' : (v === 'light' ? 'themes/light/' : `themes/variants/${v}/`);
+      const s = v === 'dark' ? 'halloween' : `halloween-${v}`;
+      return [
+        `${p}${s}.ghostty`, `${p}${s}.alacritty.toml`, `${p}${s}.itermcolors`,
+        `${p}${s}.kitty.conf`, `${p}${s}.k9s.yaml`, `${p}${s}.yazi.toml`,
+        `${p}${s}.vscode.json`, `${p}${s}.starship.toml`, `${p}${s}.obsidian.css`
+      ];
+    }
+
+    const variantData = {
+      dark: { name: 'Dark', cmd: 'dark', bg: '#1a0d2e (Abyss Purple)', accent: '#ff6b35 (Pumpkin Orange)' },
+      oled: { name: 'OLED', cmd: 'oled', bg: '#000000 (Pure Pitch Black)', accent: '#ff4d6d (Blood Red)' },
+      cyberpunk: { name: 'Cyberpunk', cmd: 'cyberpunk', bg: '#070318 (Midnight Blue)', accent: '#39ff14 (Acid Slime)' },
+      pastel: { name: 'Pastel', cmd: 'pastel', bg: '#251b36 (Muted Lavender)', accent: '#ff9e79 (Peach Orange)' },
+      light: { name: 'Candlelight', cmd: 'light', bg: '#f4ece1 (Parchment Cream)', accent: '#d94e18 (Antique Pumpkin)' }
+    };
+
+    let currentLang = 'en', currentVariant = 'dark', toastTimeout;
     const toast = document.getElementById('toast');
-    let toastTimeout;
+
     function showToast(msg) {
       toast.textContent = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => toast.classList.remove('show'), 2200);
     }
+
     function copyText(text) {
-      navigator.clipboard.writeText(text).then(() => showToast('Copied: ' + text + ' 🎃')).catch(() => showToast('Failed to copy'));
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(i18n[currentLang].toast_copied || 'Copied! 🎃');
+      }).catch(() => showToast('Failed to copy'));
     }
-    document.querySelectorAll('.swatch-card').forEach(c => c.addEventListener('click', () => copyText(c.getAttribute('data-hex'))));
-    const copyInstallBtn = document.getElementById('copy-install-btn');
-    if (copyInstallBtn) copyInstallBtn.addEventListener('click', () => copyText(document.getElementById('install-cmd').innerText));
 
-    const variantData = {
-      dark: { name: 'dark', bg: '#1a0d2e (Abyss Purple)', accent: '#ff6b35 (Pumpkin Orange)' },
-      oled: { name: 'oled', bg: '#000000 (Pure Pitch Black)', accent: '#ff4d6d (Blood Red)' },
-      cyberpunk: { name: 'cyberpunk', bg: '#070318 (Midnight Blue)', accent: '#39ff14 (Acid Slime)' },
-      pastel: { name: 'pastel', bg: '#251b36 (Muted Lavender)', accent: '#ff9e79 (Peach Orange)' },
-      light: { name: 'light', bg: '#f4ece1 (Parchment Cream)', accent: '#d94e18 (Antique Pumpkin)' }
-    };
+    function setLanguage(lang) {
+      currentLang = (lang === 'ja') ? 'ja' : 'en';
+      localStorage.setItem('halloween_theme_lang', currentLang);
+      document.documentElement.lang = currentLang;
 
-    const variantBtns = document.querySelectorAll('.variant-btn');
-    const termVariantName = document.getElementById('term-variant-name');
-    const termBgVal = document.getElementById('term-bg-val');
-    const termAccentVal = document.getElementById('term-accent-val');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+      });
 
-    variantBtns.forEach(btn => {
+      const dict = i18n[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      updateVariantDisplay(currentVariant, false);
+    }
+
+    function updateVariantDisplay(variant, triggerToast = true) {
+      currentVariant = variant;
+      const v = variantData[variant] || variantData.dark;
+
+      document.body.className = variant === 'dark' ? '' : 'theme-' + variant;
+      document.querySelectorAll('.variant-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-variant') === variant));
+      document.querySelectorAll('.variant-card').forEach(c => c.classList.toggle('active', c.getAttribute('data-variant') === variant));
+
+      const termName = document.getElementById('term-variant-name');
+      const termBg = document.getElementById('term-bg-val');
+      const termAcc = document.getElementById('term-accent-val');
+      if (termName) termName.textContent = v.cmd;
+      if (termBg) termBg.textContent = v.bg;
+      if (termAcc) termAcc.textContent = v.accent;
+
+      const cmdCurl = document.getElementById('cmd-curl');
+      const cmdCli = document.getElementById('cmd-cli');
+      const varNameEl = document.getElementById('install-variant-name');
+      const varBadgeEl = document.getElementById('install-variant-badge');
+      const prevTag = document.getElementById('preview-variant-tag');
+
+      if (cmdCurl) cmdCurl.textContent = `curl -fsSL https://raw.githubusercontent.com/kichiemon/halloween-theme-pack/main/install.sh | bash -s -- --variant ${v.cmd}`;
+      if (cmdCli) cmdCli.textContent = `./bin/halloween-gen install --variant ${v.cmd}`;
+      if (varNameEl) varNameEl.textContent = v.name;
+      if (varBadgeEl) varBadgeEl.textContent = v.cmd;
+      if (prevTag) prevTag.textContent = v.cmd;
+
+      const listEl = document.getElementById('files-preview-list');
+      if (listEl) {
+        const files = getVariantFiles(variant);
+        listEl.innerHTML = files.map(f => `<div>${f}</div>`).join('') + `<div style="color:var(--s);">... + 33 more app configs (tmux, zsh, btop, raycast, etc.)</div>`;
+      }
+
+      if (triggerToast) {
+        const msg = (i18n[currentLang].toast_variant_switched || 'Switched to {name}').replace('{name}', v.name);
+        showToast(msg);
+      }
+    }
+
+    const savedLang = localStorage.getItem('halloween_theme_lang');
+    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    setLanguage(savedLang || browserLang);
+    updateVariantDisplay('dark', false);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    document.querySelectorAll('.variant-btn, .variant-card').forEach(el => {
+      el.addEventListener('click', () => {
+        const v = el.getAttribute('data-variant');
+        if (v) updateVariantDisplay(v, true);
+      });
+    });
+
+    document.querySelectorAll('.swatch-card').forEach(c => {
+      c.addEventListener('click', () => copyText(c.getAttribute('data-hex')));
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        variantBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const v = btn.getAttribute('data-variant');
-        document.body.className = v === 'dark' ? '' : 'theme-' + v;
-        const d = variantData[v];
-        if (d && termVariantName) {
-          termVariantName.textContent = d.name;
-          termBgVal.textContent = d.bg;
-          termAccentVal.textContent = d.accent;
-        }
-        showToast(`Switched preview to ${v.toUpperCase()} variant! 🦇`);
+        const targetId = btn.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) copyText(targetEl.textContent.trim());
       });
     });
   </script>
