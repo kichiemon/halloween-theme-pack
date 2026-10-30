@@ -1,0 +1,16 @@
+/* Halloween OLED theme for Discord (BetterDiscord) */
+.theme-dark {
+  --background-primary: #000000;
+  --background-secondary: #1a0a2a;
+  --background-secondary-alt: #12091c;
+  --background-tertiary: #08040d;
+  --background-accent: #ff6b35;
+  --text-normal: #f4e7d3;
+  --text-muted: #b8a9d9;
+  --interactive-normal: #b8a9d9;
+  --interactive-hover: #f4e7d3;
+  --interactive-active: #ff6b35;
+  --brand-experiment: #ff6b35;
+  --status-positive: #39ff14;
+  --status-danger: #ff4d6d;
+}

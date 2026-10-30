@@ -1,0 +1,23 @@
+{
+  "name": "Halloween Pastel",
+  "background": "#faf5fc",
+  "foreground": "#3c2a4d",
+  "cursorColor": "#bf4904",
+  "selectionBackground": "#e5d0f0",
+  "black": "#3c2a4d",
+  "red": "#b81438",
+  "green": "#1b772d",
+  "yellow": "#9e6000",
+  "blue": "#2b4acb",
+  "purple": "#8b3da8",
+  "cyan": "#0e7490",
+  "white": "#dcc9e8",
+  "brightBlack": "#674f78",
+  "brightRed": "#cf2248",
+  "brightGreen": "#228b37",
+  "brightYellow": "#b56f00",
+  "brightBlue": "#3b5bdb",
+  "brightPurple": "#a855f7",
+  "brightCyan": "#0284c7",
+  "brightWhite": "#3c2a4d"
+}

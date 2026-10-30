@@ -1,0 +1,14 @@
+# Halloween Cyberpunk theme for Lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#ff6d00"
+      - bold
+    inactiveBorderColor:
+      - "#5a189a"
+    selectedLineBgColor:
+      - "#240046"
+    selectedRangeBgColor:
+      - "#3c096c"
+    optionsTextColor:
+      - "#7000ff"

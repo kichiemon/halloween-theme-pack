@@ -1,0 +1,21 @@
+# Halloween Cyberpunk theme for Ghostty
+background = 0d0221
+foreground = fcf7ff
+cursor-color = ff6d00
+selection-background = 3c096c
+palette = 0=#240046
+palette = 1=#ff0054
+palette = 2=#00f5d4
+palette = 3=#ffee32
+palette = 4=#7000ff
+palette = 5=#c77dff
+palette = 6=#00f5d4
+palette = 7=#fcf7ff
+palette = 8=#5a189a
+palette = 9=#ff3377
+palette = 10=#5cffee
+palette = 11=#fff275
+palette = 12=#9d4edd
+palette = 13=#e0aaff
+palette = 14=#70fff3
+palette = 15=#ffffff

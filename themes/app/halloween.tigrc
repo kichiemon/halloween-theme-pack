@@ -1,0 +1,13 @@
+# Halloween theme for tig
+color default "#f4e7d3" "#1a0d2e" normal
+color cursor "#1a0d2e" "#ff6b35" bold
+color status.untracked "#ff4d6d" default
+color status.modified "#ffb347" default
+color diff-header "#ff6b35" default bold
+color diff-index "#5ffbf1" default
+color diff-chunk "#c77dff" default
+color diff-add "#39ff14" default
+color diff-del "#ff4d6d" default
+color line-number "#b8a9d9" default
+color title-blur "#b8a9d9" "#241340"
+color title-focus "#ff6b35" "#241340" bold

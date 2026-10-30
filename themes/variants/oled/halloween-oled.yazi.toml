@@ -1,0 +1,35 @@
+# Halloween OLED theme for Yazi
+[mgr]
+cwd = { fg = "#5ffbf1" }
+hovered = { fg = "#000000", bg = "#ff6b35" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#ffb347", bold = true }
+marker_copied = { fg = "#39ff14", bg = "#12091c" }
+marker_cut = { fg = "#ff4d6d", bg = "#12091c" }
+marker_selected = { fg = "#ff6b35", bg = "#12091c" }
+tab_active = { fg = "#000000", bg = "#ff6b35" }
+tab_inactive = { fg = "#b8a9d9", bg = "#12091c" }
+border_style = { fg = "#2c1845" }
+
+[status]
+separator_open = ""
+separator_close = ""
+progress_label = { fg = "#f4e7d3", bold = true }
+progress_normal = { fg = "#6b8cff", bg = "#12091c" }
+progress_error = { fg = "#ff4d6d", bg = "#12091c" }
+
+[select]
+border = { fg = "#ff6b35" }
+active = { fg = "#ffb347" }
+inactive = { fg = "#f4e7d3" }
+
+[input]
+border = { fg = "#ff6b35" }
+title = { fg = "#f4e7d3" }
+value = { fg = "#f4e7d3" }
+selected = { bg = "#2c1845" }
+
+[completion]
+border = { fg = "#ff6b35" }
+active = { fg = "#000000", bg = "#ff6b35" }
+inactive = { fg = "#f4e7d3" }

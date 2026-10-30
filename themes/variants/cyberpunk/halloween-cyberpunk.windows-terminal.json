@@ -1,0 +1,23 @@
+{
+  "name": "Halloween Cyberpunk",
+  "background": "#0d0221",
+  "foreground": "#fcf7ff",
+  "cursorColor": "#ff6d00",
+  "selectionBackground": "#3c096c",
+  "black": "#240046",
+  "red": "#ff0054",
+  "green": "#00f5d4",
+  "yellow": "#ffee32",
+  "blue": "#7000ff",
+  "purple": "#c77dff",
+  "cyan": "#00f5d4",
+  "white": "#fcf7ff",
+  "brightBlack": "#5a189a",
+  "brightRed": "#ff3377",
+  "brightGreen": "#5cffee",
+  "brightYellow": "#fff275",
+  "brightBlue": "#9d4edd",
+  "brightPurple": "#e0aaff",
+  "brightCyan": "#70fff3",
+  "brightWhite": "#ffffff"
+}

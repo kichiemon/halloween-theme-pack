@@ -1,0 +1,13 @@
+# Halloween OLED theme for tig
+color default "#f4e7d3" "#000000" normal
+color cursor "#000000" "#ff6b35" bold
+color status.untracked "#ff4d6d" default
+color status.modified "#ffb347" default
+color diff-header "#ff6b35" default bold
+color diff-index "#5ffbf1" default
+color diff-chunk "#c77dff" default
+color diff-add "#39ff14" default
+color diff-del "#ff4d6d" default
+color line-number "#b8a9d9" default
+color title-blur "#b8a9d9" "#12091c"
+color title-focus "#ff6b35" "#12091c" bold

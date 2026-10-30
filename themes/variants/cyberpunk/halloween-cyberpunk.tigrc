@@ -1,0 +1,13 @@
+# Halloween Cyberpunk theme for tig
+color default "#fcf7ff" "#0d0221" normal
+color cursor "#0d0221" "#ff6d00" bold
+color status.untracked "#ff0054" default
+color status.modified "#ffee32" default
+color diff-header "#ff6d00" default bold
+color diff-index "#00f5d4" default
+color diff-chunk "#c77dff" default
+color diff-add "#00f5d4" default
+color diff-del "#ff0054" default
+color line-number "#9d79bc" default
+color title-blur "#9d79bc" "#19053b"
+color title-focus "#ff6d00" "#19053b" bold

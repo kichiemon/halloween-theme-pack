@@ -1,0 +1,17 @@
+# Halloween Day palette for Starship
+palette = "halloween-light"
+
+[palettes.halloween-light]
+background = "#faf4eb"
+foreground = "#241432"
+accent = "#bf4904"
+success = "#1b772d"
+destructive = "#b81438"
+card = "#f2e7d8"
+secondary = "#e8dcce"
+muted = "#756388"
+border = "#d8c8b4"
+blue = "#2b4acb"
+magenta = "#7e22ce"
+cyan = "#0e7490"
+yellow = "#9e6000"

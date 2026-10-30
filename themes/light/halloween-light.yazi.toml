@@ -1,0 +1,35 @@
+# Halloween Day theme for Yazi
+[mgr]
+cwd = { fg = "#0e7490" }
+hovered = { fg = "#faf4eb", bg = "#bf4904" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#9e6000", bold = true }
+marker_copied = { fg = "#1b772d", bg = "#f2e7d8" }
+marker_cut = { fg = "#b81438", bg = "#f2e7d8" }
+marker_selected = { fg = "#bf4904", bg = "#f2e7d8" }
+tab_active = { fg = "#faf4eb", bg = "#bf4904" }
+tab_inactive = { fg = "#756388", bg = "#f2e7d8" }
+border_style = { fg = "#d8c8b4" }
+
+[status]
+separator_open = ""
+separator_close = ""
+progress_label = { fg = "#241432", bold = true }
+progress_normal = { fg = "#2b4acb", bg = "#f2e7d8" }
+progress_error = { fg = "#b81438", bg = "#f2e7d8" }
+
+[select]
+border = { fg = "#bf4904" }
+active = { fg = "#9e6000" }
+inactive = { fg = "#241432" }
+
+[input]
+border = { fg = "#bf4904" }
+title = { fg = "#241432" }
+value = { fg = "#241432" }
+selected = { bg = "#e5d0b5" }
+
+[completion]
+border = { fg = "#bf4904" }
+active = { fg = "#faf4eb", bg = "#bf4904" }
+inactive = { fg = "#241432" }

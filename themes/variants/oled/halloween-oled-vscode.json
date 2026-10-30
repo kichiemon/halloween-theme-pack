@@ -1,0 +1,117 @@
+{
+  "name": "Halloween OLED",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#000000",
+    "editor.foreground": "#f4e7d3",
+    "editorCursor.foreground": "#ff6b35",
+    "editor.selectionBackground": "#2c1845",
+    "editorLineNumber.foreground": "#b8a9d9",
+    "editorLineNumber.activeForeground": "#ff6b35",
+    "activityBar.background": "#08040d",
+    "activityBar.foreground": "#f4e7d3",
+    "activityBar.activeBorder": "#ff6b35",
+    "sideBar.background": "#08040d",
+    "sideBar.foreground": "#f4e7d3",
+    "sideBarTitle.foreground": "#ff6b35",
+    "statusBar.background": "#1a0a2a",
+    "statusBar.foreground": "#f4e7d3",
+    "titleBar.activeBackground": "#000000",
+    "titleBar.activeForeground": "#f4e7d3",
+    "panel.background": "#000000",
+    "terminal.background": "#000000",
+    "terminal.foreground": "#f4e7d3",
+    "terminal.ansiBlack": "#1a0a2a",
+    "terminal.ansiRed": "#ff4d6d",
+    "terminal.ansiGreen": "#39ff14",
+    "terminal.ansiYellow": "#ffb347",
+    "terminal.ansiBlue": "#6b8cff",
+    "terminal.ansiMagenta": "#c77dff",
+    "terminal.ansiCyan": "#5ffbf1",
+    "terminal.ansiWhite": "#f4e7d3",
+    "button.background": "#ff6b35",
+    "button.foreground": "#000000",
+    "input.background": "#1a0a2a",
+    "input.border": "#2c1845",
+    "focusBorder": "#ff6b35",
+    "list.activeSelectionBackground": "#1a0a2a",
+    "list.hoverBackground": "#12091c",
+    "badge.background": "#ff6b35",
+    "badge.foreground": "#000000"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#b8a9d9",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "#ff6b35"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "string.quoted"
+      ],
+      "settings": {
+        "foreground": "#39ff14"
+      }
+    },
+    {
+      "scope": [
+        "constant.numeric"
+      ],
+      "settings": {
+        "foreground": "#ff4d6d"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function"
+      ],
+      "settings": {
+        "foreground": "#6b8cff"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "variable.other"
+      ],
+      "settings": {
+        "foreground": "#f4e7d3"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#c77dff"
+      }
+    },
+    {
+      "scope": [
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#5ffbf1"
+      }
+    }
+  ]
+}

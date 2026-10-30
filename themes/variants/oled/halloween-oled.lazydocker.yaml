@@ -1,0 +1,14 @@
+# Halloween OLED theme for Lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#ff6b35"
+      - bold
+    inactiveBorderColor:
+      - "#2c1845"
+    selectedLineBgColor:
+      - "#1a0a2a"
+    selectedRangeBgColor:
+      - "#2c1845"
+    optionsTextColor:
+      - "#6b8cff"

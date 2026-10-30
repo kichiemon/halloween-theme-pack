@@ -1,0 +1,22 @@
+{
+  "version": "1",
+  "name": "Halloween Cyberpunk",
+  "appearance": "dark",
+  "colors": {
+    "background": "#0d0221",
+    "backgroundSecondary": "#19053b",
+    "text": "#fcf7ff",
+    "textMuted": "#9d79bc",
+    "selection": "#3c096c",
+    "accent": "#ff6d00",
+    "red": "#ff0054",
+    "orange": "#ff6d00",
+    "yellow": "#ffee32",
+    "green": "#00f5d4",
+    "blue": "#7000ff",
+    "purple": "#c77dff",
+    "magenta": "#c77dff",
+    "cyan": "#00f5d4"
+  },
+  "shareUrl": "raycast://theme?data=%7B%22version%22%3A%20%221%22%2C%20%22name%22%3A%20%22Halloween%20Cyberpunk%22%2C%20%22appearance%22%3A%20%22dark%22%2C%20%22colors%22%3A%20%7B%22background%22%3A%20%22%230d0221%22%2C%20%22backgroundSecondary%22%3A%20%22%2319053b%22%2C%20%22text%22%3A%20%22%23fcf7ff%22%2C%20%22textMuted%22%3A%20%22%239d79bc%22%2C%20%22selection%22%3A%20%22%233c096c%22%2C%20%22accent%22%3A%20%22%23ff6d00%22%2C%20%22red%22%3A%20%22%23ff0054%22%2C%20%22orange%22%3A%20%22%23ff6d00%22%2C%20%22yellow%22%3A%20%22%23ffee32%22%2C%20%22green%22%3A%20%22%2300f5d4%22%2C%20%22blue%22%3A%20%22%237000ff%22%2C%20%22purple%22%3A%20%22%23c77dff%22%2C%20%22magenta%22%3A%20%22%23c77dff%22%2C%20%22cyan%22%3A%20%22%2300f5d4%22%7D%7D"
+}

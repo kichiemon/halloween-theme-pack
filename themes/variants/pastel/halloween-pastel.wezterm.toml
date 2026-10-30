@@ -1,0 +1,11 @@
+# Halloween Pastel theme for WezTerm
+[colors]
+background = "#faf5fc"
+foreground = "#3c2a4d"
+cursor_bg = "#bf4904"
+cursor_fg = "#faf5fc"
+selection_bg = "#e5d0f0"
+selection_fg = "#3c2a4d"
+
+ansi = ["#3c2a4d", "#b81438", "#1b772d", "#9e6000", "#2b4acb", "#8b3da8", "#0e7490", "#dcc9e8"]
+brights = ["#674f78", "#cf2248", "#228b37", "#b56f00", "#3b5bdb", "#a855f7", "#0284c7", "#3c2a4d"]

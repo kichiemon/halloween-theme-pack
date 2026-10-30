@@ -1,0 +1,17 @@
+# Halloween OLED palette for Starship
+palette = "halloween-oled"
+
+[palettes.halloween-oled]
+background = "#000000"
+foreground = "#f4e7d3"
+accent = "#ff6b35"
+success = "#39ff14"
+destructive = "#ff4d6d"
+card = "#12091c"
+secondary = "#1a0a2a"
+muted = "#b8a9d9"
+border = "#2c1845"
+blue = "#6b8cff"
+magenta = "#c77dff"
+cyan = "#5ffbf1"
+yellow = "#ffb347"

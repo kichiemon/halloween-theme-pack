@@ -1,0 +1,11 @@
+# Halloween OLED theme for WezTerm
+[colors]
+background = "#000000"
+foreground = "#f4e7d3"
+cursor_bg = "#ff6b35"
+cursor_fg = "#000000"
+selection_bg = "#2c1845"
+selection_fg = "#f4e7d3"
+
+ansi = ["#1a0a2a", "#ff4d6d", "#39ff14", "#ffb347", "#6b8cff", "#c77dff", "#5ffbf1", "#f4e7d3"]
+brights = ["#3b1e5c", "#ff7a95", "#7fff6b", "#ffd28a", "#9db3ff", "#ddb3ff", "#9dfff7", "#ffffff"]

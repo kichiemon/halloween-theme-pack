@@ -1,0 +1,17 @@
+# Halloween Cyberpunk palette for Starship
+palette = "halloween-cyberpunk"
+
+[palettes.halloween-cyberpunk]
+background = "#0d0221"
+foreground = "#fcf7ff"
+accent = "#ff6d00"
+success = "#00f5d4"
+destructive = "#ff0054"
+card = "#19053b"
+secondary = "#240046"
+muted = "#9d79bc"
+border = "#5a189a"
+blue = "#7000ff"
+magenta = "#c77dff"
+cyan = "#00f5d4"
+yellow = "#ffee32"

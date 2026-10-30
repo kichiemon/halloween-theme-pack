@@ -1,0 +1,17 @@
+# Halloween Pastel palette for Starship
+palette = "halloween-pastel"
+
+[palettes.halloween-pastel]
+background = "#faf5fc"
+foreground = "#3c2a4d"
+accent = "#bf4904"
+success = "#1b772d"
+destructive = "#b81438"
+card = "#f2e8f7"
+secondary = "#e9daf2"
+muted = "#756388"
+border = "#dcc9e8"
+blue = "#2b4acb"
+magenta = "#8b3da8"
+cyan = "#0e7490"
+yellow = "#9e6000"

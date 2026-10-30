@@ -1,0 +1,68 @@
+# Halloween Day theme for K9s
+k9s:
+  body:
+    fgColor: "#241432"
+    bgColor: "#faf4eb"
+    logoColor: "#bf4904"
+  prompt:
+    fgColor: "#241432"
+    bgColor: "#f2e7d8"
+    suggestColor: "#9e6000"
+  info:
+    fgColor: "#756388"
+    sectionColor: "#bf4904"
+  dialog:
+    fgColor: "#241432"
+    bgColor: "#f2e7d8"
+    buttonFgColor: "#faf4eb"
+    buttonBgColor: "#bf4904"
+    buttonActiveFgColor: "#241432"
+    buttonActiveBgColor: "#b81438"
+    labelFgColor: "#9e6000"
+    fieldFgColor: "#241432"
+  frame:
+    border:
+      fgColor: "#d8c8b4"
+      focusColor: "#bf4904"
+    menu:
+      fgColor: "#241432"
+      keyColor: "#bf4904"
+      numKeyColor: "#7e22ce"
+    crumbs:
+      fgColor: "#faf4eb"
+      bgColor: "#bf4904"
+      activeColor: "#1b772d"
+    status:
+      completedColor: "#1b772d"
+      errorColor: "#b81438"
+      highlightColor: "#bf4904"
+    title:
+      fgColor: "#bf4904"
+      bgColor: "#f2e7d8"
+      highlightColor: "#1b772d"
+      counterColor: "#7e22ce"
+  views:
+    table:
+      fgColor: "#241432"
+      bgColor: "#faf4eb"
+      cursorFgColor: "#faf4eb"
+      cursorBgColor: "#bf4904"
+      markColor: "#9e6000"
+      header:
+        fgColor: "#bf4904"
+        bgColor: "#f2e7d8"
+        sorterColor: "#0e7490"
+    xray:
+      fgColor: "#241432"
+      bgColor: "#faf4eb"
+      cursorColor: "#bf4904"
+    yaml:
+      keyColor: "#7e22ce"
+      colonColor: "#d8c8b4"
+      valueColor: "#241432"
+    logs:
+      fgColor: "#241432"
+      bgColor: "#faf4eb"
+      indicator:
+        fgColor: "#bf4904"
+        bgColor: "#f2e7d8"

@@ -1,0 +1,68 @@
+# Halloween Cyberpunk theme for K9s
+k9s:
+  body:
+    fgColor: "#fcf7ff"
+    bgColor: "#0d0221"
+    logoColor: "#ff6d00"
+  prompt:
+    fgColor: "#fcf7ff"
+    bgColor: "#19053b"
+    suggestColor: "#ffee32"
+  info:
+    fgColor: "#9d79bc"
+    sectionColor: "#ff6d00"
+  dialog:
+    fgColor: "#fcf7ff"
+    bgColor: "#19053b"
+    buttonFgColor: "#0d0221"
+    buttonBgColor: "#ff6d00"
+    buttonActiveFgColor: "#fcf7ff"
+    buttonActiveBgColor: "#ff0054"
+    labelFgColor: "#ffee32"
+    fieldFgColor: "#fcf7ff"
+  frame:
+    border:
+      fgColor: "#5a189a"
+      focusColor: "#ff6d00"
+    menu:
+      fgColor: "#fcf7ff"
+      keyColor: "#ff6d00"
+      numKeyColor: "#c77dff"
+    crumbs:
+      fgColor: "#0d0221"
+      bgColor: "#ff6d00"
+      activeColor: "#00f5d4"
+    status:
+      completedColor: "#00f5d4"
+      errorColor: "#ff0054"
+      highlightColor: "#ff6d00"
+    title:
+      fgColor: "#ff6d00"
+      bgColor: "#19053b"
+      highlightColor: "#00f5d4"
+      counterColor: "#c77dff"
+  views:
+    table:
+      fgColor: "#fcf7ff"
+      bgColor: "#0d0221"
+      cursorFgColor: "#0d0221"
+      cursorBgColor: "#ff6d00"
+      markColor: "#ffee32"
+      header:
+        fgColor: "#ff6d00"
+        bgColor: "#19053b"
+        sorterColor: "#00f5d4"
+    xray:
+      fgColor: "#fcf7ff"
+      bgColor: "#0d0221"
+      cursorColor: "#ff6d00"
+    yaml:
+      keyColor: "#c77dff"
+      colonColor: "#5a189a"
+      valueColor: "#fcf7ff"
+    logs:
+      fgColor: "#fcf7ff"
+      bgColor: "#0d0221"
+      indicator:
+        fgColor: "#ff6d00"
+        bgColor: "#19053b"

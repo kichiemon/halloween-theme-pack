@@ -1,0 +1,16 @@
+/* Halloween Pastel theme for Discord (BetterDiscord) */
+.theme-light {
+  --background-primary: #faf5fc;
+  --background-secondary: #e9daf2;
+  --background-secondary-alt: #f2e8f7;
+  --background-tertiary: #f5ecfa;
+  --background-accent: #bf4904;
+  --text-normal: #3c2a4d;
+  --text-muted: #756388;
+  --interactive-normal: #756388;
+  --interactive-hover: #3c2a4d;
+  --interactive-active: #bf4904;
+  --brand-experiment: #bf4904;
+  --status-positive: #1b772d;
+  --status-danger: #b81438;
+}

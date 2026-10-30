@@ -1,0 +1,16 @@
+/* Halloween Cyberpunk theme for Discord (BetterDiscord) */
+.theme-dark {
+  --background-primary: #0d0221;
+  --background-secondary: #240046;
+  --background-secondary-alt: #19053b;
+  --background-tertiary: #090014;
+  --background-accent: #ff6d00;
+  --text-normal: #fcf7ff;
+  --text-muted: #9d79bc;
+  --interactive-normal: #9d79bc;
+  --interactive-hover: #fcf7ff;
+  --interactive-active: #ff6d00;
+  --brand-experiment: #ff6d00;
+  --status-positive: #00f5d4;
+  --status-danger: #ff0054;
+}

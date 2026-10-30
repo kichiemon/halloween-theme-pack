@@ -1,0 +1,19 @@
+/* Halloween Pastel theme for Obsidian */
+.theme-light {
+  --background-primary: #faf5fc;
+  --background-primary-alt: #f5ecfa;
+  --background-secondary: #f2e8f7;
+  --background-secondary-alt: #e9daf2;
+  --background-modifier-border: #dcc9e8;
+  --text-normal: #3c2a4d;
+  --text-muted: #756388;
+  --text-faint: #756388;
+  --text-accent: #bf4904;
+  --text-accent-hover: #9e6000;
+  --interactive-accent: #bf4904;
+  --interactive-accent-hover: #9e6000;
+  --interactive-normal: #f2e8f7;
+  --interactive-hover: #e9daf2;
+  --scrollbar-bg: #faf5fc;
+  --scrollbar-thumb-bg: #dcc9e8;
+}

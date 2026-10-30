@@ -1,0 +1,26 @@
+name: Halloween Cyberpunk
+accent: '#ff6d00'
+cursor: '#ff6d00'
+background: '#0d0221'
+details: darker
+foreground: '#fcf7ff'
+
+terminal_colors:
+  normal:
+    black: '#240046'
+    red: '#ff0054'
+    green: '#00f5d4'
+    yellow: '#ffee32'
+    blue: '#7000ff'
+    magenta: '#c77dff'
+    cyan: '#00f5d4'
+    white: '#fcf7ff'
+  bright:
+    black: '#5a189a'
+    red: '#ff3377'
+    green: '#5cffee'
+    yellow: '#fff275'
+    blue: '#9d4edd'
+    magenta: '#e0aaff'
+    cyan: '#70fff3'
+    white: '#ffffff'

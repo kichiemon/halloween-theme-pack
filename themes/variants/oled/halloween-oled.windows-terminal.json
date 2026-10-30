@@ -1,0 +1,23 @@
+{
+  "name": "Halloween OLED",
+  "background": "#000000",
+  "foreground": "#f4e7d3",
+  "cursorColor": "#ff6b35",
+  "selectionBackground": "#2c1845",
+  "black": "#1a0a2a",
+  "red": "#ff4d6d",
+  "green": "#39ff14",
+  "yellow": "#ffb347",
+  "blue": "#6b8cff",
+  "purple": "#c77dff",
+  "cyan": "#5ffbf1",
+  "white": "#f4e7d3",
+  "brightBlack": "#3b1e5c",
+  "brightRed": "#ff7a95",
+  "brightGreen": "#7fff6b",
+  "brightYellow": "#ffd28a",
+  "brightBlue": "#9db3ff",
+  "brightPurple": "#ddb3ff",
+  "brightCyan": "#9dfff7",
+  "brightWhite": "#ffffff"
+}

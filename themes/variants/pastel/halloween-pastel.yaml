@@ -1,0 +1,26 @@
+name: Halloween Pastel
+accent: '#bf4904'
+cursor: '#bf4904'
+background: '#faf5fc'
+details: lighter
+foreground: '#3c2a4d'
+
+terminal_colors:
+  normal:
+    black: '#3c2a4d'
+    red: '#b81438'
+    green: '#1b772d'
+    yellow: '#9e6000'
+    blue: '#2b4acb'
+    magenta: '#8b3da8'
+    cyan: '#0e7490'
+    white: '#dcc9e8'
+  bright:
+    black: '#674f78'
+    red: '#cf2248'
+    green: '#228b37'
+    yellow: '#b56f00'
+    blue: '#3b5bdb'
+    magenta: '#a855f7'
+    cyan: '#0284c7'
+    white: '#3c2a4d'

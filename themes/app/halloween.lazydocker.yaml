@@ -1,0 +1,14 @@
+# Halloween theme for Lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#ff6b35"
+      - bold
+    inactiveBorderColor:
+      - "#3d2a5e"
+    selectedLineBgColor:
+      - "#2d1b4e"
+    selectedRangeBgColor:
+      - "#3d2a5e"
+    optionsTextColor:
+      - "#6b8cff"

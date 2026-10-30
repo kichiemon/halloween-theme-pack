@@ -1,0 +1,32 @@
+# Halloween Cyberpunk theme for Alacritty
+[colors.primary]
+background = "#0d0221"
+foreground = "#fcf7ff"
+
+[colors.cursor]
+text = "#0d0221"
+cursor = "#ff6d00"
+
+[colors.selection]
+text = "#fcf7ff"
+background = "#3c096c"
+
+[colors.normal]
+black = "#240046"
+red = "#ff0054"
+green = "#00f5d4"
+yellow = "#ffee32"
+blue = "#7000ff"
+magenta = "#c77dff"
+cyan = "#00f5d4"
+white = "#fcf7ff"
+
+[colors.bright]
+black = "#5a189a"
+red = "#ff3377"
+green = "#5cffee"
+yellow = "#fff275"
+blue = "#9d4edd"
+magenta = "#e0aaff"
+cyan = "#70fff3"
+white = "#ffffff"

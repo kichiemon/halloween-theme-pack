@@ -1,0 +1,35 @@
+# Halloween Cyberpunk theme for Yazi
+[mgr]
+cwd = { fg = "#00f5d4" }
+hovered = { fg = "#0d0221", bg = "#ff6d00" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#ffee32", bold = true }
+marker_copied = { fg = "#00f5d4", bg = "#19053b" }
+marker_cut = { fg = "#ff0054", bg = "#19053b" }
+marker_selected = { fg = "#ff6d00", bg = "#19053b" }
+tab_active = { fg = "#0d0221", bg = "#ff6d00" }
+tab_inactive = { fg = "#9d79bc", bg = "#19053b" }
+border_style = { fg = "#5a189a" }
+
+[status]
+separator_open = ""
+separator_close = ""
+progress_label = { fg = "#fcf7ff", bold = true }
+progress_normal = { fg = "#7000ff", bg = "#19053b" }
+progress_error = { fg = "#ff0054", bg = "#19053b" }
+
+[select]
+border = { fg = "#ff6d00" }
+active = { fg = "#ffee32" }
+inactive = { fg = "#fcf7ff" }
+
+[input]
+border = { fg = "#ff6d00" }
+title = { fg = "#fcf7ff" }
+value = { fg = "#fcf7ff" }
+selected = { bg = "#3c096c" }
+
+[completion]
+border = { fg = "#ff6d00" }
+active = { fg = "#0d0221", bg = "#ff6d00" }
+inactive = { fg = "#fcf7ff" }

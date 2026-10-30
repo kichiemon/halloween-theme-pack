@@ -1,0 +1,11 @@
+# Halloween Cyberpunk theme for WezTerm
+[colors]
+background = "#0d0221"
+foreground = "#fcf7ff"
+cursor_bg = "#ff6d00"
+cursor_fg = "#0d0221"
+selection_bg = "#3c096c"
+selection_fg = "#fcf7ff"
+
+ansi = ["#240046", "#ff0054", "#00f5d4", "#ffee32", "#7000ff", "#c77dff", "#00f5d4", "#fcf7ff"]
+brights = ["#5a189a", "#ff3377", "#5cffee", "#fff275", "#9d4edd", "#e0aaff", "#70fff3", "#ffffff"]

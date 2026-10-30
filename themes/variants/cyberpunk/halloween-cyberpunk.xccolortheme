@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Hex Background: #0d0221 -->
+  <!-- Hex Foreground: #fcf7ff -->
+  <!-- Hex Accent: #ff6d00 -->
+  <!-- Hex Success: #00f5d4 -->
+  <!-- Hex Destructive: #ff0054 -->
+  <!-- Hex Selection: #3c096c -->
+  <key>DVTSourceTextBackground</key>
+  <string>0.050980 0.007843 0.129412 1</string>
+  <key>DVTSourceTextBlockDimBackground</key>
+  <string>0.141176 0.000000 0.274510 1</string>
+  <key>DVTSourceTextForeground</key>
+  <string>0.988235 0.968627 1.000000 1</string>
+  <key>DVTSourceTextInsertionPointColor</key>
+  <string>1.000000 0.427451 0.000000 1</string>
+  <key>DVTSourceTextSelectionColor</key>
+  <string>0.235294 0.035294 0.423529 1</string>
+  <key>DVTSourceTextSyntaxColors</key>
+  <dict>
+    <key>xcode.syntax.attribute</key>
+    <string>0.000000 0.960784 0.831373 1</string>
+    <key>xcode.syntax.character</key>
+    <string>1.000000 0.933333 0.196078 1</string>
+    <key>xcode.syntax.comment</key>
+    <string>0.615686 0.474510 0.737255 1</string>
+    <key>xcode.syntax.comment.doc</key>
+    <string>0.615686 0.474510 0.737255 1</string>
+    <key>xcode.syntax.keyword</key>
+    <string>1.000000 0.427451 0.000000 1</string>
+    <key>xcode.syntax.number</key>
+    <string>1.000000 0.000000 0.329412 1</string>
+    <key>xcode.syntax.plain</key>
+    <string>0.988235 0.968627 1.000000 1</string>
+    <key>xcode.syntax.string</key>
+    <string>0.000000 0.960784 0.831373 1</string>
+    <key>xcode.syntax.type</key>
+    <string>0.780392 0.490196 1.000000 1</string>
+    <key>xcode.syntax.url</key>
+    <string>0.439216 0.000000 1.000000 1</string>
+  </dict>
+</dict>
+</plist>

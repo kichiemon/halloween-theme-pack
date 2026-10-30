@@ -1,0 +1,22 @@
+{
+  "version": "1",
+  "name": "Halloween Pastel",
+  "appearance": "light",
+  "colors": {
+    "background": "#faf5fc",
+    "backgroundSecondary": "#f2e8f7",
+    "text": "#3c2a4d",
+    "textMuted": "#756388",
+    "selection": "#e5d0f0",
+    "accent": "#bf4904",
+    "red": "#b81438",
+    "orange": "#bf4904",
+    "yellow": "#9e6000",
+    "green": "#1b772d",
+    "blue": "#2b4acb",
+    "purple": "#8b3da8",
+    "magenta": "#8b3da8",
+    "cyan": "#0e7490"
+  },
+  "shareUrl": "raycast://theme?data=%7B%22version%22%3A%20%221%22%2C%20%22name%22%3A%20%22Halloween%20Pastel%22%2C%20%22appearance%22%3A%20%22light%22%2C%20%22colors%22%3A%20%7B%22background%22%3A%20%22%23faf5fc%22%2C%20%22backgroundSecondary%22%3A%20%22%23f2e8f7%22%2C%20%22text%22%3A%20%22%233c2a4d%22%2C%20%22textMuted%22%3A%20%22%23756388%22%2C%20%22selection%22%3A%20%22%23e5d0f0%22%2C%20%22accent%22%3A%20%22%23bf4904%22%2C%20%22red%22%3A%20%22%23b81438%22%2C%20%22orange%22%3A%20%22%23bf4904%22%2C%20%22yellow%22%3A%20%22%239e6000%22%2C%20%22green%22%3A%20%22%231b772d%22%2C%20%22blue%22%3A%20%22%232b4acb%22%2C%20%22purple%22%3A%20%22%238b3da8%22%2C%20%22magenta%22%3A%20%22%238b3da8%22%2C%20%22cyan%22%3A%20%22%230e7490%22%7D%7D"
+}

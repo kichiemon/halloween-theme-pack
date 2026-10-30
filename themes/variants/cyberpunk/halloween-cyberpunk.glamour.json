@@ -1,0 +1,57 @@
+{
+  "document": {
+    "margin": 2
+  },
+  "block_quote": {
+    "indent": 1,
+    "indent_token": "\u2502 ",
+    "color": "#9d79bc"
+  },
+  "paragraph": {},
+  "list": {
+    "level_indent": 2
+  },
+  "heading": {
+    "color": "#ff6d00",
+    "bold": true
+  },
+  "h1": {
+    "color": "#ff6d00",
+    "bold": true
+  },
+  "h2": {
+    "color": "#ffee32",
+    "bold": true
+  },
+  "h3": {
+    "color": "#c77dff",
+    "bold": true
+  },
+  "text": {
+    "color": "#fcf7ff"
+  },
+  "strong": {
+    "bold": true,
+    "color": "#ffee32"
+  },
+  "emphasis": {
+    "italic": true,
+    "color": "#9d79bc"
+  },
+  "item": {
+    "block_prefix": "\u2022 ",
+    "color": "#ff6d00"
+  },
+  "link": {
+    "color": "#00f5d4",
+    "underline": true
+  },
+  "code": {
+    "color": "#00f5d4",
+    "background_color": "#19053b"
+  },
+  "code_block": {
+    "color": "#fcf7ff",
+    "margin": 1
+  }
+}

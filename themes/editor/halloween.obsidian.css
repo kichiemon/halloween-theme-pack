@@ -1,0 +1,19 @@
+/* Halloween theme for Obsidian */
+.theme-dark {
+  --background-primary: #1a0d2e;
+  --background-primary-alt: #150a24;
+  --background-secondary: #241340;
+  --background-secondary-alt: #2d1b4e;
+  --background-modifier-border: #3d2a5e;
+  --text-normal: #f4e7d3;
+  --text-muted: #b8a9d9;
+  --text-faint: #b8a9d9;
+  --text-accent: #ff6b35;
+  --text-accent-hover: #ffb347;
+  --interactive-accent: #ff6b35;
+  --interactive-accent-hover: #ffb347;
+  --interactive-normal: #241340;
+  --interactive-hover: #2d1b4e;
+  --scrollbar-bg: #1a0d2e;
+  --scrollbar-thumb-bg: #3d2a5e;
+}

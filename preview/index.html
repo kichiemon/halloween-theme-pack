@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halloween Theme Pack — Interactive Preview</title>
+  <title>Halloween Theme Pack — Interactive Preview & Theme Studio</title>
   <style>
     /* CSS Reset & Variable Defaults */
     *, *::before, *::after {
@@ -80,7 +80,6 @@
       --cyan: #0e7490;
       --yellow: #9e6000;
 
-      /* ANSI Normal */
       --ansi-black: #241432;
       --ansi-red: #b81438;
       --ansi-green: #1b772d;
@@ -90,7 +89,6 @@
       --ansi-cyan: #0e7490;
       --ansi-white: #d8ccbc;
 
-      /* ANSI Bright */
       --bright-black: #5c4d6b;
       --bright-red: #cf2248;
       --bright-green: #228b37;
@@ -100,11 +98,149 @@
       --bright-cyan: #0284c7;
       --bright-white: #241432;
 
-      --theme-name: "Halloween Day (Light)";
-      --contrast-ratio: "15.73:1 (WCAG AAA)";
-      --accent-contrast: "4.61:1 (WCAG AA)";
       --shadow-sm: 0 2px 8px rgba(36, 20, 50, 0.08);
       --shadow-lg: 0 12px 32px rgba(36, 20, 50, 0.12);
+    }
+
+    body[data-theme="oled"] {
+      --bg: #000000;
+      --fg: #f4e7d3;
+      --card: #12091c;
+      --secondary: #1a0a2a;
+      --muted: #b8a9d9;
+      --border: #2c1845;
+      --sidebar: #08040d;
+      --accent: #ff6b35;
+      --success: #39ff14;
+      --destructive: #ff4d6d;
+      --cursor: #ff6b35;
+      --selection: #2c1845;
+      --selection-text: #f4e7d3;
+      --blue: #6b8cff;
+      --magenta: #c77dff;
+      --cyan: #5ffbf1;
+      --yellow: #ffb347;
+
+      --ansi-black: #1a0a2a;
+      --ansi-red: #ff4d6d;
+      --ansi-green: #39ff14;
+      --ansi-yellow: #ffb347;
+      --ansi-blue: #6b8cff;
+      --ansi-magenta: #c77dff;
+      --ansi-cyan: #5ffbf1;
+      --ansi-white: #f4e7d3;
+
+      --bright-black: #3b1e5c;
+      --bright-red: #ff7a95;
+      --bright-green: #7fff6b;
+      --bright-yellow: #ffd28a;
+      --bright-blue: #9db3ff;
+      --bright-magenta: #ddb3ff;
+      --bright-cyan: #9dfff7;
+      --bright-white: #ffffff;
+    }
+
+    body[data-theme="pastel"] {
+      --bg: #faf5fc;
+      --fg: #3c2a4d;
+      --card: #f2e8f7;
+      --secondary: #e9daf2;
+      --muted: #756388;
+      --border: #dcc9e8;
+      --sidebar: #f5ecfa;
+      --accent: #bf4904;
+      --success: #1b772d;
+      --destructive: #b81438;
+      --cursor: #bf4904;
+      --selection: #e5d0f0;
+      --selection-text: #3c2a4d;
+      --blue: #2b4acb;
+      --magenta: #8b3da8;
+      --cyan: #0e7490;
+      --yellow: #9e6000;
+
+      --ansi-black: #3c2a4d;
+      --ansi-red: #b81438;
+      --ansi-green: #1b772d;
+      --ansi-yellow: #9e6000;
+      --ansi-blue: #2b4acb;
+      --ansi-magenta: #8b3da8;
+      --ansi-cyan: #0e7490;
+      --ansi-white: #dcc9e8;
+
+      --bright-black: #674f78;
+      --bright-red: #cf2248;
+      --bright-green: #228b37;
+      --bright-yellow: #b56f00;
+      --bright-blue: #3b5bdb;
+      --bright-magenta: #a855f7;
+      --bright-cyan: #0284c7;
+      --bright-white: #3c2a4d;
+
+      --shadow-sm: 0 2px 8px rgba(60, 42, 77, 0.08);
+      --shadow-lg: 0 12px 32px rgba(60, 42, 77, 0.12);
+    }
+
+    body[data-theme="cyberpunk"] {
+      --bg: #0d0221;
+      --fg: #fcf7ff;
+      --card: #19053b;
+      --secondary: #240046;
+      --muted: #9d79bc;
+      --border: #5a189a;
+      --sidebar: #090014;
+      --accent: #ff6d00;
+      --success: #00f5d4;
+      --destructive: #ff0054;
+      --cursor: #ff6d00;
+      --selection: #3c096c;
+      --selection-text: #fcf7ff;
+      --blue: #7000ff;
+      --magenta: #c77dff;
+      --cyan: #00f5d4;
+      --yellow: #ffee32;
+
+      --ansi-black: #240046;
+      --ansi-red: #ff0054;
+      --ansi-green: #00f5d4;
+      --ansi-yellow: #ffee32;
+      --ansi-blue: #7000ff;
+      --ansi-magenta: #c77dff;
+      --ansi-cyan: #00f5d4;
+      --ansi-white: #fcf7ff;
+
+      --bright-black: #5a189a;
+      --bright-red: #ff3377;
+      --bright-green: #5cffee;
+      --bright-yellow: #fff275;
+      --bright-blue: #9d4edd;
+      --bright-magenta: #e0aaff;
+      --bright-cyan: #70fff3;
+      --bright-white: #ffffff;
+    }
+
+    /* Colorblind simulation filters */
+    body.filter-deuteranopia { filter: url(#deuteranopia); }
+    body.filter-protanopia { filter: url(#protanopia); }
+    body.filter-tritanopia { filter: url(#tritanopia); }
+    body.filter-achromatopsia { filter: url(#achromatopsia); }
+
+    /* Colorblind-Safe Accessible Mode overrides */
+    body.accessible-mode {
+      --success: #00e5ff; /* Cyan instead of lime green: distinct luminance and wavelength from orange */
+      --ansi-green: #00e5ff;
+      --bright-green: #70fff3;
+    }
+    body.accessible-mode .term-success,
+    body.accessible-mode .syn-str {
+      color: #00e5ff !important;
+      font-weight: 600;
+    }
+    body.accessible-mode .badge,
+    body.accessible-mode .contrast-badge,
+    body.accessible-mode .wcag-badge.pass {
+      letter-spacing: 0.04em;
+      border: 1px solid currentColor;
     }
 
     body {
@@ -175,36 +311,118 @@
     .controls {
       display: flex;
       align-items: center;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .toggle-btn {
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 12px;
+    }
+
+    .control-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .custom-select {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .custom-select:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-action {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: var(--card);
-      border: 2px solid var(--border);
-      color: var(--fg);
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-size: 0.95rem;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-sm);
+      transition: opacity 0.2s, transform 0.1s;
     }
 
-    .toggle-btn:hover {
-      border-color: var(--accent);
+    .btn-action:hover {
+      opacity: 0.9;
       transform: translateY(-1px);
     }
 
-    .toggle-btn:active {
-      transform: translateY(1px);
+    /* Contrast Banner */
+    .contrast-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
     }
 
-    .toggle-icon {
+    .contrast-info {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .contrast-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contrast-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .contrast-value {
+      font-family: var(--font-mono);
       font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--fg);
+    }
+
+    .contrast-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(57, 255, 20, 0.15);
+      border: 1px solid var(--success);
+      color: var(--success);
+      font-weight: 700;
+      font-size: 0.85rem;
     }
 
     /* Section Titles */
@@ -256,143 +474,295 @@
       height: 72px;
       width: 100%;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
 
     .swatch-meta {
-      padding: 12px;
+      padding: 12px 14px;
     }
 
     .swatch-role {
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--fg);
       margin-bottom: 4px;
     }
 
     .swatch-hex {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* Contrast Summary Card */
-    .contrast-banner {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 5px solid var(--accent);
-      border-radius: 10px;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-
-    .contrast-info {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .contrast-metric {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contrast-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .contrast-value {
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .contrast-badge {
-      background: var(--success);
-      color: #1a0d2e;
-      padding: 6px 14px;
-      border-radius: 999px;
       font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
+      color: var(--muted);
     }
 
-    /* ANSI Swatches */
+    /* ANSI Colors Row */
     .ansi-row {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
     .ansi-swatch {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px;
+      border-radius: 10px;
+      padding: 10px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: transform 0.15s;
     }
 
     .ansi-swatch:hover {
+      transform: translateY(-2px);
       border-color: var(--accent);
-      transform: scale(1.04);
     }
 
     .ansi-block {
       height: 36px;
       border-radius: 6px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .ansi-name {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: capitalize;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 2px;
     }
 
     .ansi-code {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* Contrast Inspector */
+    .inspector-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .inspector-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .inspector-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .inspector-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .color-picker-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .color-picker-input {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+
+    .color-picker-text {
+      flex: 1;
+      background: var(--secondary);
+      border: 1px solid var(--border);
       color: var(--fg);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .inspector-result {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .ratio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .ratio-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--accent);
+    }
+
+    .contrast-meter-track {
+      width: 100%;
+      height: 12px;
+      background: var(--card);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .contrast-meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--destructive), var(--yellow), var(--success));
+      width: 70%;
+      transition: width 0.3s ease;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .wcag-badge {
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid;
+    }
+
+    .wcag-badge.pass {
+      background: rgba(57, 255, 20, 0.12);
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .wcag-badge.fail {
+      background: rgba(255, 77, 109, 0.12);
+      border-color: var(--destructive);
+      color: var(--destructive);
+    }
+
+    /* Web Theme Studio */
+    .studio-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tweaker-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tweaker-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .tweaker-inputs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tweaker-color {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+
+    .tweaker-text {
+      flex: 1;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .studio-export-area {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .export-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .export-code {
+      width: 100%;
+      height: 180px;
+      background: var(--sidebar);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--fg);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      padding: 12px;
+      resize: vertical;
+      outline: none;
     }
 
     /* Terminal Mockup */
     .mockup-window {
-      background: var(--card);
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       margin-bottom: 40px;
     }
 
     .window-header {
-      background: var(--sidebar);
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
+      background: var(--secondary);
+      padding: 12px 18px;
       display: flex;
       align-items: center;
-      position: relative;
+      border-bottom: 1px solid var(--border);
     }
 
     .window-dots {
@@ -411,169 +781,104 @@
     .dot.green { background: #27c93f; }
 
     .window-title {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-mono);
+      flex: 1;
+      text-align: center;
       font-size: 0.85rem;
       color: var(--muted);
-      font-weight: 500;
+      font-family: var(--font-mono);
+      margin-right: 48px;
     }
 
     .terminal-body {
-      background: var(--bg);
       padding: 24px;
       font-family: var(--font-mono);
       font-size: 0.95rem;
       line-height: 1.7;
-      min-height: 280px;
-      overflow-x: auto;
+      color: var(--fg);
     }
 
-    .t-prompt {
-      color: var(--accent);
-      font-weight: 700;
+    .prompt-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
     }
 
-    .t-host {
-      color: var(--magenta);
-    }
+    .prompt-user { color: var(--accent); font-weight: 700; }
+    .prompt-host { color: var(--magenta); font-weight: 700; }
+    .prompt-dir { color: var(--cyan); }
+    .prompt-branch { color: var(--success); }
+    .prompt-arrow { color: var(--accent); font-weight: 900; }
+    .prompt-cmd { color: var(--fg); }
 
-    .t-path {
+    .term-out {
       color: var(--muted);
-    }
-
-    .t-cmd {
-      color: var(--fg);
-    }
-
-    .t-cursor {
-      display: inline-block;
-      width: 9px;
-      height: 1.2em;
-      background: var(--cursor);
-      vertical-align: middle;
-      margin-left: 4px;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .t-out {
-      color: var(--fg);
       margin-bottom: 14px;
     }
 
-    .t-dim {
-      color: var(--muted);
-    }
+    .term-highlight { color: var(--yellow); }
+    .term-success { color: var(--success); }
+    .term-destruct { color: var(--destructive); }
+    .term-cyan { color: var(--cyan); }
+    .term-blue { color: var(--blue); }
 
-    .t-success {
-      color: var(--success);
-      font-weight: 600;
-    }
-
-    .t-error {
-      color: var(--destructive);
-    }
-
-    .t-blue {
-      color: var(--blue);
-    }
-
-    .t-yellow {
-      color: var(--yellow);
-    }
-
-    .t-cyan {
-      color: var(--cyan);
-    }
-
-    .t-palette-bar {
+    .term-palette-bar {
       display: flex;
-      gap: 4px;
-      margin: 12px 0 18px;
+      height: 20px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 16px 0;
     }
 
     .t-bar-block {
-      width: 32px;
-      height: 20px;
-      border-radius: 4px;
-    }
-
-    /* Side-by-Side App Mockups */
-    .mockups-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 900px) {
-      .mockups-grid {
-        grid-template-columns: 1fr;
-      }
-      .ansi-row {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      flex: 1;
+      height: 100%;
     }
 
     /* Editor Mockup */
     .editor-layout {
-      display: flex;
-      height: 380px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 380px;
       background: var(--bg);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
     }
 
-    .editor-activity {
-      width: 48px;
-      background: var(--sidebar);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px 0;
-      gap: 20px;
-      color: var(--muted);
-    }
-
-    .editor-activity .act-icon.active {
-      color: var(--accent);
-      border-left: 2px solid var(--accent);
-      padding-left: 2px;
+    @media (max-width: 768px) {
+      .editor-layout {
+        grid-template-columns: 1fr;
+      }
+      .editor-sidebar {
+        display: none;
+      }
     }
 
     .editor-sidebar {
-      width: 170px;
       background: var(--sidebar);
       border-right: 1px solid var(--border);
-      padding: 12px;
-      color: var(--muted);
-      font-size: 0.8rem;
+      padding: 16px;
+      font-size: 0.85rem;
     }
 
     .sidebar-heading {
-      font-size: 0.7rem;
-      font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.05em;
+      font-weight: 700;
       text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
       margin-bottom: 12px;
     }
 
     .file-item {
-      padding: 4px 8px;
-      border-radius: 6px;
-      margin-bottom: 2px;
-      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      cursor: pointer;
     }
 
     .file-item.active {
@@ -582,196 +887,125 @@
       font-weight: 600;
     }
 
-    .editor-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .editor-tabs {
-      height: 36px;
-      background: var(--sidebar);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .editor-tab {
-      padding: 6px 16px;
-      background: var(--bg);
-      border-top: 2px solid var(--accent);
-      border-right: 1px solid var(--border);
-      color: var(--fg);
-      font-weight: 600;
-      font-size: 0.8rem;
-    }
-
-    .editor-code {
-      padding: 16px;
-      line-height: 1.6;
-      flex: 1;
-      overflow-y: auto;
-      white-space: pre;
-    }
-
-    .c-kw { color: var(--accent); font-weight: 600; }
-    .c-fn { color: var(--blue); }
-    .c-str { color: var(--success); }
-    .c-num { color: var(--destructive); }
-    .c-typ { color: var(--magenta); }
-    .c-op { color: var(--cyan); }
-    .c-cmt { color: var(--muted); font-style: italic; }
-
-    /* Chat / App Mockup */
-    .chat-layout {
-      display: flex;
-      height: 380px;
-      background: var(--bg);
-    }
-
-    .chat-sidebar {
-      width: 180px;
-      background: var(--sidebar);
-      border-right: 1px solid var(--border);
-      padding: 16px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .chat-channel {
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      color: var(--muted);
-      cursor: pointer;
-    }
-
-    .chat-channel.active {
-      background: var(--secondary);
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .chat-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px;
-    }
-
-    .chat-messages {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      overflow-y: auto;
-    }
-
-    .chat-msg {
-      display: flex;
-      gap: 12px;
-    }
-
-    .chat-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--secondary);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .msg-header {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .msg-author {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 0.9rem;
-    }
-
-    .msg-time {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .msg-text {
-      color: var(--fg);
-      font-size: 0.88rem;
-      line-height: 1.4;
-    }
-
-    .reaction-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      border-radius: 12px;
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--fg);
-      margin-top: 6px;
-    }
-
-    .chat-input {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
-      color: var(--fg);
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Tmux Mockup */
-    .tmux-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--secondary);
-      color: var(--fg);
+    .editor-main {
+      padding: 20px 24px;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      padding: 4px 12px;
-      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      overflow-x: auto;
     }
 
-    .tmux-left {
-      background: var(--accent);
-      color: var(--bg);
+    .code-line {
+      display: flex;
+      gap: 16px;
+    }
+
+    .line-no {
+      color: var(--muted);
+      user-select: none;
+      text-align: right;
+      width: 24px;
+      opacity: 0.6;
+    }
+
+    .syn-kw { color: var(--accent); font-weight: 600; }
+    .syn-str { color: var(--success); }
+    .syn-num { color: var(--destructive); }
+    .syn-fn { color: var(--blue); }
+    .syn-type { color: var(--magenta); }
+    .syn-op { color: var(--cyan); }
+    .syn-com { color: var(--muted); font-style: italic; }
+
+    /* UI Components Preview */
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .component-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
       font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 3px;
+      color: var(--fg);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .tmux-tabs {
+    .btn-row {
       display: flex;
       gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
     }
 
-    .tmux-tab.active {
-      color: var(--accent);
+    .preview-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
       font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
     }
 
-    .tmux-tab {
-      color: var(--muted);
+    .preview-btn.primary {
+      background: var(--accent);
+      color: #fff;
     }
 
-    .tmux-right {
-      color: var(--muted);
+    .preview-btn.secondary {
+      background: var(--secondary);
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+
+    .preview-btn.destructive {
+      background: var(--destructive);
+      color: #fff;
+    }
+
+    /* Supported Applications Grid */
+    .formats-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .format-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .format-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--fg);
+    }
+
+    .format-type {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      background: var(--secondary);
+      color: var(--accent);
+      border-radius: 4px;
+      border: 1px solid var(--border);
     }
 
     /* Toast */
@@ -780,55 +1014,21 @@
       bottom: 24px;
       right: 24px;
       background: var(--accent);
-      color: var(--bg);
-      padding: 10px 20px;
-      border-radius: 8px;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
       font-weight: 700;
       font-size: 0.9rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      pointer-events: none;
-      z-index: 1000;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      z-index: 9999;
     }
 
     .toast.show {
-      opacity: 1;
       transform: translateY(0);
-    }
-
-    /* Format List */
-    .formats-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .format-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .format-name {
-      font-weight: 700;
-      color: var(--fg);
-      font-size: 0.9rem;
-    }
-
-    .format-type {
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: var(--secondary);
-      color: var(--accent);
-      font-family: var(--font-mono);
+      opacity: 1;
     }
   </style>
 </head>
@@ -844,10 +1044,32 @@
           <p class="subtitle">Single-palette themes for Terminals, Editors, and Messaging Apps.</p>
         </div>
         <div class="controls">
-          <button class="toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
-            <span class="toggle-icon" id="toggle-icon">☀️</span>
-            <span id="toggle-label">Switch to Halloween Day</span>
-          </button>
+          <div class="control-group">
+            <span class="control-label">Variant</span>
+            <select class="custom-select" id="variant-select">
+              <option value="dark">🎃 Halloween (Dark)</option>
+              <option value="light">☀️ Halloween Day (Light)</option>
+              <option value="oled">🌑 Halloween OLED (Pure Void)</option>
+              <option value="pastel">🌸 Halloween Pastel (Spooky Kawaii)</option>
+              <option value="cyberpunk">⚡ Halloween Cyberpunk (Neon)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Vision Sim</span>
+            <select class="custom-select" id="cb-select">
+              <option value="none">Normal View</option>
+              <option value="deuteranopia">Deuteranopia (Deutan)</option>
+              <option value="protanopia">Protanopia (Protan)</option>
+              <option value="tritanopia">Tritanopia (Tritan)</option>
+              <option value="achromatopsia">Achromatopsia (Mono)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Accessibility</span>
+            <button class="custom-select" id="accessible-toggle" style="cursor: pointer; font-weight: 600; text-align: center; border-color: var(--accent);">
+              🛡️ Safe Mode: OFF
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -868,7 +1090,7 @@
           <span class="contrast-value" id="val-accent-contrast">6.49:1</span>
         </div>
       </div>
-      <div class="contrast-badge">✓ WCAG AA PASSED (4.5:1)</div>
+      <div class="contrast-badge" id="banner-badge">✓ WCAG AA PASSED (4.5:1)</div>
     </div>
 
     <!-- Palette Swatches -->
@@ -888,6 +1110,90 @@
     <div class="ansi-row" id="ansi-normal-row"></div>
     <div class="ansi-row" id="ansi-bright-row"></div>
 
+    <!-- Interactive WCAG Contrast Inspector -->
+    <h2 class="section-title">
+      WCAG Contrast Inspector
+      <span class="tag">Real-time Accessibility Checker</span>
+    </h2>
+    <div class="inspector-box">
+      <div class="inspector-layout">
+        <div class="inspector-inputs">
+          <div>
+            <span class="tweaker-label">Background Color</span>
+            <div class="color-picker-row">
+              <input type="color" class="color-picker-input" id="insp-bg-picker" value="#1a0d2e">
+              <input type="text" class="color-picker-text" id="insp-bg-text" value="#1a0d2e">
+            </div>
+          </div>
+          <div>
+            <span class="tweaker-label">Foreground / Text Color</span>
+            <div class="color-picker-row">
+              <input type="color" class="color-picker-input" id="insp-fg-picker" value="#f4e7d3">
+              <input type="text" class="color-picker-text" id="insp-fg-text" value="#f4e7d3">
+            </div>
+          </div>
+          <button class="btn-action" id="insp-swap-btn" style="width: 100%; justify-content: center;">⇄ Swap Colors</button>
+        </div>
+
+        <div class="inspector-result">
+          <div class="ratio-header">
+            <div>
+              <span class="contrast-label">Calculated Contrast Ratio</span>
+              <div class="ratio-number" id="insp-ratio-display">15.09:1</div>
+            </div>
+            <div id="insp-status-badge" class="contrast-badge">✓ WCAG AAA PASS</div>
+          </div>
+          <div class="contrast-meter-track">
+            <div class="contrast-meter-fill" id="insp-meter-bar"></div>
+          </div>
+          <div class="badge-grid">
+            <div class="wcag-badge pass" id="badge-normal-aa">Normal Text AA<br>(≥ 4.5:1)</div>
+            <div class="wcag-badge pass" id="badge-normal-aaa">Normal Text AAA<br>(≥ 7.0:1)</div>
+            <div class="wcag-badge pass" id="badge-large-aa">Large Text AA<br>(≥ 3.0:1)</div>
+            <div class="wcag-badge pass" id="badge-ui-aa">UI Components<br>(≥ 3.0:1)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Theme Studio -->
+    <h2 class="section-title">
+      Web Theme Studio
+      <span class="tag">Interactive Hex Tweaker &amp; Multi-Format Exporter</span>
+    </h2>
+    <div class="studio-box">
+      <div class="studio-grid" id="studio-tweakers">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="studio-export-area">
+        <div class="export-toolbar">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="control-label">Export Format</span>
+            <select class="custom-select" id="export-format-select">
+              <option value="warp">Warp / Orca (YAML)</option>
+              <option value="vscode">VS Code (JSON)</option>
+              <option value="css">CSS Variables</option>
+              <option value="alacritty">Alacritty (TOML)</option>
+              <option value="raycast">Raycast (JSON)</option>
+              <option value="tokens">W3C Design Tokens (JSON)</option>
+              <option value="k9s">K9s Skin (YAML)</option>
+              <option value="yazi">Yazi (TOML)</option>
+              <option value="starship">Starship Prompt (TOML)</option>
+              <option value="fish">fish shell (script)</option>
+              <option value="btop">btop++ (theme)</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-action" id="studio-copy-btn">📋 Copy Code</button>
+            <button class="btn-action" id="studio-download-btn" style="background: var(--card); color: var(--fg); border: 1px solid var(--border);">💾 Download</button>
+            <button class="btn-action" id="studio-reset-btn" style="background: var(--secondary); color: var(--muted); border: 1px solid var(--border);">↺ Reset</button>
+          </div>
+        </div>
+        <textarea class="export-code" id="studio-export-text" readonly></textarea>
+      </div>
+    </div>
+
     <!-- Terminal Mockup -->
     <h2 class="section-title">Terminal Preview</h2>
     <div class="mockup-window">
@@ -900,149 +1206,102 @@
         <div class="window-title">ghostty — zsh — 80x24</div>
       </div>
       <div class="terminal-body">
-        <p>
-          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cmd">python3 validate.py</span>
-        </p>
-        <p class="t-out">
-          ============================================================<br>
-          🎃 Halloween Theme Pack - Validation Suite<br>
-          ============================================================<br>
-          <span class="t-success">✓</span> Contrast Ratios: Foreground/Background <span class="t-yellow" id="term-contrast">15.09:1</span> (WCAG AA Pass)<br>
-          <span class="t-success">✓</span> Theme Names Uniqueness: 'Halloween' &amp; 'Halloween Day' Pass<br>
-          <span class="t-success">✓</span> Total 30 theme files verified (YAML, TOML, JSON, XML, CSS)<br>
-          <span class="t-success">✓</span> All hex color codes validated (#RGB / #RRGGBB)<br>
-          <span class="t-success">Result: ✅ ALL 1,066 CHECKS PASSED</span>
-        </p>
-
-        <p class="t-dim"># ANSI 16-color test pattern</p>
-        <div class="t-palette-bar" id="term-palette-bar"></div>
-
-        <p>
-          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cmd">git status -s</span>
-        </p>
-        <p class="t-out">
-          <span class="t-cyan">M</span> generate.py<br>
-          <span class="t-success">A</span> validate.py<br>
-          <span class="t-success">A</span> preview/index.html<br>
-          <span class="t-success">A</span> .github/workflows/release.yml
-        </p>
-        <p>
-          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cursor"></span>
-        </p>
-      </div>
-
-      <!-- Tmux Statusbar Mockup -->
-      <div class="tmux-bar">
-        <div class="tmux-left">[0] halloween*</div>
-        <div class="tmux-tabs">
-          <span class="tmux-tab active">1:zsh*</span>
-          <span class="tmux-tab">2:python</span>
-          <span class="tmux-tab">3:git</span>
+        <div class="prompt-line">
+          <span class="prompt-user">halloween</span><span class="prompt-host">@macbook</span>
+          <span class="prompt-dir">~/Documents/halloween-theme-pack</span>
+          <span class="prompt-branch">git:(main)</span>
+          <span class="prompt-arrow">❯</span>
+          <span class="prompt-cmd">python3 validate.py</span>
         </div>
-        <div class="tmux-right">"Orca" 31-Oct 23:59</div>
+        <div class="term-out">
+          ============================================================<br>
+          🎃 <span class="term-highlight">Halloween Theme Pack</span> - Validation Suite<br>
+          ============================================================<br>
+          [1/5] Checking WCAG AA Contrast Ratios (text &gt;= 4.5:1)...<br>
+          &nbsp;&nbsp;<span class="term-success">✓ Active Palette: text <span id="term-contrast">15.09:1</span> (WCAG AA Pass)</span><br>
+          [2/5] Checking Theme Names (No duplicate collisions)...<br>
+          &nbsp;&nbsp;<span class="term-success">✓ Unique theme names across all variants</span><br>
+          [3/5] Verifying Generated Files Existence...<br>
+          &nbsp;&nbsp;<span class="term-success">✓ Total theme files checked: 64 files (32 Dark + 32 Light)</span><br>
+          Result: <span class="term-success">✅ ALL CHECKS PASSED</span>
+        </div>
+
+        <div class="term-palette-bar" id="term-palette-bar"></div>
+
+        <div class="prompt-line">
+          <span class="prompt-user">halloween</span><span class="prompt-host">@macbook</span>
+          <span class="prompt-dir">~/Documents/halloween-theme-pack</span>
+          <span class="prompt-arrow">❯</span>
+          <span class="prompt-cmd">halloween apply --variant=<span id="term-variant-arg">dark</span></span>
+        </div>
+        <div class="term-out">
+          <span class="term-cyan">✨ Done! Applied Halloween theme across all detected apps.</span>
+        </div>
       </div>
     </div>
 
-    <!-- Side-by-Side App Mockups -->
+    <!-- Editor Mockup -->
     <h2 class="section-title">Editor &amp; Messaging UI</h2>
-    <div class="mockups-grid">
-      <!-- VS Code Mockup -->
-      <div class="mockup-window">
-        <div class="window-header">
-          <div class="window-dots">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
-          </div>
-          <div class="window-title">VS Code — generate.py</div>
+    <div class="mockup-window">
+      <div class="window-header">
+        <div class="window-dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
         </div>
-        <div class="editor-layout">
-          <div class="editor-activity">
-            <span class="act-icon active">📁</span>
-            <span class="act-icon">🔍</span>
-            <span class="act-icon">🌿</span>
-            <span class="act-icon">⚙️</span>
-          </div>
-          <div class="editor-sidebar">
-            <div class="sidebar-heading">Explorer</div>
-            <div class="file-item active">🐍 generate.py</div>
-            <div class="file-item">🛡️ validate.py</div>
-            <div class="file-item">🌐 preview.html</div>
-            <div class="file-item">📄 README.md</div>
-          </div>
-          <div class="editor-content">
-            <div class="editor-tabs">
-              <div class="editor-tab">generate.py</div>
-            </div>
-            <div class="editor-code"><span class="c-cmt"># Single source of truth palette</span>
-<span class="c-kw">def</span> <span class="c-fn">build_theme</span>(name: <span class="c-typ">str</span>, variant: <span class="c-typ">str</span>):
-    palette <span class="c-op">=</span> {
-        <span class="c-str">"accent"</span>: <span class="c-str">"#ff6b35"</span>,  <span class="c-cmt"># pumpkin</span>
-        <span class="c-str">"slime"</span>: <span class="c-str">"#39ff14"</span>,   <span class="c-cmt"># green</span>
-        <span class="c-str">"count"</span>: <span class="c-num">31</span>,
-        <span class="c-str">"enabled"</span>: <span class="c-kw">True</span>
-    }
-    <span class="c-kw">return</span> palette[<span class="c-str">"accent"</span>]</div>
-          </div>
+        <div class="window-title">Visual Studio Code — generate.py</div>
+      </div>
+      <div class="editor-layout">
+        <div class="editor-sidebar">
+          <div class="sidebar-heading">EXPLORER</div>
+          <div class="file-item active">📄 generate.py</div>
+          <div class="file-item">📄 validate.py</div>
+          <div class="file-item">📄 README.md</div>
+          <div class="file-item">📁 themes/terminal</div>
+          <div class="file-item">📁 themes/editor</div>
+          <div class="file-item">📁 themes/app</div>
+          <div class="file-item">📁 themes/light</div>
+        </div>
+        <div class="editor-main">
+          <div class="code-line"><span class="line-no">1</span><span><span class="syn-com"># Halloween Theme Pack - Single Source of Truth</span></span></div>
+          <div class="code-line"><span class="line-no">2</span><span><span class="syn-kw">import</span> json, os</span></div>
+          <div class="code-line"><span class="line-no">3</span><span></span></div>
+          <div class="code-line"><span class="line-no">4</span><span><span class="syn-kw">class</span> <span class="syn-type">ThemeGenerator</span>:</span></div>
+          <div class="code-line"><span class="line-no">5</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-kw">def</span> <span class="syn-fn">__init__</span>(self, palette: <span class="syn-type">dict</span>):</span></div>
+          <div class="code-line"><span class="line-no">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.accent = palette[<span class="syn-str">"accent"</span>] <span class="syn-com"># Pumpkin Orange</span></span></div>
+          <div class="code-line"><span class="line-no">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.status = palette[<span class="syn-str">"success"</span>] <span class="syn-com"># Slime Green</span></span></div>
+          <div class="code-line"><span class="line-no">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.error_rate = <span class="syn-num">0</span> <span class="syn-com"># 100% WCAG Valid</span></span></div>
+          <div class="code-line"><span class="line-no">9</span><span></span></div>
+          <div class="code-line"><span class="line-no">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-kw">def</span> <span class="syn-fn">build</span>(self) <span class="syn-op">-&gt;</span> <span class="syn-type">bool</span>:</span></div>
+          <div class="code-line"><span class="line-no">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-kw">return</span> self.accent <span class="syn-op">is</span> <span class="syn-kw">not</span> <span class="syn-kw">None</span></span></div>
         </div>
       </div>
+    </div>
 
-      <!-- Chat / Discord / Slack Mockup -->
-      <div class="mockup-window">
-        <div class="window-header">
-          <div class="window-dots">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
-          </div>
-          <div class="window-title">Discord / Slack / Orca Chat</div>
+    <!-- UI Components Preview -->
+    <h2 class="section-title">Design System Components</h2>
+    <div class="components-grid">
+      <div class="component-card">
+        <div class="card-title">🔘 Action Buttons</div>
+        <div class="btn-row">
+          <button class="preview-btn primary">Pumpkin Accent</button>
+          <button class="preview-btn secondary">Surface Card</button>
+          <button class="preview-btn destructive">Blood Red</button>
         </div>
-        <div class="chat-layout">
-          <div class="chat-sidebar">
-            <div class="sidebar-heading">Channels</div>
-            <div class="chat-channel active"># halloween-themes</div>
-            <div class="chat-channel"># pumpkin-patch</div>
-            <div class="chat-channel"># release-log</div>
-          </div>
-          <div class="chat-main">
-            <div class="chat-messages">
-              <div class="chat-msg">
-                <div class="chat-avatar">🎃</div>
-                <div>
-                  <div class="msg-header">
-                    <span class="msg-author">PumpkinKing</span>
-                    <span class="msg-time">Today at 10:31 PM</span>
-                  </div>
-                  <div class="msg-text">
-                    Just generated the new <strong>Halloween Day</strong> light theme! All 15 formats match WCAG AA contrast standards.
-                  </div>
-                  <div class="reaction-pill">🎃 14</div>
-                </div>
-              </div>
-              <div class="chat-msg">
-                <div class="chat-avatar">👻</div>
-                <div>
-                  <div class="msg-header">
-                    <span class="msg-author">SpookyDev</span>
-                    <span class="msg-time">Today at 10:33 PM</span>
-                  </div>
-                  <div class="msg-text">
-                    Windows Terminal, Hyper, Tabby, and Rio are supported out of the box now! 🚀
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="chat-input">
-              <span>Message #halloween-themes...</span>
-              <span>🎃</span>
-            </div>
-          </div>
+        <p style="font-size: 0.85rem; color: var(--muted);">Buttons designed with proper WCAG text contrast and distinct interactive states.</p>
+      </div>
+
+      <div class="component-card">
+        <div class="card-title">💬 Message Callout</div>
+        <div style="background: var(--secondary); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px;">
+          <div style="font-weight: 700; color: var(--accent); margin-bottom: 4px;">Spooky Notification</div>
+          <div style="font-size: 0.85rem; color: var(--fg);">Themes synchronized across 31 modern developer applications.</div>
         </div>
       </div>
     </div>
 
     <!-- Supported Applications -->
-    <h2 class="section-title">Supported Applications (15 Formats)</h2>
+    <h2 class="section-title">Supported Applications (31 Formats)</h2>
     <div class="formats-list">
       <div class="format-card"><span class="format-name">Warp / Orca</span><span class="format-type">.yaml</span></div>
       <div class="format-card"><span class="format-name">iTerm2</span><span class="format-type">.itermcolors</span></div>
@@ -1054,14 +1313,46 @@
       <div class="format-card"><span class="format-name">Hyper</span><span class="format-type">.js</span></div>
       <div class="format-card"><span class="format-name">Tabby</span><span class="format-type">.yaml</span></div>
       <div class="format-card"><span class="format-name">Rio Terminal</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">K9s (Kubernetes)</span><span class="format-type">.yaml</span></div>
+      <div class="format-card"><span class="format-name">Base16 / Tinted</span><span class="format-type">.yaml</span></div>
+      <div class="format-card"><span class="format-name">Yazi (Filer)</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">Glamour / Glow</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">Pywal (Linux Rice)</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">btop++</span><span class="format-type">.theme</span></div>
       <div class="format-card"><span class="format-name">VS Code</span><span class="format-type">.json</span></div>
-      <div class="format-card"><span class="format-name">Discord (BetterDiscord)</span><span class="format-type">.css</span></div>
+      <div class="format-card"><span class="format-name">Obsidian</span><span class="format-type">.css</span></div>
+      <div class="format-card"><span class="format-name">Xcode</span><span class="format-type">.xccolortheme</span></div>
+      <div class="format-card"><span class="format-name">Discord</span><span class="format-type">.css</span></div>
       <div class="format-card"><span class="format-name">Slack</span><span class="format-type">.txt</span></div>
       <div class="format-card"><span class="format-name">tmux</span><span class="format-type">.conf</span></div>
       <div class="format-card"><span class="format-name">zsh Prompt</span><span class="format-type">.zsh</span></div>
+      <div class="format-card"><span class="format-name">Raycast</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">Lazydocker</span><span class="format-type">.yaml</span></div>
+      <div class="format-card"><span class="format-name">W3C Design Tokens</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">fish shell</span><span class="format-type">.fish</span></div>
+      <div class="format-card"><span class="format-name">Starship Prompt</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">oh-my-posh</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">tig (Git TUI)</span><span class="format-type">.tigrc</span></div>
+      <div class="format-card"><span class="format-name">gitui</span><span class="format-type">.toml</span></div>
     </div>
 
   </div>
+
+  <!-- SVG Filters for Colorblind Modes -->
+  <svg style="display: none" aria-hidden="true">
+    <filter id="deuteranopia">
+      <feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0" />
+    </filter>
+    <filter id="protanopia">
+      <feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0" />
+    </filter>
+    <filter id="tritanopia">
+      <feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0" />
+    </filter>
+    <filter id="achromatopsia">
+      <feColorMatrix type="matrix" values="0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0 0 0 1 0" />
+    </filter>
+  </svg>
 
   <div class="toast" id="toast">Copied to clipboard!</div>
 
@@ -1069,20 +1360,21 @@
     // Palettes Data
     const PALETTES = {
       dark: {
+        id: "halloween",
         name: "Halloween (Dark)",
         contrast: "15.09:1 (WCAG AAA)",
         accentContrast: "6.49:1 (WCAG AA)",
         roles: [
-          { name: "Background", hex: "#1a0d2e" },
-          { name: "Foreground", hex: "#f4e7d3" },
-          { name: "Accent (Pumpkin)", hex: "#ff6b35" },
-          { name: "Success (Slime)", hex: "#39ff14" },
-          { name: "Destructive", hex: "#ff4d6d" },
-          { name: "Secondary", hex: "#2d1b4e" },
-          { name: "Card", hex: "#241340" },
-          { name: "Muted", hex: "#b8a9d9" },
-          { name: "Border", hex: "#3d2a5e" },
-          { name: "Sidebar", hex: "#150a24" },
+          { key: "background", name: "Background", hex: "#1a0d2e" },
+          { key: "foreground", name: "Foreground", hex: "#f4e7d3" },
+          { key: "accent", name: "Accent (Pumpkin)", hex: "#ff6b35" },
+          { key: "success", name: "Success (Slime)", hex: "#39ff14" },
+          { key: "destructive", name: "Destructive", hex: "#ff4d6d" },
+          { key: "secondary", name: "Secondary", hex: "#2d1b4e" },
+          { key: "card", name: "Card", hex: "#241340" },
+          { key: "muted", name: "Muted", hex: "#b8a9d9" },
+          { key: "border", name: "Border", hex: "#3d2a5e" },
+          { key: "sidebar", name: "Sidebar", hex: "#150a24" },
         ],
         ansi: [
           { name: "black", hex: "#2d1b4e" },
@@ -1106,20 +1398,21 @@
         ]
       },
       light: {
+        id: "halloween-light",
         name: "Halloween Day (Light)",
         contrast: "15.73:1 (WCAG AAA)",
         accentContrast: "4.61:1 (WCAG AA)",
         roles: [
-          { name: "Background (Cream)", hex: "#faf4eb" },
-          { name: "Foreground (Purple)", hex: "#241432" },
-          { name: "Accent (Pumpkin)", hex: "#bf4904" },
-          { name: "Success (Witch Green)", hex: "#1b772d" },
-          { name: "Destructive (Crimson)", hex: "#b81438" },
-          { name: "Secondary", hex: "#e8dcce" },
-          { name: "Card", hex: "#f2e7d8" },
-          { name: "Muted", hex: "#756388" },
-          { name: "Border", hex: "#d8c8b4" },
-          { name: "Sidebar", hex: "#f4ece1" },
+          { key: "background", name: "Background (Cream)", hex: "#faf4eb" },
+          { key: "foreground", name: "Foreground (Purple)", hex: "#241432" },
+          { key: "accent", name: "Accent (Pumpkin)", hex: "#bf4904" },
+          { key: "success", name: "Success (Witch Green)", hex: "#1b772d" },
+          { key: "destructive", name: "Destructive (Crimson)", hex: "#b81438" },
+          { key: "secondary", name: "Secondary", hex: "#e8dcce" },
+          { key: "card", name: "Card", hex: "#f2e7d8" },
+          { key: "muted", name: "Muted", hex: "#756388" },
+          { key: "border", name: "Border", hex: "#d8c8b4" },
+          { key: "sidebar", name: "Sidebar", hex: "#f4ece1" },
         ],
         ansi: [
           { name: "black", hex: "#241432" },
@@ -1141,10 +1434,125 @@
           { name: "bright cyan", hex: "#0284c7" },
           { name: "bright white", hex: "#241432" },
         ]
+      },
+      oled: {
+        id: "halloween-oled",
+        name: "Halloween OLED (Pure Void)",
+        contrast: "17.22:1 (WCAG AAA)",
+        accentContrast: "7.41:1 (WCAG AAA)",
+        roles: [
+          { key: "background", name: "Background (OLED)", hex: "#000000" },
+          { key: "foreground", name: "Foreground", hex: "#f4e7d3" },
+          { key: "accent", name: "Accent (Pumpkin)", hex: "#ff6b35" },
+          { key: "success", name: "Success (Slime)", hex: "#39ff14" },
+          { key: "destructive", name: "Destructive", hex: "#ff4d6d" },
+          { key: "secondary", name: "Secondary", hex: "#1a0a2a" },
+          { key: "card", name: "Card", hex: "#12091c" },
+          { key: "muted", name: "Muted", hex: "#b8a9d9" },
+          { key: "border", name: "Border", hex: "#2c1845" },
+          { key: "sidebar", name: "Sidebar", hex: "#08040d" },
+        ],
+        ansi: [
+          { name: "black", hex: "#1a0a2a" },
+          { name: "red", hex: "#ff4d6d" },
+          { name: "green", hex: "#39ff14" },
+          { name: "yellow", hex: "#ffb347" },
+          { name: "blue", hex: "#6b8cff" },
+          { name: "magenta", hex: "#c77dff" },
+          { name: "cyan", hex: "#5ffbf1" },
+          { name: "white", hex: "#f4e7d3" },
+        ],
+        bright: [
+          { name: "bright black", hex: "#3b1e5c" },
+          { name: "bright red", hex: "#ff7a95" },
+          { name: "bright green", hex: "#7fff6b" },
+          { name: "bright yellow", hex: "#ffd28a" },
+          { name: "bright blue", hex: "#9db3ff" },
+          { name: "bright magenta", hex: "#ddb3ff" },
+          { name: "bright cyan", hex: "#9dfff7" },
+          { name: "bright white", hex: "#ffffff" },
+        ]
+      },
+      pastel: {
+        id: "halloween-pastel",
+        name: "Halloween Pastel (Spooky Kawaii)",
+        contrast: "11.98:1 (WCAG AAA)",
+        accentContrast: "4.68:1 (WCAG AA)",
+        roles: [
+          { key: "background", name: "Background (Lilac Mist)", hex: "#faf5fc" },
+          { key: "foreground", name: "Foreground (Deep Plum)", hex: "#3c2a4d" },
+          { key: "accent", name: "Accent (Pumpkin Coral)", hex: "#bf4904" },
+          { key: "success", name: "Success (Witch Green)", hex: "#1b772d" },
+          { key: "destructive", name: "Destructive (Kawaii Rose)", hex: "#b81438" },
+          { key: "secondary", name: "Secondary", hex: "#e9daf2" },
+          { key: "card", name: "Card", hex: "#f2e8f7" },
+          { key: "muted", name: "Muted", hex: "#756388" },
+          { key: "border", name: "Border", hex: "#dcc9e8" },
+          { key: "sidebar", name: "Sidebar", hex: "#f5ecfa" },
+        ],
+        ansi: [
+          { name: "black", hex: "#3c2a4d" },
+          { name: "red", hex: "#b81438" },
+          { name: "green", hex: "#1b772d" },
+          { name: "yellow", hex: "#9e6000" },
+          { name: "blue", hex: "#2b4acb" },
+          { name: "magenta", hex: "#8b3da8" },
+          { name: "cyan", hex: "#0e7490" },
+          { name: "white", hex: "#dcc9e8" },
+        ],
+        bright: [
+          { name: "bright black", hex: "#674f78" },
+          { name: "bright red", hex: "#cf2248" },
+          { name: "bright green", hex: "#228b37" },
+          { name: "bright yellow", hex: "#b56f00" },
+          { name: "bright blue", hex: "#3b5bdb" },
+          { name: "bright magenta", hex: "#a855f7" },
+          { name: "bright cyan", hex: "#0284c7" },
+          { name: "bright white", hex: "#3c2a4d" },
+        ]
+      },
+      cyberpunk: {
+        id: "halloween-cyberpunk",
+        name: "Halloween Cyberpunk (Neon)",
+        contrast: "18.98:1 (WCAG AAA)",
+        accentContrast: "7.10:1 (WCAG AAA)",
+        roles: [
+          { key: "background", name: "Background (Plasma Void)", hex: "#0d0221" },
+          { key: "foreground", name: "Foreground (Neon White)", hex: "#fcf7ff" },
+          { key: "accent", name: "Accent (Neon Pumpkin)", hex: "#ff6d00" },
+          { key: "success", name: "Success (Laser Slime)", hex: "#00f5d4" },
+          { key: "destructive", name: "Destructive (Plasma Red)", hex: "#ff0054" },
+          { key: "secondary", name: "Secondary", hex: "#240046" },
+          { key: "card", name: "Card", hex: "#19053b" },
+          { key: "muted", name: "Muted", hex: "#9d79bc" },
+          { key: "border", name: "Border", hex: "#5a189a" },
+          { key: "sidebar", name: "Sidebar", hex: "#090014" },
+        ],
+        ansi: [
+          { name: "black", hex: "#240046" },
+          { name: "red", hex: "#ff0054" },
+          { name: "green", hex: "#00f5d4" },
+          { name: "yellow", hex: "#ffee32" },
+          { name: "blue", hex: "#7000ff" },
+          { name: "magenta", hex: "#c77dff" },
+          { name: "cyan", hex: "#00f5d4" },
+          { name: "white", hex: "#fcf7ff" },
+        ],
+        bright: [
+          { name: "bright black", hex: "#5a189a" },
+          { name: "bright red", hex: "#ff3377" },
+          { name: "bright green", hex: "#5cffee" },
+          { name: "bright yellow", hex: "#fff275" },
+          { name: "bright blue", hex: "#9d4edd" },
+          { name: "bright magenta", hex: "#e0aaff" },
+          { name: "bright cyan", hex: "#70fff3" },
+          { name: "bright white", hex: "#ffffff" },
+        ]
       }
     };
 
     let currentTheme = "dark";
+    let customColors = {};
 
     function showToast(text) {
       const toast = document.getElementById("toast");
@@ -1163,16 +1571,87 @@
       });
     }
 
+    // ---------- WCAG Contrast Engine ----------
+    function srgbToLinear(c) {
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    }
+
+    function getRelativeLuminance(hex) {
+      let h = hex.replace("#", "");
+      if (h.length === 3) h = h.split("").map(c => c + c).join("");
+      const r = srgbToLinear(parseInt(h.substring(0, 2), 16) / 255);
+      const g = srgbToLinear(parseInt(h.substring(2, 4), 16) / 255);
+      const b = srgbToLinear(parseInt(h.substring(4, 6), 16) / 255);
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    function calculateContrast(hex1, hex2) {
+      const l1 = getRelativeLuminance(hex1);
+      const l2 = getRelativeLuminance(hex2);
+      const lighter = Math.max(l1, l2);
+      const darker = Math.min(l1, l2);
+      return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    function updateInspector(bgHex, fgHex) {
+      const ratio = calculateContrast(bgHex, fgHex);
+      const ratioFormatted = ratio.toFixed(2) + ":1";
+      document.getElementById("insp-ratio-display").textContent = ratioFormatted;
+
+      const meterWidth = Math.min(100, (ratio / 21) * 100);
+      document.getElementById("insp-meter-bar").style.width = meterWidth + "%";
+
+      // Badges
+      const passAA = ratio >= 4.5;
+      const passAAA = ratio >= 7.0;
+      const passLarge = ratio >= 3.0;
+
+      const setBadge = (id, pass) => {
+        const el = document.getElementById(id);
+        el.className = "wcag-badge " + (pass ? "pass" : "fail");
+      };
+
+      setBadge("badge-normal-aa", passAA);
+      setBadge("badge-normal-aaa", passAAA);
+      setBadge("badge-large-aa", passLarge);
+      setBadge("badge-ui-aa", passLarge);
+
+      const statusBadge = document.getElementById("insp-status-badge");
+      if (passAAA) {
+        statusBadge.textContent = "✓ WCAG AAA PASS";
+        statusBadge.style.color = "var(--success)";
+        statusBadge.style.borderColor = "var(--success)";
+      } else if (passAA) {
+        statusBadge.textContent = "✓ WCAG AA PASS";
+        statusBadge.style.color = "var(--success)";
+        statusBadge.style.borderColor = "var(--success)";
+      } else {
+        statusBadge.textContent = "⚠ LOW CONTRAST";
+        statusBadge.style.color = "var(--destructive)";
+        statusBadge.style.borderColor = "var(--destructive)";
+      }
+    }
+
+    // ---------- Render UI ----------
     function renderSwatches(themeKey) {
       const pal = PALETTES[themeKey];
 
-      // Update banner metrics
       document.getElementById("active-variant-name").textContent = pal.name;
-      document.getElementById("val-contrast").textContent = pal.contrast;
-      document.getElementById("val-accent-contrast").textContent = pal.accentContrast;
+      document.getElementById("val-contrast").textContent = pal.contrast.split(" ")[0];
+      document.getElementById("val-accent-contrast").textContent = pal.accentContrast.split(" ")[0];
       document.getElementById("term-contrast").textContent = pal.contrast.split(" ")[0];
+      document.getElementById("term-variant-arg").textContent = themeKey;
 
-      // Render Core Swatches
+      // Update Inspector inputs
+      const bgHex = pal.roles.find(r => r.key === "background").hex;
+      const fgHex = pal.roles.find(r => r.key === "foreground").hex;
+      document.getElementById("insp-bg-picker").value = bgHex;
+      document.getElementById("insp-bg-text").value = bgHex;
+      document.getElementById("insp-fg-picker").value = fgHex;
+      document.getElementById("insp-fg-text").value = fgHex;
+      updateInspector(bgHex, fgHex);
+
+      // Core Swatches
       const coreGrid = document.getElementById("core-swatches");
       coreGrid.innerHTML = pal.roles.map(r => `
         <div class="swatch-card" onclick="copyToClipboard('${r.hex}')">
@@ -1184,7 +1663,7 @@
         </div>
       `).join("");
 
-      // Render ANSI Normal
+      // ANSI Normal
       const normalRow = document.getElementById("ansi-normal-row");
       normalRow.innerHTML = pal.ansi.map(a => `
         <div class="ansi-swatch" onclick="copyToClipboard('${a.hex}')">
@@ -1194,7 +1673,7 @@
         </div>
       `).join("");
 
-      // Render ANSI Bright
+      // ANSI Bright
       const brightRow = document.getElementById("ansi-bright-row");
       brightRow.innerHTML = pal.bright.map(b => `
         <div class="ansi-swatch" onclick="copyToClipboard('${b.hex}')">
@@ -1204,44 +1683,254 @@
         </div>
       `).join("");
 
-      // Render Terminal ANSI blocks bar
+      // Terminal Bar
       const termBar = document.getElementById("term-palette-bar");
       termBar.innerHTML = pal.ansi.concat(pal.bright).map(c => `
         <div class="t-bar-block" style="background-color: ${c.hex};" title="${c.name}: ${c.hex}"></div>
       `).join("");
+
+      // Studio Tweakers
+      renderStudioTweakers(pal);
+    }
+
+    function renderStudioTweakers(pal) {
+      customColors = {};
+      pal.roles.forEach(r => {
+        customColors[r.key] = r.hex;
+      });
+
+      const container = document.getElementById("studio-tweakers");
+      container.innerHTML = pal.roles.map(r => `
+        <div class="tweaker-item">
+          <span class="tweaker-label">${r.name}</span>
+          <div class="tweaker-inputs">
+            <input type="color" class="tweaker-color" data-key="${r.key}" value="${r.hex}">
+            <input type="text" class="tweaker-text" data-key="${r.key}" value="${r.hex}">
+          </div>
+        </div>
+      `).join("");
+
+      // Attach event listeners
+      container.querySelectorAll(".tweaker-color").forEach(input => {
+        input.addEventListener("input", (e) => {
+          const key = e.target.getAttribute("data-key");
+          const val = e.target.value;
+          customColors[key] = val;
+          container.querySelector(`.tweaker-text[data-key="${key}"]`).value = val;
+          applyCustomColor(key, val);
+          updateStudioExport();
+        });
+      });
+
+      container.querySelectorAll(".tweaker-text").forEach(input => {
+        input.addEventListener("input", (e) => {
+          const key = e.target.getAttribute("data-key");
+          const val = e.target.value;
+          if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+            customColors[key] = val;
+            container.querySelector(`.tweaker-color[data-key="${key}"]`).value = val;
+            applyCustomColor(key, val);
+            updateStudioExport();
+          }
+        });
+      });
+
+      updateStudioExport();
+    }
+
+    function applyCustomColor(key, val) {
+      const varMap = {
+        background: "--bg",
+        foreground: "--fg",
+        accent: "--accent",
+        success: "--success",
+        destructive: "--destructive",
+        card: "--card",
+        secondary: "--secondary",
+        muted: "--muted",
+        border: "--border",
+        sidebar: "--sidebar"
+      };
+      if (varMap[key]) {
+        document.documentElement.style.setProperty(varMap[key], val);
+      }
+    }
+
+    function updateStudioExport() {
+      const format = document.getElementById("export-format-select").value;
+      const c = customColors;
+      let out = "";
+
+      if (format === "warp") {
+        out = `name: Custom Halloween\naccent: '${c.accent}'\ncursor: '${c.accent}'\nbackground: '${c.background}'\ndetails: darker\nforeground: '${c.foreground}'\nterminal_colors:\n  normal:\n    black: '${c.secondary}'\n    red: '${c.destructive}'\n    green: '${c.success}'\n    yellow: '#ffb347'\n    blue: '#6b8cff'\n    magenta: '#c77dff'\n    cyan: '#5ffbf1'\n    white: '${c.foreground}'`;
+        out = out.replace(/\\n/g, "\n");
+      } else if (format === "vscode") {
+        out = JSON.stringify({
+          name: "Custom Halloween",
+          type: "dark",
+          colors: {
+            "editor.background": c.background,
+            "editor.foreground": c.foreground,
+            "activityBar.background": c.sidebar,
+            "sideBar.background": c.sidebar,
+            "statusBar.background": c.secondary,
+            "button.background": c.accent,
+            "focusBorder": c.accent
+          }
+        }, null, 2);
+      } else if (format === "css") {
+        out = `:root {\n  --bg: ${c.background};\n  --fg: ${c.foreground};\n  --accent: ${c.accent};\n  --success: ${c.success};\n  --destructive: ${c.destructive};\n  --card: ${c.card};\n  --secondary: ${c.secondary};\n  --muted: ${c.muted};\n  --border: ${c.border};\n  --sidebar: ${c.sidebar};\n}`;
+        out = out.replace(/\\n/g, "\n");
+      } else if (format === "alacritty") {
+        out = `[colors.primary]\nbackground = "${c.background}"\nforeground = "${c.foreground}"\n\n[colors.cursor]\ncursor = "${c.accent}"\n\n[colors.normal]\nblack = "${c.secondary}"\nred = "${c.destructive}"\ngreen = "${c.success}"`;
+        out = out.replace(/\\n/g, "\n");
+      } else if (format === "raycast") {
+        out = JSON.stringify({
+          version: "1",
+          name: "Custom Halloween",
+          appearance: "dark",
+          colors: {
+            background: c.background,
+            backgroundSecondary: c.card,
+            text: c.foreground,
+            accent: c.accent,
+            red: c.destructive,
+            green: c.success
+          }
+        }, null, 2);
+      } else if (format === "tokens") {
+        out = JSON.stringify({
+          color: {
+            background: { "$value": c.background, "$type": "color" },
+            foreground: { "$value": c.foreground, "$type": "color" },
+            accent: { "$value": c.accent, "$type": "color" },
+            success: { "$value": c.success, "$type": "color" },
+            destructive: { "$value": c.destructive, "$type": "color" }
+          }
+        }, null, 2);
+      } else if (format === "k9s") {
+        out = `k9s:\n  body:\n    fgColor: "${c.foreground}"\n    bgColor: "${c.background}"\n    logoColor: "${c.accent}"\n  views:\n    table:\n      fgColor: "${c.foreground}"\n      bgColor: "${c.background}"\n      cursorBgColor: "${c.accent}"`;
+      } else if (format === "yazi") {
+        out = `[mgr]\ncwd = { fg = "${c.foreground}" }\nhovered = { fg = "${c.background}", bg = "${c.accent}" }\ntab_active = { fg = "${c.background}", bg = "${c.accent}" }\nborder_style = { fg = "${c.border}" }`;
+      } else if (format === "starship") {
+        out = `palette = "custom_halloween"\n\n[palettes.custom_halloween]\nbackground = "${c.background}"\nforeground = "${c.foreground}"\naccent = "${c.accent}"\nsuccess = "${c.success}"\ndestructive = "${c.destructive}"`;
+      } else if (format === "fish") {
+        out = `set -g fish_color_normal '${c.foreground}'\nset -g fish_color_command '${c.success}'\nset -g fish_color_quote '${c.accent}'\nset -g fish_color_error '${c.destructive}'`;
+      } else if (format === "btop") {
+        out = `theme[main_bg]="${c.background}"\ntheme[main_fg]="${c.foreground}"\ntheme[title]="${c.accent}"\ntheme[hi_fg]="${c.accent}"\ntheme[cpu_start]="${c.success}"`;
+      }
+
+      document.getElementById("studio-export-text").value = out;
     }
 
     function setTheme(theme) {
       currentTheme = theme;
       document.body.setAttribute("data-theme", theme);
-      const icon = document.getElementById("toggle-icon");
-      const label = document.getElementById("toggle-label");
-
-      if (theme === "dark") {
-        icon.textContent = "☀️";
-        label.textContent = "Switch to Halloween Day";
-      } else {
-        icon.textContent = "🌙";
-        label.textContent = "Switch to Halloween Night";
-      }
-
+      document.getElementById("variant-select").value = theme;
+      // Clear manual style overrides
+      document.documentElement.removeAttribute("style");
       renderSwatches(theme);
     }
 
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-      setTheme(currentTheme === "dark" ? "light" : "dark");
+    // ---------- Event Listeners ----------
+    document.getElementById("variant-select").addEventListener("change", (e) => {
+      setTheme(e.target.value);
     });
 
-    // Keyboard shortcut 't' to toggle theme
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "t" || e.key === "T") {
-        if (e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
-          setTheme(currentTheme === "dark" ? "light" : "dark");
+    document.getElementById("cb-select").addEventListener("change", (e) => {
+      const mode = e.target.value;
+      ["filter-deuteranopia", "filter-protanopia", "filter-tritanopia", "filter-achromatopsia"].forEach(c => document.body.classList.remove(c));
+      if (mode !== "none") {
+        document.body.classList.add(`filter-${mode}`);
+      }
+      showToast(mode === "none" ? "Vision: Normal" : `Vision mode: ${mode}`);
+    });
+
+    // Accessible Mode Toggle
+    let isAccessibleMode = false;
+    const accessibleToggleBtn = document.getElementById("accessible-toggle");
+    if (accessibleToggleBtn) {
+      accessibleToggleBtn.addEventListener("click", () => {
+        isAccessibleMode = !isAccessibleMode;
+        if (isAccessibleMode) {
+          document.body.classList.add("accessible-mode");
+          accessibleToggleBtn.textContent = "🛡️ Safe Mode: ON";
+          accessibleToggleBtn.style.background = "var(--accent)";
+          accessibleToggleBtn.style.color = "var(--bg)";
+          showToast("Colorblind-Safe Accessible Mode: Enabled (Cyan contrast boost)");
+        } else {
+          document.body.classList.remove("accessible-mode");
+          accessibleToggleBtn.textContent = "🛡️ Safe Mode: OFF";
+          accessibleToggleBtn.style.background = "var(--secondary)";
+          accessibleToggleBtn.style.color = "var(--fg)";
+          showToast("Colorblind-Safe Accessible Mode: Disabled");
         }
+      });
+    }
+
+    // Inspector Events
+    const inspBgPicker = document.getElementById("insp-bg-picker");
+    const inspBgText = document.getElementById("insp-bg-text");
+    const inspFgPicker = document.getElementById("insp-fg-picker");
+    const inspFgText = document.getElementById("insp-fg-text");
+
+    inspBgPicker.addEventListener("input", (e) => {
+      inspBgText.value = e.target.value;
+      updateInspector(e.target.value, inspFgText.value);
+    });
+    inspBgText.addEventListener("input", (e) => {
+      if (/^#[0-9a-fA-F]{6}$/.test(e.target.value)) {
+        inspBgPicker.value = e.target.value;
+        updateInspector(e.target.value, inspFgText.value);
       }
     });
 
-    // Initial render
+    inspFgPicker.addEventListener("input", (e) => {
+      inspFgText.value = e.target.value;
+      updateInspector(inspBgText.value, e.target.value);
+    });
+    inspFgText.addEventListener("input", (e) => {
+      if (/^#[0-9a-fA-F]{6}$/.test(e.target.value)) {
+        inspFgPicker.value = e.target.value;
+        updateInspector(inspBgText.value, e.target.value);
+      }
+    });
+
+    document.getElementById("insp-swap-btn").addEventListener("click", () => {
+      const bg = inspBgText.value;
+      const fg = inspFgText.value;
+      inspBgPicker.value = fg;
+      inspBgText.value = fg;
+      inspFgPicker.value = bg;
+      inspFgText.value = bg;
+      updateInspector(fg, bg);
+    });
+
+    // Studio Events
+    document.getElementById("export-format-select").addEventListener("change", updateStudioExport);
+
+    document.getElementById("studio-copy-btn").addEventListener("click", () => {
+      copyToClipboard(document.getElementById("studio-export-text").value);
+    });
+
+    document.getElementById("studio-download-btn").addEventListener("click", () => {
+      const text = document.getElementById("studio-export-text").value;
+      const format = document.getElementById("export-format-select").value;
+      const extMap = { warp: "yaml", vscode: "json", css: "css", alacritty: "toml", raycast: "json", tokens: "json" };
+      const blob = new Blob([text], { type: "text/plain" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `halloween-custom.${extMap[format] || "txt"}`;
+      a.click();
+      showToast(`Downloaded halloween-custom.${extMap[format] || "txt"}`);
+    });
+
+    document.getElementById("studio-reset-btn").addEventListener("click", () => {
+      setTheme(currentTheme);
+      showToast("Reset colors to active preset!");
+    });
+
+    // Initialize
     setTheme("dark");
   </script>
 </body>

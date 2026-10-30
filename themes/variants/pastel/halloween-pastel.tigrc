@@ -1,0 +1,13 @@
+# Halloween Pastel theme for tig
+color default "#3c2a4d" "#faf5fc" normal
+color cursor "#faf5fc" "#bf4904" bold
+color status.untracked "#b81438" default
+color status.modified "#9e6000" default
+color diff-header "#bf4904" default bold
+color diff-index "#0e7490" default
+color diff-chunk "#8b3da8" default
+color diff-add "#1b772d" default
+color diff-del "#b81438" default
+color line-number "#756388" default
+color title-blur "#756388" "#f2e8f7"
+color title-focus "#bf4904" "#f2e8f7" bold

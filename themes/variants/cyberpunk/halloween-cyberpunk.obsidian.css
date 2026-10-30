@@ -1,0 +1,19 @@
+/* Halloween Cyberpunk theme for Obsidian */
+.theme-dark {
+  --background-primary: #0d0221;
+  --background-primary-alt: #090014;
+  --background-secondary: #19053b;
+  --background-secondary-alt: #240046;
+  --background-modifier-border: #5a189a;
+  --text-normal: #fcf7ff;
+  --text-muted: #9d79bc;
+  --text-faint: #9d79bc;
+  --text-accent: #ff6d00;
+  --text-accent-hover: #ffee32;
+  --interactive-accent: #ff6d00;
+  --interactive-accent-hover: #ffee32;
+  --interactive-normal: #19053b;
+  --interactive-hover: #240046;
+  --scrollbar-bg: #0d0221;
+  --scrollbar-thumb-bg: #5a189a;
+}

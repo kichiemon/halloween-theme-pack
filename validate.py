@@ -6,6 +6,7 @@ Usage:
     python3 validate.py --themes-dir themes
 """
 import argparse
+import json
 import os
 import plistlib
 import re
@@ -48,7 +49,6 @@ class Validator:
         self.themes_dir = themes_dir
         self.passed: List[str] = []
         self.failed: List[Tuple[str, str]] = []
-        self.hex_regex = re.compile(r"#[0-9a-fA-F]{3,8}")
         self.strict_hex_regex = re.compile(r"^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
 
     def assert_true(self, condition: bool, description: str, error_msg: str):
@@ -61,11 +61,8 @@ class Validator:
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # Find all hashtag occurrences
         candidates = re.findall(r"#[0-9a-zA-Z]+", content)
         for hex_str in candidates:
-            # Skip comments or anchors if any (though themes rarely have long words after #)
-            # In our files, hex strings should strictly be #RGB or #RRGGBB
             if len(hex_str) in (4, 7):
                 is_valid = bool(self.strict_hex_regex.match(hex_str))
                 self.assert_true(
@@ -76,8 +73,7 @@ class Validator:
 
     def validate_warp(self, filepath: str, expected_name: str, expected_details: str):
         with open(filepath, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-        content = "".join(lines)
+            content = f.read()
         self.assert_true(f"name: {expected_name}" in content, f"Warp theme name in {filepath}", f"Missing or wrong name (expected {expected_name})")
         self.assert_true(f"details: {expected_details}" in content, f"Warp details in {filepath}", f"Missing details: {expected_details}")
         for field in ["accent:", "cursor:", "background:", "foreground:", "terminal_colors:", "normal:", "bright:"]:
@@ -142,7 +138,6 @@ class Validator:
             self.assert_true(f"color{i} " in content, f"Kitty color{i} in {filepath}", f"Missing color{i}")
 
     def validate_windows_terminal(self, filepath: str, expected_name: str):
-        import json
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -174,7 +169,6 @@ class Validator:
         self.assert_true(f"name: {expected_name}" in content, f"Tabby theme name in {filepath}", f"Missing or wrong name (expected {expected_name})")
         for k in ["foreground:", "background:", "cursor:", "selection:", "colors:"]:
             self.assert_true(k in content, f"Tabby key '{k}' in {filepath}", f"Missing key {k}")
-        # Count color list items
         color_items = re.findall(r"^\s*-\s*'#[0-9a-fA-F]{6}'", content, re.MULTILINE)
         self.assert_true(len(color_items) == 16, f"Tabby 16 colors in {filepath}", f"Expected 16 colors, found {len(color_items)}")
 
@@ -189,7 +183,6 @@ class Validator:
             self.assert_true(c in content, f"Rio color '{c}' in {filepath}", f"Missing color {c}")
 
     def validate_vscode(self, filepath: str, expected_name: str, expected_type: str):
-        import json
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -236,6 +229,153 @@ class Validator:
         self.assert_true("PROMPT=" in content, f"zsh PROMPT in {filepath}", "Missing PROMPT definition")
         self.assert_true("ZSH_HIGHLIGHT_STYLES" in content, f"zsh ZSH_HIGHLIGHT_STYLES in {filepath}", "Missing ZSH_HIGHLIGHT_STYLES")
 
+    # ---------- New Formats Validators ----------
+
+    def validate_k9s(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for field in ["k9s:", "body:", "prompt:", "dialog:", "frame:", "views:", "table:", "yaml:"]:
+            self.assert_true(field in content, f"K9s field '{field}' in {filepath}", f"Missing field {field}")
+
+    def validate_raycast(self, filepath: str, expected_name: str, expected_type: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true(data.get("name") == expected_name, f"Raycast name in {filepath}", f"Expected name {expected_name}")
+            self.assert_true(data.get("appearance") == expected_type, f"Raycast appearance in {filepath}", f"Expected appearance {expected_type}")
+            colors = data.get("colors", {})
+            for c in ["background", "text", "accent", "red", "green", "blue", "yellow", "cyan", "magenta"]:
+                self.assert_true(c in colors, f"Raycast color '{c}' in {filepath}", f"Missing color {c}")
+            share_url = data.get("shareUrl", "")
+            self.assert_true(share_url.startswith("raycast://theme?data="), f"Raycast shareUrl in {filepath}", "Missing or invalid shareUrl")
+        except Exception as e:
+            self.assert_true(False, f"Raycast JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_base16(self, filepath: str, expected_name: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true(f'scheme: "{expected_name}"' in content, f"Base16 scheme name in {filepath}", f"Missing scheme: {expected_name}")
+        self.assert_true('system: "base16"' in content, f"Base16 system spec in {filepath}", "Missing system: base16")
+        for i in range(16):
+            base_key = f"base0{hex(i)[2:].upper()}" if i < 16 else ""
+            self.assert_true(f"{base_key}:" in content, f"Base16 key '{base_key}' in {filepath}", f"Missing key {base_key}")
+
+    def validate_obsidian_css(self, filepath: str, expected_type: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        expected_class = f".theme-{expected_type}"
+        self.assert_true(expected_class in content, f"Obsidian class '{expected_class}' in {filepath}", f"Missing {expected_class}")
+        for var in ["--background-primary:", "--text-normal:", "--interactive-accent:", "--text-accent:"]:
+            self.assert_true(var in content, f"Obsidian CSS var '{var}' in {filepath}", f"Missing var {var}")
+
+    def validate_obsidian_manifest(self, filepath: str, expected_name: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true(data.get("name") == expected_name, f"Obsidian manifest name in {filepath}", f"Expected name {expected_name}")
+            self.assert_true("version" in data and "author" in data, f"Obsidian manifest fields in {filepath}", "Missing version or author")
+        except Exception as e:
+            self.assert_true(False, f"Obsidian manifest JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_yazi(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for sec in ["[mgr]", "[status]", "[select]", "[input]", "[completion]"]:
+            self.assert_true(sec in content, f"Yazi section '{sec}' in {filepath}", f"Missing section {sec}")
+        for k in ["cwd =", "hovered =", "find_keyword =", "marker_copied ="]:
+            self.assert_true(k in content, f"Yazi key '{k}' in {filepath}", f"Missing key {k}")
+
+    def validate_lazydocker(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for field in ["gui:", "theme:", "activeBorderColor:", "inactiveBorderColor:", "selectedLineBgColor:"]:
+            self.assert_true(field in content, f"Lazydocker field '{field}' in {filepath}", f"Missing field {field}")
+
+    def validate_xcode(self, filepath: str):
+        try:
+            with open(filepath, "rb") as f:
+                plist = plistlib.load(f)
+            self.assert_true(isinstance(plist, dict), f"Xcode plist parsed in {filepath}", "Xcode root is not a dict")
+            for k in ["DVTSourceTextBackground", "DVTSourceTextForeground", "DVTSourceTextInsertionPointColor", "DVTSourceTextSyntaxColors"]:
+                self.assert_true(k in plist, f"Xcode key '{k}' in {filepath}", f"Missing key {k}")
+            syntax_dict = plist.get("DVTSourceTextSyntaxColors", {})
+            for sk in ["xcode.syntax.keyword", "xcode.syntax.string", "xcode.syntax.comment", "xcode.syntax.number"]:
+                self.assert_true(sk in syntax_dict, f"Xcode syntax key '{sk}' in {filepath}", f"Missing syntax key {sk}")
+        except Exception as e:
+            self.assert_true(False, f"Xcode parsing {filepath}", f"Failed to parse plist: {e}")
+
+    def validate_glamour(self, filepath: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            for k in ["document", "heading", "link", "code", "strong"]:
+                self.assert_true(k in data, f"Glamour element '{k}' in {filepath}", f"Missing element {k}")
+        except Exception as e:
+            self.assert_true(False, f"Glamour JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_pywal(self, filepath: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true("special" in data and "colors" in data, f"Pywal structure in {filepath}", "Missing special or colors")
+            for i in range(16):
+                self.assert_true(f"color{i}" in data.get("colors", {}), f"Pywal color{i} in {filepath}", f"Missing color{i}")
+        except Exception as e:
+            self.assert_true(False, f"Pywal JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_tokens(self, filepath: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            color_group = data.get("color", {})
+            for k in ["background", "foreground", "accent", "success", "destructive"]:
+                self.assert_true(k in color_group and "$value" in color_group[k], f"Token '{k}' in {filepath}", f"Missing token {k}")
+        except Exception as e:
+            self.assert_true(False, f"Tokens JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_fish(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for cmd in ["set -g fish_color_normal", "set -g fish_color_command", "set -g fish_color_quote", "set -g fish_color_error"]:
+            self.assert_true(cmd in content, f"fish command '{cmd}' in {filepath}", f"Missing command {cmd}")
+
+    def validate_starship(self, filepath: str, expected_id: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assert_true(f'palette = "{expected_id}"' in content, f"Starship palette assignment in {filepath}", f"Missing palette = '{expected_id}'")
+        self.assert_true(f"[palettes.{expected_id}]" in content, f"Starship palette table in {filepath}", f"Missing table [palettes.{expected_id}]")
+        for k in ["background =", "foreground =", "accent =", "success =", "destructive ="]:
+            self.assert_true(k in content, f"Starship key '{k}' in {filepath}", f"Missing key {k}")
+
+    def validate_oh_my_posh(self, filepath: str):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assert_true("palette" in data and "blocks" in data, f"oh-my-posh structure in {filepath}", "Missing palette or blocks")
+            pal = data.get("palette", {})
+            for k in ["background", "foreground", "accent", "success", "destructive"]:
+                self.assert_true(k in pal, f"oh-my-posh palette key '{k}' in {filepath}", f"Missing palette key {k}")
+        except Exception as e:
+            self.assert_true(False, f"oh-my-posh JSON valid in {filepath}", f"Invalid JSON: {e}")
+
+    def validate_btop(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for k in ["theme[main_bg]=", "theme[main_fg]=", "theme[title]=", "theme[cpu_start]=", "theme[temp_start]="]:
+            self.assert_true(k in content, f"btop setting '{k}' in {filepath}", f"Missing setting {k}")
+
+    def validate_tig(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for k in ["color default", "color cursor", "color diff-header", "color diff-add", "color diff-del"]:
+            self.assert_true(k in content, f"tig setting '{k}' in {filepath}", f"Missing setting {k}")
+
+    def validate_gitui(self, filepath: str):
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        for k in ["selected_tab =", "command_fg =", "selection_bg =", "diff_line_add =", "diff_line_delete ="]:
+            self.assert_true(k in content, f"gitui key '{k}' in {filepath}", f"Missing key {k}")
+
     def run_all(self) -> bool:
         print("=" * 60)
         print("🎃 Halloween Theme Pack - Validation Suite")
@@ -243,48 +383,40 @@ class Validator:
 
         # 1. Palette Contrast Validation (WCAG AA: >= 4.5:1)
         print("\n[1/5] Checking WCAG AA Contrast Ratios (text >= 4.5:1)...")
-        from generate import DARK_PALETTE, LIGHT_PALETTE
+        from generate import DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE
 
-        # Dark palette check
-        dark_bg = DARK_PALETTE["background"]
-        dark_fg = DARK_PALETTE["foreground"]
-        dark_contrast = contrast_ratio(dark_bg, dark_fg)
-        self.assert_true(
-            dark_contrast >= 4.5,
-            f"Dark foreground/background contrast ({dark_contrast:.2f}:1)",
-            f"Contrast ratio {dark_contrast:.2f}:1 does not satisfy WCAG AA 4.5:1"
-        )
-        print(f"  ✓ Dark Theme (fg {dark_fg} vs bg {dark_bg}): {dark_contrast:.2f}:1 (WCAG AA Pass)")
+        palettes_to_check = [
+            ("Dark (Halloween)", DARK_PALETTE),
+            ("Light (Halloween Day)", LIGHT_PALETTE),
+            ("OLED (Pure Void)", OLED_PALETTE),
+            ("Pastel (Spooky Kawaii)", PASTEL_PALETTE),
+            ("Cyberpunk (Neon Pumpkin)", CYBERPUNK_PALETTE),
+        ]
 
-        # Light palette check
-        light_bg = LIGHT_PALETTE["background"]
-        light_fg = LIGHT_PALETTE["foreground"]
-        light_contrast = contrast_ratio(light_bg, light_fg)
-        self.assert_true(
-            light_contrast >= 4.5,
-            f"Light foreground/background contrast ({light_contrast:.2f}:1)",
-            f"Contrast ratio {light_contrast:.2f}:1 does not satisfy WCAG AA 4.5:1"
-        )
-        print(f"  ✓ Light Theme (fg {light_fg} vs bg {light_bg}): {light_contrast:.2f}:1 (WCAG AA Pass)")
-
-        # Extra accent / text checks
-        dark_accent_contrast = contrast_ratio(dark_bg, DARK_PALETTE["accent"])
-        light_accent_contrast = contrast_ratio(light_bg, LIGHT_PALETTE["accent"])
-        print(f"  ✓ Dark Theme Accent ({DARK_PALETTE['accent']} vs bg): {dark_accent_contrast:.2f}:1")
-        print(f"  ✓ Light Theme Accent ({LIGHT_PALETTE['accent']} vs bg): {light_accent_contrast:.2f}:1 (WCAG AA Pass)")
-        self.assert_true(
-            light_accent_contrast >= 4.5,
-            f"Light theme accent contrast ({light_accent_contrast:.2f}:1 >= 4.5:1)",
-            f"Accent contrast ratio {light_accent_contrast:.2f}:1 does not satisfy WCAG AA"
-        )
+        for pal_label, pal in palettes_to_check:
+            bg = pal["background"]
+            fg = pal["foreground"]
+            c_text = contrast_ratio(bg, fg)
+            self.assert_true(
+                c_text >= 4.5,
+                f"{pal_label} fg/bg contrast ({c_text:.2f}:1)",
+                f"Contrast ratio {c_text:.2f}:1 does not satisfy WCAG AA 4.5:1"
+            )
+            c_accent = contrast_ratio(bg, pal["accent"])
+            self.assert_true(
+                c_accent >= 4.5,
+                f"{pal_label} accent/bg contrast ({c_accent:.2f}:1)",
+                f"Accent contrast ratio {c_accent:.2f}:1 does not satisfy WCAG AA 4.5:1"
+            )
+            print(f"  ✓ {pal_label}: text {c_text:.2f}:1, accent {c_accent:.2f}:1 (WCAG AA Pass)")
 
         # 2. Duplicate Theme Names
         print("\n[2/5] Checking Theme Names (No duplicate collisions)...")
-        dark_name = DARK_PALETTE["name"]
-        light_name = LIGHT_PALETTE["name"]
-        self.assert_true(dark_name != light_name, "Distinct theme names for dark and light", f"Duplicate theme name: '{dark_name}'")
-        print(f"  ✓ Dark theme name: '{dark_name}'")
-        print(f"  ✓ Light theme name: '{light_name}'")
+        all_pals = [DARK_PALETTE, LIGHT_PALETTE, OLED_PALETTE, PASTEL_PALETTE, CYBERPUNK_PALETTE]
+        names = [p["name"] for p in all_pals]
+        self.assert_true(len(names) == len(set(names)), "Distinct theme names for all variants", f"Duplicate theme names detected: {names}")
+        for p in all_pals:
+            print(f"  ✓ Theme variant: '{p['name']}' (id: '{p['id']}')")
 
         # 3. File existence checks
         print("\n[3/5] Verifying Generated Files Existence...")
@@ -299,11 +431,28 @@ class Validator:
             ("terminal/halloween.hyper.js", "hyper"),
             ("terminal/halloween.tabby.yaml", "tabby"),
             ("terminal/halloween.rio.toml", "rio"),
+            ("terminal/halloween.k9s.yaml", "k9s"),
+            ("terminal/halloween.base16.yaml", "base16"),
+            ("terminal/halloween.yazi.toml", "yazi"),
+            ("terminal/halloween.glamour.json", "glamour"),
+            ("terminal/halloween.colors-wal.json", "pywal"),
+            ("terminal/halloween.btop.theme", "btop"),
             ("editor/halloween-vscode.json", "vscode"),
+            ("editor/halloween.obsidian.css", "obsidian_css"),
+            ("editor/halloween-obsidian-manifest.json", "obsidian_manifest"),
+            ("editor/halloween.xccolortheme", "xcode"),
             ("app/halloween-slack.txt", "slack"),
             ("app/halloween-discord.css", "discord"),
             ("app/halloween.tmux.conf", "tmux"),
             ("app/halloween.zsh", "zsh"),
+            ("app/halloween.raycast.json", "raycast"),
+            ("app/halloween.lazydocker.yaml", "lazydocker"),
+            ("app/halloween.tokens.json", "tokens"),
+            ("app/halloween.fish", "fish"),
+            ("app/halloween.starship.toml", "starship"),
+            ("app/halloween.omp.json", "omp"),
+            ("app/halloween.tigrc", "tig"),
+            ("app/halloween.gitui.toml", "gitui"),
         ]
 
         expected_light_files = [
@@ -317,29 +466,94 @@ class Validator:
             ("light/halloween-light.hyper.js", "hyper"),
             ("light/halloween-light.tabby.yaml", "tabby"),
             ("light/halloween-light.rio.toml", "rio"),
+            ("light/halloween-light.k9s.yaml", "k9s"),
+            ("light/halloween-light.base16.yaml", "base16"),
+            ("light/halloween-light.yazi.toml", "yazi"),
+            ("light/halloween-light.glamour.json", "glamour"),
+            ("light/halloween-light.colors-wal.json", "pywal"),
+            ("light/halloween-light.btop.theme", "btop"),
             ("light/halloween-light-vscode.json", "vscode"),
+            ("light/halloween-light.obsidian.css", "obsidian_css"),
+            ("light/halloween-light-obsidian-manifest.json", "obsidian_manifest"),
+            ("light/halloween-light.xccolortheme", "xcode"),
             ("light/halloween-light-slack.txt", "slack"),
             ("light/halloween-light-discord.css", "discord"),
             ("light/halloween-light.tmux.conf", "tmux"),
             ("light/halloween-light.zsh", "zsh"),
+            ("light/halloween-light.raycast.json", "raycast"),
+            ("light/halloween-light.lazydocker.yaml", "lazydocker"),
+            ("light/halloween-light.tokens.json", "tokens"),
+            ("light/halloween-light.fish", "fish"),
+            ("light/halloween-light.starship.toml", "starship"),
+            ("light/halloween-light.omp.json", "omp"),
+            ("light/halloween-light.tigrc", "tig"),
+            ("light/halloween-light.gitui.toml", "gitui"),
         ]
 
         all_files_to_check = []
         for rel_path, kind in expected_dark_files:
             full = os.path.join(self.themes_dir, rel_path)
             self.assert_true(os.path.isfile(full), f"File exists: {rel_path}", f"File missing: {full}")
-            all_files_to_check.append((full, kind, "dark", dark_name))
+            all_files_to_check.append((full, kind, "dark", DARK_PALETTE["name"], DARK_PALETTE["id"]))
 
         for rel_path, kind in expected_light_files:
             full = os.path.join(self.themes_dir, rel_path)
             self.assert_true(os.path.isfile(full), f"File exists: {rel_path}", f"File missing: {full}")
-            all_files_to_check.append((full, kind, "light", light_name))
+            all_files_to_check.append((full, kind, "light", LIGHT_PALETTE["name"], LIGHT_PALETTE["id"]))
 
-        print(f"  ✓ Total expected theme files checked: {len(all_files_to_check)} files")
+        # Also verify extra variants under variants/
+        variant_specs = [
+            ("oled", OLED_PALETTE),
+            ("pastel", PASTEL_PALETTE),
+            ("cyberpunk", CYBERPUNK_PALETTE),
+        ]
+        for var_id, pal in variant_specs:
+            pfx = pal["id"]
+            var_dir = f"variants/{var_id}"
+            var_files = [
+                (f"{var_dir}/{pfx}.yaml", "warp"),
+                (f"{var_dir}/{pfx}.itermcolors", "itermcolors"),
+                (f"{var_dir}/{pfx}.ghostty", "ghostty"),
+                (f"{var_dir}/{pfx}.alacritty.toml", "alacritty"),
+                (f"{var_dir}/{pfx}.wezterm.toml", "wezterm"),
+                (f"{var_dir}/{pfx}.kitty.conf", "kitty"),
+                (f"{var_dir}/{pfx}.windows-terminal.json", "windows-terminal"),
+                (f"{var_dir}/{pfx}.hyper.js", "hyper"),
+                (f"{var_dir}/{pfx}.tabby.yaml", "tabby"),
+                (f"{var_dir}/{pfx}.rio.toml", "rio"),
+                (f"{var_dir}/{pfx}.k9s.yaml", "k9s"),
+                (f"{var_dir}/{pfx}.base16.yaml", "base16"),
+                (f"{var_dir}/{pfx}.yazi.toml", "yazi"),
+                (f"{var_dir}/{pfx}.glamour.json", "glamour"),
+                (f"{var_dir}/{pfx}.colors-wal.json", "pywal"),
+                (f"{var_dir}/{pfx}.btop.theme", "btop"),
+                (f"{var_dir}/{pfx}-vscode.json", "vscode"),
+                (f"{var_dir}/{pfx}.obsidian.css", "obsidian_css"),
+                (f"{var_dir}/{pfx}-obsidian-manifest.json", "obsidian_manifest"),
+                (f"{var_dir}/{pfx}.xccolortheme", "xcode"),
+                (f"{var_dir}/{pfx}-slack.txt", "slack"),
+                (f"{var_dir}/{pfx}-discord.css", "discord"),
+                (f"{var_dir}/{pfx}.tmux.conf", "tmux"),
+                (f"{var_dir}/{pfx}.zsh", "zsh"),
+                (f"{var_dir}/{pfx}.raycast.json", "raycast"),
+                (f"{var_dir}/{pfx}.lazydocker.yaml", "lazydocker"),
+                (f"{var_dir}/{pfx}.tokens.json", "tokens"),
+                (f"{var_dir}/{pfx}.fish", "fish"),
+                (f"{var_dir}/{pfx}.starship.toml", "starship"),
+                (f"{var_dir}/{pfx}.omp.json", "omp"),
+                (f"{var_dir}/{pfx}.tigrc", "tig"),
+                (f"{var_dir}/{pfx}.gitui.toml", "gitui"),
+            ]
+            for rel_path, kind in var_files:
+                full = os.path.join(self.themes_dir, rel_path)
+                self.assert_true(os.path.isfile(full), f"File exists: {rel_path}", f"File missing: {full}")
+                all_files_to_check.append((full, kind, pal["type"], pal["name"], pal["id"]))
+
+        print(f"  ✓ Total theme files checked across all variants: {len(all_files_to_check)} files")
 
         # 4. Format and Required Fields Validation
         print("\n[4/5] Checking Required Fields and Format Validity...")
-        for full, kind, variant, theme_name in all_files_to_check:
+        for full, kind, variant, theme_name, theme_id in all_files_to_check:
             if not os.path.isfile(full):
                 continue
             details = "darker" if variant == "dark" else "lighter"
@@ -373,12 +587,46 @@ class Validator:
                 self.validate_tmux(full)
             elif kind == "zsh":
                 self.validate_zsh(full)
+            elif kind == "k9s":
+                self.validate_k9s(full)
+            elif kind == "raycast":
+                self.validate_raycast(full, theme_name, variant)
+            elif kind == "base16":
+                self.validate_base16(full, theme_name)
+            elif kind == "obsidian_css":
+                self.validate_obsidian_css(full, variant)
+            elif kind == "obsidian_manifest":
+                self.validate_obsidian_manifest(full, theme_name)
+            elif kind == "yazi":
+                self.validate_yazi(full)
+            elif kind == "lazydocker":
+                self.validate_lazydocker(full)
+            elif kind == "xcode":
+                self.validate_xcode(full)
+            elif kind == "glamour":
+                self.validate_glamour(full)
+            elif kind == "pywal":
+                self.validate_pywal(full)
+            elif kind == "tokens":
+                self.validate_tokens(full)
+            elif kind == "fish":
+                self.validate_fish(full)
+            elif kind == "starship":
+                self.validate_starship(full, theme_id)
+            elif kind == "omp":
+                self.validate_oh_my_posh(full)
+            elif kind == "btop":
+                self.validate_btop(full)
+            elif kind == "tig":
+                self.validate_tig(full)
+            elif kind == "gitui":
+                self.validate_gitui(full)
 
-        print(f"  ✓ File structure and required fields validated for all formats")
+        print(f"  ✓ File structure and required fields validated for all {len(all_files_to_check)} formats")
 
         # 5. Hex Colors Format
         print("\n[5/5] Scanning Hex Color Syntax in All Files (#RGB or #RRGGBB)...")
-        for full, _, _, _ in all_files_to_check:
+        for full, _, _, _, _ in all_files_to_check:
             if os.path.isfile(full):
                 self.validate_hex_colors_in_file(full)
         print(f"  ✓ Hex color syntax validated across all generated theme files")

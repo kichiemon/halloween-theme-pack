@@ -1,0 +1,68 @@
+# Halloween Pastel theme for K9s
+k9s:
+  body:
+    fgColor: "#3c2a4d"
+    bgColor: "#faf5fc"
+    logoColor: "#bf4904"
+  prompt:
+    fgColor: "#3c2a4d"
+    bgColor: "#f2e8f7"
+    suggestColor: "#9e6000"
+  info:
+    fgColor: "#756388"
+    sectionColor: "#bf4904"
+  dialog:
+    fgColor: "#3c2a4d"
+    bgColor: "#f2e8f7"
+    buttonFgColor: "#faf5fc"
+    buttonBgColor: "#bf4904"
+    buttonActiveFgColor: "#3c2a4d"
+    buttonActiveBgColor: "#b81438"
+    labelFgColor: "#9e6000"
+    fieldFgColor: "#3c2a4d"
+  frame:
+    border:
+      fgColor: "#dcc9e8"
+      focusColor: "#bf4904"
+    menu:
+      fgColor: "#3c2a4d"
+      keyColor: "#bf4904"
+      numKeyColor: "#8b3da8"
+    crumbs:
+      fgColor: "#faf5fc"
+      bgColor: "#bf4904"
+      activeColor: "#1b772d"
+    status:
+      completedColor: "#1b772d"
+      errorColor: "#b81438"
+      highlightColor: "#bf4904"
+    title:
+      fgColor: "#bf4904"
+      bgColor: "#f2e8f7"
+      highlightColor: "#1b772d"
+      counterColor: "#8b3da8"
+  views:
+    table:
+      fgColor: "#3c2a4d"
+      bgColor: "#faf5fc"
+      cursorFgColor: "#faf5fc"
+      cursorBgColor: "#bf4904"
+      markColor: "#9e6000"
+      header:
+        fgColor: "#bf4904"
+        bgColor: "#f2e8f7"
+        sorterColor: "#0e7490"
+    xray:
+      fgColor: "#3c2a4d"
+      bgColor: "#faf5fc"
+      cursorColor: "#bf4904"
+    yaml:
+      keyColor: "#8b3da8"
+      colonColor: "#dcc9e8"
+      valueColor: "#3c2a4d"
+    logs:
+      fgColor: "#3c2a4d"
+      bgColor: "#faf5fc"
+      indicator:
+        fgColor: "#bf4904"
+        bgColor: "#f2e8f7"

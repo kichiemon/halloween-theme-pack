@@ -1,0 +1,22 @@
+{
+  "version": "1",
+  "name": "Halloween Day",
+  "appearance": "light",
+  "colors": {
+    "background": "#faf4eb",
+    "backgroundSecondary": "#f2e7d8",
+    "text": "#241432",
+    "textMuted": "#756388",
+    "selection": "#e5d0b5",
+    "accent": "#bf4904",
+    "red": "#b81438",
+    "orange": "#bf4904",
+    "yellow": "#9e6000",
+    "green": "#1b772d",
+    "blue": "#2b4acb",
+    "purple": "#7e22ce",
+    "magenta": "#7e22ce",
+    "cyan": "#0e7490"
+  },
+  "shareUrl": "raycast://theme?data=%7B%22version%22%3A%20%221%22%2C%20%22name%22%3A%20%22Halloween%20Day%22%2C%20%22appearance%22%3A%20%22light%22%2C%20%22colors%22%3A%20%7B%22background%22%3A%20%22%23faf4eb%22%2C%20%22backgroundSecondary%22%3A%20%22%23f2e7d8%22%2C%20%22text%22%3A%20%22%23241432%22%2C%20%22textMuted%22%3A%20%22%23756388%22%2C%20%22selection%22%3A%20%22%23e5d0b5%22%2C%20%22accent%22%3A%20%22%23bf4904%22%2C%20%22red%22%3A%20%22%23b81438%22%2C%20%22orange%22%3A%20%22%23bf4904%22%2C%20%22yellow%22%3A%20%22%239e6000%22%2C%20%22green%22%3A%20%22%231b772d%22%2C%20%22blue%22%3A%20%22%232b4acb%22%2C%20%22purple%22%3A%20%22%237e22ce%22%2C%20%22magenta%22%3A%20%22%237e22ce%22%2C%20%22cyan%22%3A%20%22%230e7490%22%7D%7D"
+}
