@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Day Theme",
+  "version": "1.0.0",
+  "description": "A light Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        250,
+        244,
+        235
+      ],
+      "frame_inactive": [
+        232,
+        220,
+        206
+      ],
+      "toolbar": [
+        242,
+        231,
+        216
+      ],
+      "tab_text": [
+        36,
+        20,
+        50
+      ],
+      "tab_background_text": [
+        117,
+        99,
+        136
+      ],
+      "bookmark_text": [
+        36,
+        20,
+        50
+      ],
+      "ntp_background": [
+        250,
+        244,
+        235
+      ],
+      "ntp_text": [
+        36,
+        20,
+        50
+      ],
+      "button_background": [
+        191,
+        73,
+        4
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

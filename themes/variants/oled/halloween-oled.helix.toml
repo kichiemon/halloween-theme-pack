@@ -1,0 +1,33 @@
+# Halloween OLED theme for Helix
+"ui.background" = "#000000"
+"ui.text" = "#f4e7d3"
+"ui.text.focus" = "#ff6b35"
+"ui.selection" = { bg = "#2c1845" }
+"ui.cursor" = { bg = "#ff6b35", fg = "#000000" }
+"ui.linenr" = "#b8a9d9"
+"ui.linenr.selected" = "#ff6b35"
+"ui.statusline" = { fg = "#f4e7d3", bg = "#1a0a2a" }
+"ui.popup" = { bg = "#12091c", fg = "#f4e7d3" }
+"ui.menu" = { bg = "#12091c", fg = "#f4e7d3" }
+"ui.menu.selected" = { bg = "#ff6b35", fg = "#000000" }
+"ui.help" = { bg = "#12091c", fg = "#f4e7d3" }
+
+"comment" = { fg = "#b8a9d9", modifiers = ["italic"] }
+"keyword" = { fg = "#ff6b35", modifiers = ["bold"] }
+"string" = "#39ff14"
+"constant.numeric" = "#ff4d6d"
+"function" = "#6b8cff"
+"type" = "#c77dff"
+"operator" = "#5ffbf1"
+"variable" = "#f4e7d3"
+"punctuation" = "#b8a9d9"
+
+"diagnostic.error" = "#ff4d6d"
+"diagnostic.warning" = "#ffb347"
+"diagnostic.info" = "#6b8cff"
+"diagnostic.hint" = "#39ff14"
+
+[palette]
+background = "#000000"
+foreground = "#f4e7d3"
+accent = "#ff6b35"

@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Cyberpunk Theme",
+  "version": "1.0.0",
+  "description": "A dark Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        13,
+        2,
+        33
+      ],
+      "frame_inactive": [
+        36,
+        0,
+        70
+      ],
+      "toolbar": [
+        25,
+        5,
+        59
+      ],
+      "tab_text": [
+        252,
+        247,
+        255
+      ],
+      "tab_background_text": [
+        157,
+        121,
+        188
+      ],
+      "bookmark_text": [
+        252,
+        247,
+        255
+      ],
+      "ntp_background": [
+        13,
+        2,
+        33
+      ],
+      "ntp_text": [
+        252,
+        247,
+        255
+      ],
+      "button_background": [
+        255,
+        109,
+        0
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Pastel Theme",
+  "version": "1.0.0",
+  "description": "A light Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        250,
+        245,
+        252
+      ],
+      "frame_inactive": [
+        233,
+        218,
+        242
+      ],
+      "toolbar": [
+        242,
+        232,
+        247
+      ],
+      "tab_text": [
+        60,
+        42,
+        77
+      ],
+      "tab_background_text": [
+        117,
+        99,
+        136
+      ],
+      "bookmark_text": [
+        60,
+        42,
+        77
+      ],
+      "ntp_background": [
+        250,
+        245,
+        252
+      ],
+      "ntp_text": [
+        60,
+        42,
+        77
+      ],
+      "button_background": [
+        191,
+        73,
+        4
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

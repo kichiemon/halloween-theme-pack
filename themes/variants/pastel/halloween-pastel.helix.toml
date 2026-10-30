@@ -1,0 +1,33 @@
+# Halloween Pastel theme for Helix
+"ui.background" = "#faf5fc"
+"ui.text" = "#3c2a4d"
+"ui.text.focus" = "#bf4904"
+"ui.selection" = { bg = "#e5d0f0" }
+"ui.cursor" = { bg = "#bf4904", fg = "#faf5fc" }
+"ui.linenr" = "#756388"
+"ui.linenr.selected" = "#bf4904"
+"ui.statusline" = { fg = "#3c2a4d", bg = "#e9daf2" }
+"ui.popup" = { bg = "#f2e8f7", fg = "#3c2a4d" }
+"ui.menu" = { bg = "#f2e8f7", fg = "#3c2a4d" }
+"ui.menu.selected" = { bg = "#bf4904", fg = "#faf5fc" }
+"ui.help" = { bg = "#f2e8f7", fg = "#3c2a4d" }
+
+"comment" = { fg = "#756388", modifiers = ["italic"] }
+"keyword" = { fg = "#bf4904", modifiers = ["bold"] }
+"string" = "#1b772d"
+"constant.numeric" = "#b81438"
+"function" = "#2b4acb"
+"type" = "#8b3da8"
+"operator" = "#0e7490"
+"variable" = "#3c2a4d"
+"punctuation" = "#756388"
+
+"diagnostic.error" = "#b81438"
+"diagnostic.warning" = "#9e6000"
+"diagnostic.info" = "#2b4acb"
+"diagnostic.hint" = "#1b772d"
+
+[palette]
+background = "#faf5fc"
+foreground = "#3c2a4d"
+accent = "#bf4904"

@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Halloween Theme",
+  "version": "1.0.0",
+  "description": "A dark Halloween theme for Chrome/Chromium.",
+  "theme": {
+    "colors": {
+      "frame": [
+        26,
+        13,
+        46
+      ],
+      "frame_inactive": [
+        45,
+        27,
+        78
+      ],
+      "toolbar": [
+        36,
+        19,
+        64
+      ],
+      "tab_text": [
+        244,
+        231,
+        211
+      ],
+      "tab_background_text": [
+        184,
+        169,
+        217
+      ],
+      "bookmark_text": [
+        244,
+        231,
+        211
+      ],
+      "ntp_background": [
+        26,
+        13,
+        46
+      ],
+      "ntp_text": [
+        244,
+        231,
+        211
+      ],
+      "button_background": [
+        255,
+        107,
+        53
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# Halloween Cyberpunk theme for Helix
+"ui.background" = "#0d0221"
+"ui.text" = "#fcf7ff"
+"ui.text.focus" = "#ff6d00"
+"ui.selection" = { bg = "#3c096c" }
+"ui.cursor" = { bg = "#ff6d00", fg = "#0d0221" }
+"ui.linenr" = "#9d79bc"
+"ui.linenr.selected" = "#ff6d00"
+"ui.statusline" = { fg = "#fcf7ff", bg = "#240046" }
+"ui.popup" = { bg = "#19053b", fg = "#fcf7ff" }
+"ui.menu" = { bg = "#19053b", fg = "#fcf7ff" }
+"ui.menu.selected" = { bg = "#ff6d00", fg = "#0d0221" }
+"ui.help" = { bg = "#19053b", fg = "#fcf7ff" }
+
+"comment" = { fg = "#9d79bc", modifiers = ["italic"] }
+"keyword" = { fg = "#ff6d00", modifiers = ["bold"] }
+"string" = "#00f5d4"
+"constant.numeric" = "#ff0054"
+"function" = "#7000ff"
+"type" = "#c77dff"
+"operator" = "#00f5d4"
+"variable" = "#fcf7ff"
+"punctuation" = "#9d79bc"
+
+"diagnostic.error" = "#ff0054"
+"diagnostic.warning" = "#ffee32"
+"diagnostic.info" = "#7000ff"
+"diagnostic.hint" = "#00f5d4"
+
+[palette]
+background = "#0d0221"
+foreground = "#fcf7ff"
+accent = "#ff6d00"

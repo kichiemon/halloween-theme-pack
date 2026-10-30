@@ -1277,6 +1277,173 @@ branch_fg = "{pal['success']}"
 
 # ---------- Variant Generators ----------
 
+def gen_chrome(pal, out_path):
+    """Generate a Chrome/Chromium theme extension manifest."""
+    manifest = {
+        "manifest_version": 3,
+        "name": f"{pal['name']} Theme",
+        "version": "1.0.0",
+        "description": f"A {pal['type']} Halloween theme for Chrome/Chromium.",
+        "theme": {
+            "colors": {
+                "frame": hex2tuple(pal["background"]),
+                "frame_inactive": hex2tuple(pal["secondary"]),
+                "toolbar": hex2tuple(pal["card"]),
+                "tab_text": hex2tuple(pal["foreground"]),
+                "tab_background_text": hex2tuple(pal["muted"]),
+                "bookmark_text": hex2tuple(pal["foreground"]),
+                "ntp_background": hex2tuple(pal["background"]),
+                "ntp_text": hex2tuple(pal["foreground"]),
+                "button_background": hex2tuple(pal["accent"]),
+            },
+            "properties": {
+                "ntp_background_alignment": "bottom",
+            },
+        },
+    }
+    with open(out_path, "w") as f:
+        json.dump(manifest, f, indent=2)
+        f.write("\n")
+
+
+def gen_nvim(pal, out_path):
+    """Generate Neovim Lua colorscheme."""
+    lua = f'''-- {pal['name']} colorscheme for Neovim
+local M = {{}}
+
+M.colors = {{
+  bg = "{pal['background']}",
+  fg = "{pal['foreground']}",
+  card = "{pal['card']}",
+  secondary = "{pal['secondary']}",
+  muted = "{pal['muted']}",
+  border = "{pal['border']}",
+  sidebar = "{pal['sidebar']}",
+  accent = "{pal['accent']}",
+  success = "{pal['success']}",
+  destructive = "{pal['destructive']}",
+  cursor = "{pal['cursor']}",
+  selection = "{pal['selection']}",
+  blue = "{pal['blue']}",
+  magenta = "{pal['magenta']}",
+  cyan = "{pal['cyan']}",
+  yellow = "{pal['yellow']}",
+  ansi = {{
+    black = "{pal['ansi']['black']}", red = "{pal['ansi']['red']}",
+    green = "{pal['ansi']['green']}", yellow = "{pal['ansi']['yellow']}",
+    blue = "{pal['ansi']['blue']}", magenta = "{pal['ansi']['magenta']}",
+    cyan = "{pal['ansi']['cyan']}", white = "{pal['ansi']['white']}",
+  }},
+  bright = {{
+    black = "{pal['bright']['black']}", red = "{pal['bright']['red']}",
+    green = "{pal['bright']['green']}", yellow = "{pal['bright']['yellow']}",
+    blue = "{pal['bright']['blue']}", magenta = "{pal['bright']['magenta']}",
+    cyan = "{pal['bright']['cyan']}", white = "{pal['bright']['white']}",
+  }},
+}}
+
+function M.setup()
+  vim.cmd("hi clear")
+  if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
+  vim.o.background = "{pal['type']}"
+  vim.g.colors_name = "{pal['id']}"
+  local hi = vim.api.nvim_set_hl
+  hi(0, "Normal", {{ bg = M.colors.bg, fg = M.colors.fg }})
+  hi(0, "Comment", {{ fg = M.colors.muted, italic = true }})
+  hi(0, "Keyword", {{ fg = M.colors.accent, bold = true }})
+  hi(0, "String", {{ fg = M.colors.success }})
+  hi(0, "Number", {{ fg = M.colors.destructive }})
+  hi(0, "Function", {{ fg = M.colors.blue }})
+  hi(0, "Type", {{ fg = M.colors.magenta }})
+  hi(0, "Operator", {{ fg = M.colors.cyan }})
+  hi(0, "Visual", {{ bg = M.colors.selection }})
+  hi(0, "Cursor", {{ bg = M.colors.cursor }})
+  hi(0, "LineNr", {{ fg = M.colors.muted }})
+  hi(0, "CursorLineNr", {{ fg = M.colors.accent, bold = true }})
+  hi(0, "StatusLine", {{ bg = M.colors.secondary, fg = M.colors.fg }})
+  hi(0, "VertSplit", {{ fg = M.colors.border }})
+  hi(0, "Pmenu", {{ bg = M.colors.card, fg = M.colors.fg }})
+  hi(0, "PmenuSel", {{ bg = M.colors.accent, fg = M.colors.bg }})
+  hi(0, "Search", {{ bg = M.colors.accent, fg = M.colors.bg }})
+  hi(0, "IncSearch", {{ bg = M.colors.success, fg = M.colors.bg }})
+end
+
+M.setup()
+return M
+'''
+    with open(out_path, "w") as f:
+        f.write(lua)
+
+
+def gen_helix(pal, out_path):
+    """Generate Helix editor TOML theme."""
+    toml = f'''# {pal['name']} theme for Helix
+"ui.background" = "{pal['background']}"
+"ui.text" = "{pal['foreground']}"
+"ui.text.focus" = "{pal['accent']}"
+"ui.selection" = {{ bg = "{pal['selection']}" }}
+"ui.cursor" = {{ bg = "{pal['cursor']}", fg = "{pal['background']}" }}
+"ui.linenr" = "{pal['muted']}"
+"ui.linenr.selected" = "{pal['accent']}"
+"ui.statusline" = {{ fg = "{pal['foreground']}", bg = "{pal['secondary']}" }}
+"ui.popup" = {{ bg = "{pal['card']}", fg = "{pal['foreground']}" }}
+"ui.menu" = {{ bg = "{pal['card']}", fg = "{pal['foreground']}" }}
+"ui.menu.selected" = {{ bg = "{pal['accent']}", fg = "{pal['background']}" }}
+"ui.help" = {{ bg = "{pal['card']}", fg = "{pal['foreground']}" }}
+
+"comment" = {{ fg = "{pal['muted']}", modifiers = ["italic"] }}
+"keyword" = {{ fg = "{pal['accent']}", modifiers = ["bold"] }}
+"string" = "{pal['success']}"
+"constant.numeric" = "{pal['destructive']}"
+"function" = "{pal['blue']}"
+"type" = "{pal['magenta']}"
+"operator" = "{pal['cyan']}"
+"variable" = "{pal['foreground']}"
+"punctuation" = "{pal['muted']}"
+
+"diagnostic.error" = "{pal['destructive']}"
+"diagnostic.warning" = "{pal['yellow']}"
+"diagnostic.info" = "{pal['blue']}"
+"diagnostic.hint" = "{pal['success']}"
+
+[palette]
+background = "{pal['background']}"
+foreground = "{pal['foreground']}"
+accent = "{pal['accent']}"
+'''
+    with open(out_path, "w") as f:
+        f.write(toml)
+
+
+def gen_sublime(pal, out_path):
+    """Generate Sublime Text .tmTheme (XML plist)."""
+    import plistlib
+    theme = {
+        "name": pal["name"],
+        "settings": [
+            {"settings": {
+                "background": pal["background"],
+                "foreground": pal["foreground"],
+                "caret": pal["cursor"],
+                "selection": pal["selection"],
+                "selectionForeground": pal["selection_text"],
+                "lineHighlight": pal["secondary"],
+                "gutter": pal["sidebar"],
+                "gutterForeground": pal["muted"],
+            }},
+            {"name": "Comment", "scope": "comment", "settings": {"foreground": pal["muted"], "fontStyle": "italic"}},
+            {"name": "Keyword", "scope": "keyword", "settings": {"foreground": pal["accent"], "fontStyle": "bold"}},
+            {"name": "String", "scope": "string", "settings": {"foreground": pal["success"]}},
+            {"name": "Number", "scope": "constant.numeric", "settings": {"foreground": pal["destructive"]}},
+            {"name": "Function", "scope": "entity.name.function", "settings": {"foreground": pal["blue"]}},
+            {"name": "Type", "scope": "entity.name.type", "settings": {"foreground": pal["magenta"]}},
+            {"name": "Operator", "scope": "keyword.operator", "settings": {"foreground": pal["cyan"]}},
+        ],
+    }
+    with open(out_path, "wb") as f:
+        plistlib.dump(theme, f)
+
+
 def generate_dark_variant(base_dir):
     term = os.path.join(base_dir, "terminal")
     edit = os.path.join(base_dir, "editor")
@@ -1308,6 +1475,9 @@ def generate_dark_variant(base_dir):
     gen_vscode(DARK_PALETTE, os.path.join(edit, "halloween-vscode.json"))
     gen_obsidian(DARK_PALETTE, os.path.join(edit, "halloween.obsidian.css"), os.path.join(edit, "halloween-obsidian-manifest.json"))
     gen_xcode(DARK_PALETTE, os.path.join(edit, "halloween.xccolortheme"))
+    gen_nvim(DARK_PALETTE, os.path.join(edit, "halloween.nvim.lua"))
+    gen_helix(DARK_PALETTE, os.path.join(edit, "halloween.helix.toml"))
+    gen_sublime(DARK_PALETTE, os.path.join(edit, "halloween.sublime-tmTheme"))
 
     # Existing app formats
     gen_slack(DARK_PALETTE, os.path.join(app, "halloween-slack.txt"))
@@ -1324,6 +1494,7 @@ def generate_dark_variant(base_dir):
     gen_oh_my_posh(DARK_PALETTE, os.path.join(app, "halloween.omp.json"))
     gen_tig(DARK_PALETTE, os.path.join(app, "halloween.tigrc"))
     gen_gitui(DARK_PALETTE, os.path.join(app, "halloween.gitui.toml"))
+    gen_chrome(DARK_PALETTE, os.path.join(app, "halloween-chrome.json"))
 
 
 def generate_light_variant(base_dir):
@@ -1360,6 +1531,9 @@ def generate_light_variant(base_dir):
     # New editor formats
     gen_obsidian(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.obsidian.css"), os.path.join(light_dir, "halloween-light-obsidian-manifest.json"))
     gen_xcode(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.xccolortheme"))
+    gen_nvim(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.nvim.lua"))
+    gen_helix(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.helix.toml"))
+    gen_sublime(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.sublime-tmTheme"))
 
     # New app formats
     gen_raycast(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.raycast.json"))
@@ -1370,6 +1544,7 @@ def generate_light_variant(base_dir):
     gen_oh_my_posh(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.omp.json"))
     gen_tig(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.tigrc"))
     gen_gitui(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light.gitui.toml"))
+    gen_chrome(LIGHT_PALETTE, os.path.join(light_dir, "halloween-light-chrome.json"))
 
 
 def generate_extra_variant(pal, out_dir):
@@ -1394,12 +1569,16 @@ def generate_extra_variant(pal, out_dir):
     gen_starship(pal, os.path.join(out_dir, f"{pfx}.starship.toml"))
     gen_lazydocker(pal, os.path.join(out_dir, f"{pfx}.lazydocker.yaml"))
     gen_gitui(pal, os.path.join(out_dir, f"{pfx}.gitui.toml"))
+    gen_chrome(pal, os.path.join(out_dir, f"{pfx}-chrome.json"))
     gen_tig(pal, os.path.join(out_dir, f"{pfx}.tigrc"))
     gen_glamour(pal, os.path.join(out_dir, f"{pfx}.glamour.json"))
     gen_pywal(pal, os.path.join(out_dir, f"{pfx}.colors-wal.json"))
     gen_tokens(pal, os.path.join(out_dir, f"{pfx}.tokens.json"))
     gen_oh_my_posh(pal, os.path.join(out_dir, f"{pfx}.omp.json"))
     gen_xcode(pal, os.path.join(out_dir, f"{pfx}.xccolortheme"))
+    gen_nvim(pal, os.path.join(out_dir, f"{pfx}.nvim.lua"))
+    gen_helix(pal, os.path.join(out_dir, f"{pfx}.helix.toml"))
+    gen_sublime(pal, os.path.join(out_dir, f"{pfx}.sublime-tmTheme"))
     gen_obsidian(pal, os.path.join(out_dir, f"{pfx}.obsidian.css"), os.path.join(out_dir, f"{pfx}-obsidian-manifest.json"))
     gen_slack(pal, os.path.join(out_dir, f"{pfx}-slack.txt"))
     gen_discord(pal, os.path.join(out_dir, f"{pfx}-discord.css"))
