@@ -163,3 +163,15 @@ Open `preview/index.html` directly in any web browser to explore:
 - VS Code editor mockup with syntax token highlighting.
 - Discord / Slack messaging UI mockup with channels and reactions.
 - Tmux statusline preview.
+
+---
+
+## 📄 License
+
+[MIT](LICENSE) — Copyright (c) 2026 kichiemon. Feel free to fork, remix, and redistribute.
+
+---
+
+## ⚠️ Disclaimer
+
+The app UI theme (`halloween.css`) overrides Orca's internal CSS custom properties, which are implementation details and may change between Orca versions. It is unofficial and provided as-is. The terminal themes (Warp YAML and other formats) use stable, documented formats and are safe to use.
