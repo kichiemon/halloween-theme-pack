@@ -1,0 +1,21 @@
+# Halloween Day theme for Ghostty
+background = faf4eb
+foreground = 241432
+cursor-color = bf4904
+selection-background = e5d0b5
+palette = 0=#241432
+palette = 1=#b81438
+palette = 2=#1b772d
+palette = 3=#9e6000
+palette = 4=#2b4acb
+palette = 5=#7e22ce
+palette = 6=#0e7490
+palette = 7=#d8ccbc
+palette = 8=#5c4d6b
+palette = 9=#cf2248
+palette = 10=#228b37
+palette = 11=#b56f00
+palette = 12=#3b5bdb
+palette = 13=#9333ea
+palette = 14=#0284c7
+palette = 15=#241432

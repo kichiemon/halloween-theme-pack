@@ -1,0 +1,23 @@
+{
+  "name": "Halloween",
+  "background": "#1a0d2e",
+  "foreground": "#f4e7d3",
+  "cursorColor": "#ff6b35",
+  "selectionBackground": "#3d2a5e",
+  "black": "#2d1b4e",
+  "red": "#ff4d6d",
+  "green": "#39ff14",
+  "yellow": "#ffb347",
+  "blue": "#6b8cff",
+  "purple": "#c77dff",
+  "cyan": "#5ffbf1",
+  "white": "#f4e7d3",
+  "brightBlack": "#4a3570",
+  "brightRed": "#ff7a95",
+  "brightGreen": "#7fff6b",
+  "brightYellow": "#ffd28a",
+  "brightBlue": "#9db3ff",
+  "brightPurple": "#ddb3ff",
+  "brightCyan": "#9dfff7",
+  "brightWhite": "#fff5e6"
+}

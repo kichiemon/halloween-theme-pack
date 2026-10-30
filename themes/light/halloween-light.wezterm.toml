@@ -1,0 +1,11 @@
+# Halloween Day theme for WezTerm
+[colors]
+background = "#faf4eb"
+foreground = "#241432"
+cursor_bg = "#bf4904"
+cursor_fg = "#faf4eb"
+selection_bg = "#e5d0b5"
+selection_fg = "#241432"
+
+ansi = ["#241432", "#b81438", "#1b772d", "#9e6000", "#2b4acb", "#7e22ce", "#0e7490", "#d8ccbc"]
+brights = ["#5c4d6b", "#cf2248", "#228b37", "#b56f00", "#3b5bdb", "#9333ea", "#0284c7", "#241432"]

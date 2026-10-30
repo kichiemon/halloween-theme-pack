@@ -1,0 +1,117 @@
+{
+  "name": "Halloween Day",
+  "type": "light",
+  "colors": {
+    "editor.background": "#faf4eb",
+    "editor.foreground": "#241432",
+    "editorCursor.foreground": "#bf4904",
+    "editor.selectionBackground": "#e5d0b5",
+    "editorLineNumber.foreground": "#756388",
+    "editorLineNumber.activeForeground": "#bf4904",
+    "activityBar.background": "#f4ece1",
+    "activityBar.foreground": "#241432",
+    "activityBar.activeBorder": "#bf4904",
+    "sideBar.background": "#f4ece1",
+    "sideBar.foreground": "#241432",
+    "sideBarTitle.foreground": "#bf4904",
+    "statusBar.background": "#e8dcce",
+    "statusBar.foreground": "#241432",
+    "titleBar.activeBackground": "#faf4eb",
+    "titleBar.activeForeground": "#241432",
+    "panel.background": "#faf4eb",
+    "terminal.background": "#faf4eb",
+    "terminal.foreground": "#241432",
+    "terminal.ansiBlack": "#241432",
+    "terminal.ansiRed": "#b81438",
+    "terminal.ansiGreen": "#1b772d",
+    "terminal.ansiYellow": "#9e6000",
+    "terminal.ansiBlue": "#2b4acb",
+    "terminal.ansiMagenta": "#7e22ce",
+    "terminal.ansiCyan": "#0e7490",
+    "terminal.ansiWhite": "#d8ccbc",
+    "button.background": "#bf4904",
+    "button.foreground": "#faf4eb",
+    "input.background": "#e8dcce",
+    "input.border": "#d8c8b4",
+    "focusBorder": "#bf4904",
+    "list.activeSelectionBackground": "#e8dcce",
+    "list.hoverBackground": "#f2e7d8",
+    "badge.background": "#bf4904",
+    "badge.foreground": "#faf4eb"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#756388",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "#bf4904"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "string.quoted"
+      ],
+      "settings": {
+        "foreground": "#1b772d"
+      }
+    },
+    {
+      "scope": [
+        "constant.numeric"
+      ],
+      "settings": {
+        "foreground": "#b81438"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function"
+      ],
+      "settings": {
+        "foreground": "#2b4acb"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "variable.other"
+      ],
+      "settings": {
+        "foreground": "#241432"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#7e22ce"
+      }
+    },
+    {
+      "scope": [
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#0e7490"
+      }
+    }
+  ]
+}

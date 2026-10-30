@@ -1,0 +1,23 @@
+{
+  "name": "Halloween Day",
+  "background": "#faf4eb",
+  "foreground": "#241432",
+  "cursorColor": "#bf4904",
+  "selectionBackground": "#e5d0b5",
+  "black": "#241432",
+  "red": "#b81438",
+  "green": "#1b772d",
+  "yellow": "#9e6000",
+  "blue": "#2b4acb",
+  "purple": "#7e22ce",
+  "cyan": "#0e7490",
+  "white": "#d8ccbc",
+  "brightBlack": "#5c4d6b",
+  "brightRed": "#cf2248",
+  "brightGreen": "#228b37",
+  "brightYellow": "#b56f00",
+  "brightBlue": "#3b5bdb",
+  "brightPurple": "#9333ea",
+  "brightCyan": "#0284c7",
+  "brightWhite": "#241432"
+}

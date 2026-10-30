@@ -1,0 +1,16 @@
+/* Halloween Day theme for Discord (BetterDiscord) */
+.theme-light {
+  --background-primary: #faf4eb;
+  --background-secondary: #e8dcce;
+  --background-secondary-alt: #f2e7d8;
+  --background-tertiary: #f4ece1;
+  --background-accent: #bf4904;
+  --text-normal: #241432;
+  --text-muted: #756388;
+  --interactive-normal: #756388;
+  --interactive-hover: #241432;
+  --interactive-active: #bf4904;
+  --brand-experiment: #bf4904;
+  --status-positive: #1b772d;
+  --status-danger: #b81438;
+}

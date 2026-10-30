@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halloween Theme Pack — Interactive Preview</title>
+  <style>
+    /* CSS Reset & Variable Defaults */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Dark Theme (Default) */
+      --bg: #1a0d2e;
+      --fg: #f4e7d3;
+      --card: #241340;
+      --secondary: #2d1b4e;
+      --muted: #b8a9d9;
+      --border: #3d2a5e;
+      --sidebar: #150a24;
+      --accent: #ff6b35;
+      --success: #39ff14;
+      --destructive: #ff4d6d;
+      --cursor: #ff6b35;
+      --selection: #3d2a5e;
+      --selection-text: #f4e7d3;
+      --blue: #6b8cff;
+      --magenta: #c77dff;
+      --cyan: #5ffbf1;
+      --yellow: #ffb347;
+
+      /* ANSI Normal */
+      --ansi-black: #2d1b4e;
+      --ansi-red: #ff4d6d;
+      --ansi-green: #39ff14;
+      --ansi-yellow: #ffb347;
+      --ansi-blue: #6b8cff;
+      --ansi-magenta: #c77dff;
+      --ansi-cyan: #5ffbf1;
+      --ansi-white: #f4e7d3;
+
+      /* ANSI Bright */
+      --bright-black: #4a3570;
+      --bright-red: #ff7a95;
+      --bright-green: #7fff6b;
+      --bright-yellow: #ffd28a;
+      --bright-blue: #9db3ff;
+      --bright-magenta: #ddb3ff;
+      --bright-cyan: #9dfff7;
+      --bright-white: #fff5e6;
+
+      --theme-name: "Halloween Night (Dark)";
+      --contrast-ratio: "15.09:1 (WCAG AAA)";
+      --accent-contrast: "6.49:1 (WCAG AA)";
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    }
+
+    body[data-theme="light"] {
+      --bg: #faf4eb;
+      --fg: #241432;
+      --card: #f2e7d8;
+      --secondary: #e8dcce;
+      --muted: #756388;
+      --border: #d8c8b4;
+      --sidebar: #f4ece1;
+      --accent: #bf4904;
+      --success: #1b772d;
+      --destructive: #b81438;
+      --cursor: #bf4904;
+      --selection: #e5d0b5;
+      --selection-text: #241432;
+      --blue: #2b4acb;
+      --magenta: #7e22ce;
+      --cyan: #0e7490;
+      --yellow: #9e6000;
+
+      /* ANSI Normal */
+      --ansi-black: #241432;
+      --ansi-red: #b81438;
+      --ansi-green: #1b772d;
+      --ansi-yellow: #9e6000;
+      --ansi-blue: #2b4acb;
+      --ansi-magenta: #7e22ce;
+      --ansi-cyan: #0e7490;
+      --ansi-white: #d8ccbc;
+
+      /* ANSI Bright */
+      --bright-black: #5c4d6b;
+      --bright-red: #cf2248;
+      --bright-green: #228b37;
+      --bright-yellow: #b56f00;
+      --bright-blue: #3b5bdb;
+      --bright-magenta: #9333ea;
+      --bright-cyan: #0284c7;
+      --bright-white: #241432;
+
+      --theme-name: "Halloween Day (Light)";
+      --contrast-ratio: "15.73:1 (WCAG AAA)";
+      --accent-contrast: "4.61:1 (WCAG AA)";
+      --shadow-sm: 0 2px 8px rgba(36, 20, 50, 0.08);
+      --shadow-lg: 0 12px 32px rgba(36, 20, 50, 0.12);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h1 span.pumpkin {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-top: 6px;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 2px solid var(--border);
+      color: var(--fg);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .toggle-btn:active {
+      transform: translateY(1px);
+    }
+
+    .toggle-icon {
+      font-size: 1.25rem;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .section-title span.tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--secondary);
+      color: var(--muted);
+    }
+
+    /* Swatches Grid */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .swatch-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .swatch-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .swatch-color {
+      height: 72px;
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+
+    .swatch-meta {
+      padding: 12px;
+    }
+
+    .swatch-role {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 4px;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Contrast Summary Card */
+    .contrast-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .contrast-info {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contrast-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contrast-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .contrast-value {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .contrast-badge {
+      background: var(--success);
+      color: #1a0d2e;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    /* ANSI Swatches */
+    .ansi-row {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .ansi-swatch {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .ansi-swatch:hover {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
+
+    .ansi-block {
+      height: 36px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+
+    .ansi-name {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: capitalize;
+    }
+
+    .ansi-code {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--fg);
+    }
+
+    /* Terminal Mockup */
+    .mockup-window {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 40px;
+    }
+
+    .window-header {
+      background: var(--sidebar);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .window-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .terminal-body {
+      background: var(--bg);
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      min-height: 280px;
+      overflow-x: auto;
+    }
+
+    .t-prompt {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .t-host {
+      color: var(--magenta);
+    }
+
+    .t-path {
+      color: var(--muted);
+    }
+
+    .t-cmd {
+      color: var(--fg);
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 1.2em;
+      background: var(--cursor);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .t-out {
+      color: var(--fg);
+      margin-bottom: 14px;
+    }
+
+    .t-dim {
+      color: var(--muted);
+    }
+
+    .t-success {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .t-error {
+      color: var(--destructive);
+    }
+
+    .t-blue {
+      color: var(--blue);
+    }
+
+    .t-yellow {
+      color: var(--yellow);
+    }
+
+    .t-cyan {
+      color: var(--cyan);
+    }
+
+    .t-palette-bar {
+      display: flex;
+      gap: 4px;
+      margin: 12px 0 18px;
+    }
+
+    .t-bar-block {
+      width: 32px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    /* Side-by-Side App Mockups */
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .mockups-grid {
+        grid-template-columns: 1fr;
+      }
+      .ansi-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Editor Mockup */
+    .editor-layout {
+      display: flex;
+      height: 380px;
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .editor-activity {
+      width: 48px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+      color: var(--muted);
+    }
+
+    .editor-activity .act-icon.active {
+      color: var(--accent);
+      border-left: 2px solid var(--accent);
+      padding-left: 2px;
+    }
+
+    .editor-sidebar {
+      width: 170px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 12px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .sidebar-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .file-item {
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .file-item.active {
+      background: var(--secondary);
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    .editor-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-tabs {
+      height: 36px;
+      background: var(--sidebar);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .editor-tab {
+      padding: 6px 16px;
+      background: var(--bg);
+      border-top: 2px solid var(--accent);
+      border-right: 1px solid var(--border);
+      color: var(--fg);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .editor-code {
+      padding: 16px;
+      line-height: 1.6;
+      flex: 1;
+      overflow-y: auto;
+      white-space: pre;
+    }
+
+    .c-kw { color: var(--accent); font-weight: 600; }
+    .c-fn { color: var(--blue); }
+    .c-str { color: var(--success); }
+    .c-num { color: var(--destructive); }
+    .c-typ { color: var(--magenta); }
+    .c-op { color: var(--cyan); }
+    .c-cmt { color: var(--muted); font-style: italic; }
+
+    /* Chat / App Mockup */
+    .chat-layout {
+      display: flex;
+      height: 380px;
+      background: var(--bg);
+    }
+
+    .chat-sidebar {
+      width: 180px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .chat-channel {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .chat-channel.active {
+      background: var(--secondary);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .chat-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+    }
+
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .chat-msg {
+      display: flex;
+      gap: 12px;
+    }
+
+    .chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--secondary);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .msg-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .msg-author {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .msg-time {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .msg-text {
+      color: var(--fg);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .reaction-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--fg);
+      margin-top: 6px;
+    }
+
+    .chat-input {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--fg);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Tmux Mockup */
+    .tmux-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--secondary);
+      color: var(--fg);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tmux-left {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .tmux-tabs {
+      display: flex;
+      gap: 12px;
+    }
+
+    .tmux-tab.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .tmux-tab {
+      color: var(--muted);
+    }
+
+    .tmux-right {
+      color: var(--muted);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Format List */
+    .formats-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .format-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .format-name {
+      font-weight: 700;
+      color: var(--fg);
+      font-size: 0.9rem;
+    }
+
+    .format-type {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--secondary);
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-row">
+        <div>
+          <span class="badge">🎃 Multi-App Theme Pack</span>
+          <h1><span class="pumpkin">Halloween</span> Theme Showcase</h1>
+          <p class="subtitle">Single-palette themes for Terminals, Editors, and Messaging Apps.</p>
+        </div>
+        <div class="controls">
+          <button class="toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
+            <span class="toggle-icon" id="toggle-icon">☀️</span>
+            <span id="toggle-label">Switch to Halloween Day</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contrast Banner -->
+    <div class="contrast-banner">
+      <div class="contrast-info">
+        <div class="contrast-metric">
+          <span class="contrast-label">Active Variant</span>
+          <span class="contrast-value" id="active-variant-name">Halloween (Dark)</span>
+        </div>
+        <div class="contrast-metric">
+          <span class="contrast-label">Text / Bg Contrast</span>
+          <span class="contrast-value" id="val-contrast">15.09:1</span>
+        </div>
+        <div class="contrast-metric">
+          <span class="contrast-label">Accent / Bg Contrast</span>
+          <span class="contrast-value" id="val-accent-contrast">6.49:1</span>
+        </div>
+      </div>
+      <div class="contrast-badge">✓ WCAG AA PASSED (4.5:1)</div>
+    </div>
+
+    <!-- Palette Swatches -->
+    <h2 class="section-title">
+      Core Color Palette
+      <span class="tag">Click any swatch to copy HEX</span>
+    </h2>
+    <div class="swatches-grid" id="core-swatches">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- ANSI 16 Colors -->
+    <h2 class="section-title">
+      Terminal ANSI Palette (16 Colors)
+      <span class="tag">Normal &amp; Bright</span>
+    </h2>
+    <div class="ansi-row" id="ansi-normal-row"></div>
+    <div class="ansi-row" id="ansi-bright-row"></div>
+
+    <!-- Terminal Mockup -->
+    <h2 class="section-title">Terminal Preview</h2>
+    <div class="mockup-window">
+      <div class="window-header">
+        <div class="window-dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="window-title">ghostty — zsh — 80x24</div>
+      </div>
+      <div class="terminal-body">
+        <p>
+          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cmd">python3 validate.py</span>
+        </p>
+        <p class="t-out">
+          ============================================================<br>
+          🎃 Halloween Theme Pack - Validation Suite<br>
+          ============================================================<br>
+          <span class="t-success">✓</span> Contrast Ratios: Foreground/Background <span class="t-yellow" id="term-contrast">15.09:1</span> (WCAG AA Pass)<br>
+          <span class="t-success">✓</span> Theme Names Uniqueness: 'Halloween' &amp; 'Halloween Day' Pass<br>
+          <span class="t-success">✓</span> Total 30 theme files verified (YAML, TOML, JSON, XML, CSS)<br>
+          <span class="t-success">✓</span> All hex color codes validated (#RGB / #RRGGBB)<br>
+          <span class="t-success">Result: ✅ ALL 1,066 CHECKS PASSED</span>
+        </p>
+
+        <p class="t-dim"># ANSI 16-color test pattern</p>
+        <div class="t-palette-bar" id="term-palette-bar"></div>
+
+        <p>
+          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cmd">git status -s</span>
+        </p>
+        <p class="t-out">
+          <span class="t-cyan">M</span> generate.py<br>
+          <span class="t-success">A</span> validate.py<br>
+          <span class="t-success">A</span> preview/index.html<br>
+          <span class="t-success">A</span> .github/workflows/release.yml
+        </p>
+        <p>
+          <span class="t-prompt">halloween</span><span class="t-host">@ghostty</span> <span class="t-path">~/halloween-theme-pack</span> <span class="t-prompt">❯</span> <span class="t-cursor"></span>
+        </p>
+      </div>
+
+      <!-- Tmux Statusbar Mockup -->
+      <div class="tmux-bar">
+        <div class="tmux-left">[0] halloween*</div>
+        <div class="tmux-tabs">
+          <span class="tmux-tab active">1:zsh*</span>
+          <span class="tmux-tab">2:python</span>
+          <span class="tmux-tab">3:git</span>
+        </div>
+        <div class="tmux-right">"Orca" 31-Oct 23:59</div>
+      </div>
+    </div>
+
+    <!-- Side-by-Side App Mockups -->
+    <h2 class="section-title">Editor &amp; Messaging UI</h2>
+    <div class="mockups-grid">
+      <!-- VS Code Mockup -->
+      <div class="mockup-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="window-title">VS Code — generate.py</div>
+        </div>
+        <div class="editor-layout">
+          <div class="editor-activity">
+            <span class="act-icon active">📁</span>
+            <span class="act-icon">🔍</span>
+            <span class="act-icon">🌿</span>
+            <span class="act-icon">⚙️</span>
+          </div>
+          <div class="editor-sidebar">
+            <div class="sidebar-heading">Explorer</div>
+            <div class="file-item active">🐍 generate.py</div>
+            <div class="file-item">🛡️ validate.py</div>
+            <div class="file-item">🌐 preview.html</div>
+            <div class="file-item">📄 README.md</div>
+          </div>
+          <div class="editor-content">
+            <div class="editor-tabs">
+              <div class="editor-tab">generate.py</div>
+            </div>
+            <div class="editor-code"><span class="c-cmt"># Single source of truth palette</span>
+<span class="c-kw">def</span> <span class="c-fn">build_theme</span>(name: <span class="c-typ">str</span>, variant: <span class="c-typ">str</span>):
+    palette <span class="c-op">=</span> {
+        <span class="c-str">"accent"</span>: <span class="c-str">"#ff6b35"</span>,  <span class="c-cmt"># pumpkin</span>
+        <span class="c-str">"slime"</span>: <span class="c-str">"#39ff14"</span>,   <span class="c-cmt"># green</span>
+        <span class="c-str">"count"</span>: <span class="c-num">31</span>,
+        <span class="c-str">"enabled"</span>: <span class="c-kw">True</span>
+    }
+    <span class="c-kw">return</span> palette[<span class="c-str">"accent"</span>]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat / Discord / Slack Mockup -->
+      <div class="mockup-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="window-title">Discord / Slack / Orca Chat</div>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-sidebar">
+            <div class="sidebar-heading">Channels</div>
+            <div class="chat-channel active"># halloween-themes</div>
+            <div class="chat-channel"># pumpkin-patch</div>
+            <div class="chat-channel"># release-log</div>
+          </div>
+          <div class="chat-main">
+            <div class="chat-messages">
+              <div class="chat-msg">
+                <div class="chat-avatar">🎃</div>
+                <div>
+                  <div class="msg-header">
+                    <span class="msg-author">PumpkinKing</span>
+                    <span class="msg-time">Today at 10:31 PM</span>
+                  </div>
+                  <div class="msg-text">
+                    Just generated the new <strong>Halloween Day</strong> light theme! All 15 formats match WCAG AA contrast standards.
+                  </div>
+                  <div class="reaction-pill">🎃 14</div>
+                </div>
+              </div>
+              <div class="chat-msg">
+                <div class="chat-avatar">👻</div>
+                <div>
+                  <div class="msg-header">
+                    <span class="msg-author">SpookyDev</span>
+                    <span class="msg-time">Today at 10:33 PM</span>
+                  </div>
+                  <div class="msg-text">
+                    Windows Terminal, Hyper, Tabby, and Rio are supported out of the box now! 🚀
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-input">
+              <span>Message #halloween-themes...</span>
+              <span>🎃</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supported Applications -->
+    <h2 class="section-title">Supported Applications (15 Formats)</h2>
+    <div class="formats-list">
+      <div class="format-card"><span class="format-name">Warp / Orca</span><span class="format-type">.yaml</span></div>
+      <div class="format-card"><span class="format-name">iTerm2</span><span class="format-type">.itermcolors</span></div>
+      <div class="format-card"><span class="format-name">Ghostty</span><span class="format-type">.ghostty</span></div>
+      <div class="format-card"><span class="format-name">Alacritty</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">WezTerm</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">kitty</span><span class="format-type">.conf</span></div>
+      <div class="format-card"><span class="format-name">Windows Terminal</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">Hyper</span><span class="format-type">.js</span></div>
+      <div class="format-card"><span class="format-name">Tabby</span><span class="format-type">.yaml</span></div>
+      <div class="format-card"><span class="format-name">Rio Terminal</span><span class="format-type">.toml</span></div>
+      <div class="format-card"><span class="format-name">VS Code</span><span class="format-type">.json</span></div>
+      <div class="format-card"><span class="format-name">Discord (BetterDiscord)</span><span class="format-type">.css</span></div>
+      <div class="format-card"><span class="format-name">Slack</span><span class="format-type">.txt</span></div>
+      <div class="format-card"><span class="format-name">tmux</span><span class="format-type">.conf</span></div>
+      <div class="format-card"><span class="format-name">zsh Prompt</span><span class="format-type">.zsh</span></div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script>
+    // Palettes Data
+    const PALETTES = {
+      dark: {
+        name: "Halloween (Dark)",
+        contrast: "15.09:1 (WCAG AAA)",
+        accentContrast: "6.49:1 (WCAG AA)",
+        roles: [
+          { name: "Background", hex: "#1a0d2e" },
+          { name: "Foreground", hex: "#f4e7d3" },
+          { name: "Accent (Pumpkin)", hex: "#ff6b35" },
+          { name: "Success (Slime)", hex: "#39ff14" },
+          { name: "Destructive", hex: "#ff4d6d" },
+          { name: "Secondary", hex: "#2d1b4e" },
+          { name: "Card", hex: "#241340" },
+          { name: "Muted", hex: "#b8a9d9" },
+          { name: "Border", hex: "#3d2a5e" },
+          { name: "Sidebar", hex: "#150a24" },
+        ],
+        ansi: [
+          { name: "black", hex: "#2d1b4e" },
+          { name: "red", hex: "#ff4d6d" },
+          { name: "green", hex: "#39ff14" },
+          { name: "yellow", hex: "#ffb347" },
+          { name: "blue", hex: "#6b8cff" },
+          { name: "magenta", hex: "#c77dff" },
+          { name: "cyan", hex: "#5ffbf1" },
+          { name: "white", hex: "#f4e7d3" },
+        ],
+        bright: [
+          { name: "bright black", hex: "#4a3570" },
+          { name: "bright red", hex: "#ff7a95" },
+          { name: "bright green", hex: "#7fff6b" },
+          { name: "bright yellow", hex: "#ffd28a" },
+          { name: "bright blue", hex: "#9db3ff" },
+          { name: "bright magenta", hex: "#ddb3ff" },
+          { name: "bright cyan", hex: "#9dfff7" },
+          { name: "bright white", hex: "#fff5e6" },
+        ]
+      },
+      light: {
+        name: "Halloween Day (Light)",
+        contrast: "15.73:1 (WCAG AAA)",
+        accentContrast: "4.61:1 (WCAG AA)",
+        roles: [
+          { name: "Background (Cream)", hex: "#faf4eb" },
+          { name: "Foreground (Purple)", hex: "#241432" },
+          { name: "Accent (Pumpkin)", hex: "#bf4904" },
+          { name: "Success (Witch Green)", hex: "#1b772d" },
+          { name: "Destructive (Crimson)", hex: "#b81438" },
+          { name: "Secondary", hex: "#e8dcce" },
+          { name: "Card", hex: "#f2e7d8" },
+          { name: "Muted", hex: "#756388" },
+          { name: "Border", hex: "#d8c8b4" },
+          { name: "Sidebar", hex: "#f4ece1" },
+        ],
+        ansi: [
+          { name: "black", hex: "#241432" },
+          { name: "red", hex: "#b81438" },
+          { name: "green", hex: "#1b772d" },
+          { name: "yellow", hex: "#9e6000" },
+          { name: "blue", hex: "#2b4acb" },
+          { name: "magenta", hex: "#7e22ce" },
+          { name: "cyan", hex: "#0e7490" },
+          { name: "white", hex: "#d8ccbc" },
+        ],
+        bright: [
+          { name: "bright black", hex: "#5c4d6b" },
+          { name: "bright red", hex: "#cf2248" },
+          { name: "bright green", hex: "#228b37" },
+          { name: "bright yellow", hex: "#b56f00" },
+          { name: "bright blue", hex: "#3b5bdb" },
+          { name: "bright magenta", hex: "#9333ea" },
+          { name: "bright cyan", hex: "#0284c7" },
+          { name: "bright white", hex: "#241432" },
+        ]
+      }
+    };
+
+    let currentTheme = "dark";
+
+    function showToast(text) {
+      const toast = document.getElementById("toast");
+      toast.textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied ${text} to clipboard!`);
+      }).catch(() => {
+        showToast(`Selected ${text}`);
+      });
+    }
+
+    function renderSwatches(themeKey) {
+      const pal = PALETTES[themeKey];
+
+      // Update banner metrics
+      document.getElementById("active-variant-name").textContent = pal.name;
+      document.getElementById("val-contrast").textContent = pal.contrast;
+      document.getElementById("val-accent-contrast").textContent = pal.accentContrast;
+      document.getElementById("term-contrast").textContent = pal.contrast.split(" ")[0];
+
+      // Render Core Swatches
+      const coreGrid = document.getElementById("core-swatches");
+      coreGrid.innerHTML = pal.roles.map(r => `
+        <div class="swatch-card" onclick="copyToClipboard('${r.hex}')">
+          <div class="swatch-color" style="background-color: ${r.hex};"></div>
+          <div class="swatch-meta">
+            <div class="swatch-role">${r.name}</div>
+            <div class="swatch-hex">${r.hex}</div>
+          </div>
+        </div>
+      `).join("");
+
+      // Render ANSI Normal
+      const normalRow = document.getElementById("ansi-normal-row");
+      normalRow.innerHTML = pal.ansi.map(a => `
+        <div class="ansi-swatch" onclick="copyToClipboard('${a.hex}')">
+          <div class="ansi-block" style="background-color: ${a.hex};"></div>
+          <div class="ansi-name">${a.name}</div>
+          <div class="ansi-code">${a.hex}</div>
+        </div>
+      `).join("");
+
+      // Render ANSI Bright
+      const brightRow = document.getElementById("ansi-bright-row");
+      brightRow.innerHTML = pal.bright.map(b => `
+        <div class="ansi-swatch" onclick="copyToClipboard('${b.hex}')">
+          <div class="ansi-block" style="background-color: ${b.hex};"></div>
+          <div class="ansi-name">${b.name}</div>
+          <div class="ansi-code">${b.hex}</div>
+        </div>
+      `).join("");
+
+      // Render Terminal ANSI blocks bar
+      const termBar = document.getElementById("term-palette-bar");
+      termBar.innerHTML = pal.ansi.concat(pal.bright).map(c => `
+        <div class="t-bar-block" style="background-color: ${c.hex};" title="${c.name}: ${c.hex}"></div>
+      `).join("");
+    }
+
+    function setTheme(theme) {
+      currentTheme = theme;
+      document.body.setAttribute("data-theme", theme);
+      const icon = document.getElementById("toggle-icon");
+      const label = document.getElementById("toggle-label");
+
+      if (theme === "dark") {
+        icon.textContent = "☀️";
+        label.textContent = "Switch to Halloween Day";
+      } else {
+        icon.textContent = "🌙";
+        label.textContent = "Switch to Halloween Night";
+      }
+
+      renderSwatches(theme);
+    }
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      setTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+
+    // Keyboard shortcut 't' to toggle theme
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "t" || e.key === "T") {
+        if (e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+          setTheme(currentTheme === "dark" ? "light" : "dark");
+        }
+      }
+    });
+
+    // Initial render
+    setTheme("dark");
+  </script>
+</body>
+</html>
