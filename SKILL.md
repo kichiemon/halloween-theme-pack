@@ -135,11 +135,13 @@ Open `preview/index.html` in a browser for live preview with:
 
 When a user asks to theme their environment:
 
-1. Run `halloween-gen apply --dry-run` first to show what would change
-2. Ask which variant they prefer (show the 7 options)
-3. Apply with `halloween-gen apply --variant <choice>`
-4. Verify with `python3 validate.py` if they want accessibility check
-5. If they want a custom palette, edit `DARK_PALETTE` in `generate.py` and regenerate
+1. Check if `halloween-gen` binary is available (`which halloween-gen`). If not, use `python3 generate.py`.
+2. Run `halloween-gen` (or `python3 generate.py`) first to ensure themes/ directory exists
+3. Run `halloween-gen apply --dry-run` (or `python3 generate.py apply --dry-run`) to show what would change
+4. Ask which variant they prefer (show the 7 options)
+5. Apply with `halloween-gen apply --variant <choice>` (or `python3 generate.py apply --variant <choice>`)
+6. Verify with `python3 validate.py` if they want accessibility check
+7. If they want a custom palette, edit `DARK_PALETTE` in `generate.py` and regenerate
 
 When a user provides an image or description for a custom theme:
 1. Extract dominant colors from the description/image
