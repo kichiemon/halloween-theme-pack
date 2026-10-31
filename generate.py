@@ -2144,7 +2144,14 @@ def apply_themes(variant="dark", dry_run=False):
                         if os.path.exists(ghostty_config):
                             with open(ghostty_config, "r") as f:
                                 existing = f.read()
-                        if "theme = halloween" not in existing and f"theme = {pfx}" not in existing:
+                        # Replace any existing theme= line, or append if none
+                        import re
+                        if re.search(r'^\s*theme\s*=', existing, re.MULTILINE):
+                            existing = re.sub(r'^\s*theme\s*=.*$', f'theme = {pfx}', existing, flags=re.MULTILINE)
+                            with open(ghostty_config, "w") as f:
+                                f.write(existing)
+                            print(f"  ✓ Updated 'theme = {pfx}' in {ghostty_config}")
+                        else:
                             with open(ghostty_config, "a") as f:
                                 f.write(f"\n# Halloween theme\ntheme = {pfx}\n")
                             print(f"  ✓ Added 'theme = {pfx}' to {ghostty_config}")
@@ -2272,7 +2279,8 @@ def interactive_install(variant=None, dry_run=False):
         ("Fish", os.path.join(home, ".config", "fish", "conf.d"), f"{pfx}.fish", "app/fish"),
         ("tmux", os.path.join(home, ".tmux"), f"{pfx}.tmux.conf", "app/tmux.conf"),
         ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", "editor/zed.json"),
-        ("VS Code", os.path.join(home, ".vscode", "extensions", f"halloween-theme-{variant}"), "package.json", "editor/vscode.json"),
+    # VS Code is not auto-applicable (requires full extension structure).
+    # Users should install manually per README instructions.
     ]
 
     # Detect installed apps

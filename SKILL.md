@@ -143,6 +143,9 @@ When a user asks to theme their environment:
 6. Verify with `python3 validate.py` if they want accessibility check
 7. If they want a custom palette, edit `DARK_PALETTE` in `generate.py` and regenerate
 
+Note: VS Code themes require manual installation (copy JSON to extensions dir). See README for details.
+Note: If installed via `npx github:...`, the binary may not be present. Use `python3 generate.py` instead.
+
 When a user provides an image or description for a custom theme:
 1. Extract dominant colors from the description/image
 2. Create a new palette dict following the `DARK_PALETTE` structure
