@@ -37,6 +37,22 @@ The installer will:
 ./bin/halloween-gen install --variant dark --dry-run  # preview without writing
 ```
 
+### AI Agent Skill (npx)
+
+Install as an Agent Skill for AI coding assistants (Claude Code, Cursor, Codex, etc.):
+
+```bash
+npx halloween-theme-pack
+```
+
+This installs a `SKILL.md` to `~/.claude/skills/`, `~/.agents/skills/`, and `~/.cursor/skills/`. Your AI agent will automatically recognize the skill and can apply Halloween themes when you ask:
+
+> "Apply a Halloween theme to my terminal"
+> "Make my dev environment spooky"
+> "Theme my Ghostty and VS Code with cyberpunk"
+
+The skill includes `generate.py` and `validate.py` for runtime use by the AI agent.
+
 No Python required — single self-contained binary.
 
 ---

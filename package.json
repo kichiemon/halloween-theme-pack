@@ -1,0 +1,41 @@
+{
+  "name": "halloween-theme-pack",
+  "version": "1.0.0",
+  "description": "Halloween Theme Pack — 200+ themes for 30+ apps (terminals, editors, chat). Agent Skill for AI coding assistants.",
+  "bin": {
+    "halloween-theme-pack": "bin/install-skill.js",
+    "halloween-gen": "bin/halloween-gen"
+  },
+  "files": [
+    "SKILL.md",
+    "bin/",
+    "scripts/",
+    "themes/",
+    "generate.py",
+    "validate.py",
+    "install.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "install-skill": "node bin/install-skill.js"
+  },
+  "keywords": [
+    "halloween",
+    "theme",
+    "terminal",
+    "agent-skill",
+    "claude-code",
+    "cursor",
+    "codex",
+    "ai-agent"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kichiemon/halloween-theme-pack.git"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
