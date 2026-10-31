@@ -2039,55 +2039,69 @@ def apply_themes(variant="dark", dry_run=False):
             return f"themes/variants/{variant}/{pfx}.{fn}"
 
     # Candidates for auto-application
+    # Each: (app_name, target_dir, target_fn, rel_src, config_root)
+    # config_root is the app's config directory to check existence
     candidates = [
         ("Ghostty",
          os.path.join(home, ".config", "ghostty", "themes"),
          f"{pfx}.ghostty",
-         get_src("terminal", "ghostty")),
+         get_src("terminal", "ghostty"),
+         os.path.join(home, ".config", "ghostty")),
         ("Alacritty",
          os.path.join(home, ".config", "alacritty"),
-         f"{pfx}.toml",
-         get_src("terminal", "alacritty.toml")),
+         "alacritty.toml",
+         get_src("terminal", "alacritty.toml"),
+         os.path.join(home, ".config", "alacritty")),
         ("Kitty",
          os.path.join(home, ".config", "kitty"),
-         f"{pfx}.conf",
-         get_src("terminal", "kitty.conf")),
+         "kitty.conf",
+         get_src("terminal", "kitty.conf"),
+         os.path.join(home, ".config", "kitty")),
         ("WezTerm",
          os.path.join(home, ".config", "wezterm", "colors"),
          f"{pfx}.toml",
-         get_src("terminal", "wezterm.toml")),
+         get_src("terminal", "wezterm.toml"),
+         os.path.join(home, ".config", "wezterm")),
         ("K9s",
          os.path.join(home, ".config", "k9s", "skins"),
-         f"{pfx}.yaml",
-         get_src("terminal", "k9s.yaml")),
+         "skin.yaml",
+         get_src("terminal", "k9s.yaml"),
+         os.path.join(home, ".config", "k9s")),
         ("Yazi",
          os.path.join(home, ".config", "yazi"),
          "theme.toml",
-         get_src("terminal", "yazi.toml")),
+         get_src("terminal", "yazi.toml"),
+         os.path.join(home, ".config", "yazi")),
         ("Btop",
          os.path.join(home, ".config", "btop", "themes"),
          f"{pfx}.theme",
-         get_src("terminal", "btop.theme")),
+         get_src("terminal", "btop.theme"),
+         os.path.join(home, ".config", "btop")),
         ("Lazydocker",
          os.path.join(home, ".config", "lazydocker"),
-         f"{pfx}.yaml",
-         get_src("app", "lazydocker.yaml")),
+         "config.yml",
+         get_src("app", "lazydocker.yaml"),
+         os.path.join(home, ".config", "lazydocker")),
         ("Fish",
          os.path.join(home, ".config", "fish", "conf.d"),
          f"{pfx}.fish",
-         get_src("app", "fish")),
+         get_src("app", "fish"),
+         os.path.join(home, ".config", "fish")),
         ("tmux",
-         os.path.join(home, ".tmux"),
+         os.path.join(home, ".config", "tmux") if os.path.isdir(os.path.join(home, ".config", "tmux")) else os.path.join(home, ".tmux"),
          f"{pfx}.tmux.conf",
-         get_src("app", "tmux.conf")),
+         get_src("app", "tmux.conf"),
+         os.path.join(home, ".config", "tmux") if os.path.isdir(os.path.join(home, ".config", "tmux")) else (home if os.path.exists(os.path.join(home, ".tmux.conf")) else os.path.join(home, ".config", "tmux"))),
         ("Zed",
          os.path.join(home, ".config", "zed", "themes"),
          f"{pfx}.json",
-         f"themes/editor/{pfx}-zed.json" if variant == "dark" else (f"themes/light/{pfx}-zed.json" if variant == "light" else f"themes/variants/{variant}/{pfx}-zed.json")),
+         "themes/editor/halloween-zed.json" if variant == "dark" else (f"themes/light/{pfx}-zed.json" if variant == "light" else f"themes/variants/{variant}/{pfx}-zed.json"),
+         os.path.join(home, ".config", "zed")),
         ("Spicetify",
          os.path.join(home, ".config", "spicetify", "Themes", pfx),
          "color.ini",
-         f"themes/app/{pfx}.spicetify.ini" if variant == "dark" else (f"themes/light/{pfx}.spicetify.ini" if variant == "light" else f"themes/variants/{variant}/{pfx}.spicetify.ini")),
+         f"themes/app/{pfx}.spicetify.ini" if variant == "dark" else (f"themes/light/{pfx}.spicetify.ini" if variant == "light" else f"themes/variants/{variant}/{pfx}.spicetify.ini"),
+         os.path.join(home, ".config", "spicetify")),
     ]
 
     print(f"🎃 Scanning installed applications for Halloween Theme auto-apply (variant: {variant})...\n")
@@ -2104,19 +2118,38 @@ def apply_themes(variant="dark", dry_run=False):
     else:
         base_repo = os.path.dirname(os.path.abspath(__file__))
 
-    for app_name, target_dir, target_fn, rel_src in candidates:
+    for app_name, target_dir, target_fn, rel_src, config_root in candidates:
         src_path = os.path.join(base_repo, rel_src)
         if not os.path.exists(src_path):
             continue
 
-        parent_dir = os.path.dirname(target_dir) if not os.path.isdir(target_dir) and target_dir.endswith(".toml") else target_dir
-        if os.path.exists(target_dir) or os.path.exists(parent_dir):
+        # Check if the app's config directory exists
+        # For tmux, also check ~/.tmux.conf
+        config_exists = os.path.exists(config_root)
+        if app_name == "tmux" and not config_exists:
+            config_exists = os.path.exists(os.path.join(home, ".tmux.conf"))
+
+        if config_exists:
             dest_file = os.path.join(target_dir, target_fn)
             if dry_run:
                 print(f"  [DRY-RUN] Would install {app_name} theme to: {dest_file}")
             else:
                 os.makedirs(target_dir, exist_ok=True)
                 shutil.copyfile(src_path, dest_file)
+                # Ghostty: ensure config references the theme
+                if app_name == "Ghostty":
+                    ghostty_config = os.path.join(home, ".config", "ghostty", "config")
+                    try:
+                        existing = ""
+                        if os.path.exists(ghostty_config):
+                            with open(ghostty_config, "r") as f:
+                                existing = f.read()
+                        if "theme = halloween" not in existing and f"theme = {pfx}" not in existing:
+                            with open(ghostty_config, "a") as f:
+                                f.write(f"\n# Halloween theme\ntheme = {pfx}\n")
+                            print(f"  ✓ Added 'theme = {pfx}' to {ghostty_config}")
+                    except Exception as e:
+                        print(f"  ⚠ Could not update Ghostty config: {e}")
                 print(f"  ✓ Installed {app_name} theme -> {dest_file}")
             applied += 1
         else:
@@ -2229,8 +2262,8 @@ def interactive_install(variant=None, dry_run=False):
 
     candidates = [
         ("Ghostty", os.path.join(home, ".config", "ghostty", "themes"), f"{pfx}.ghostty", "terminal/ghostty"),
-        ("Alacritty", os.path.join(home, ".config", "alacritty"), "config.toml", "terminal/alacritty.toml"),
-        ("Kitty", os.path.join(home, ".config", "kitty"), "theme.conf", "terminal/kitty.conf"),
+        ("Alacritty", os.path.join(home, ".config", "alacritty"), "alacritty.toml", "terminal/alacritty.toml"),
+        ("Kitty", os.path.join(home, ".config", "kitty"), "kitty.conf", "terminal/kitty.conf"),
         ("WezTerm", os.path.join(home, ".config", "wezterm", "colors"), f"{pfx}.toml", "terminal/wezterm.toml"),
         ("K9s", os.path.join(home, ".config", "k9s", "skins"), "skin.yaml", "terminal/k9s.yaml"),
         ("Yazi", os.path.join(home, ".config", "yazi"), "theme.toml", "terminal/yazi.toml"),
@@ -2244,10 +2277,27 @@ def interactive_install(variant=None, dry_run=False):
 
     # Detect installed apps
     print(f"\n🎃 Detecting installed applications (variant: {variant})...\n")
+    config_roots = {
+        "Ghostty": os.path.join(home, ".config", "ghostty"),
+        "Alacritty": os.path.join(home, ".config", "alacritty"),
+        "Kitty": os.path.join(home, ".config", "kitty"),
+        "WezTerm": os.path.join(home, ".config", "wezterm"),
+        "K9s": os.path.join(home, ".config", "k9s"),
+        "Yazi": os.path.join(home, ".config", "yazi"),
+        "Btop": os.path.join(home, ".config", "btop"),
+        "Lazydocker": os.path.join(home, ".config", "lazydocker"),
+        "Fish": os.path.join(home, ".config", "fish"),
+        "tmux": os.path.join(home, ".config", "tmux"),
+        "Zed": os.path.join(home, ".config", "zed"),
+        "VS Code": os.path.join(home, ".vscode"),
+        "Spicetify": os.path.join(home, ".config", "spicetify"),
+    }
     detected = []
     for name, target_dir, target_fn, src_rel in candidates:
-        parent = os.path.dirname(target_dir) if target_dir.endswith((".toml", ".yaml", ".conf", ".json")) else target_dir
-        exists = os.path.exists(target_dir) or os.path.exists(parent)
+        config_root = config_roots.get(name, os.path.dirname(target_dir))
+        exists = os.path.exists(target_dir) or os.path.exists(config_root)
+        if name == "tmux" and not exists:
+            exists = os.path.exists(os.path.join(home, ".tmux.conf"))
         status = "✓ found" if exists else "✗ not found"
         detected.append((name, target_dir, target_fn, src_rel, exists))
         print(f"  [{len(detected)}] {name:15s} {status:12s} → {target_dir}")
