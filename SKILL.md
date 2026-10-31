@@ -73,11 +73,11 @@ halloween-gen apply --variant dark
 
 **VS Code:** Copy `themes/editor/halloween-vscode.json` to `~/.vscode/extensions/`
 
-**Neovim:** Copy `themes/editor/halloween-nvim.vim` to `~/.config/nvim/colors/`
+**Neovim:** Copy `themes/editor/halloween.nvim.lua` to `~/.config/nvim/colors/`
 
-**Slack:** Import `themes/app/halloween.slack` via Slack preferences
+**Slack:** Import `themes/app/halloween-slack.txt` via Slack preferences
 
-**Discord:** Use `themes/app/halloween.discord.css` with BetterDiscord
+**Discord:** Use `themes/app/halloween-discord.css` with BetterDiscord
 
 **tmux:** Add `source-file /path/to/halloween.tmux.conf` to `~/.tmux.conf`
 

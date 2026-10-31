@@ -2249,23 +2249,31 @@ def interactive_install(variant=None, dry_run=False):
         print("  3) oled       — Halloween OLED (pure black)")
         print("  4) pastel     — Halloween Pastel (spooky kawaii)")
         print("  5) cyberpunk  — Halloween Cyberpunk (neon plasma)")
+        print("  6) vampire    — Halloween Vampire Velvet (rich burgundy red)")
+        print("  7) phantom    — Halloween Phantom Mint (ethereal mint)")
         choice = input("Variant [1]: ").strip() or "1"
-        variant_map = {"1": "dark", "2": "light", "3": "oled", "4": "pastel", "5": "cyberpunk"}
+        variant_map = {"1": "dark", "2": "light", "3": "oled", "4": "pastel", "5": "cyberpunk", "6": "vampire", "7": "phantom"}
         variant = variant_map.get(choice, "dark")
 
     # Build candidate list with install paths
     if variant == "dark":
         pfx = "halloween"
-        base_sub = "themes"
+        def src(cat, fn):
+            return f"themes/{cat}/{pfx}.{fn}"
     elif variant == "light":
         pfx = "halloween-light"
-        base_sub = "themes/light"
+        def src(cat, fn):
+            return f"themes/light/{pfx}.{fn}"
     else:
         pfx = f"halloween-{variant}"
-        base_sub = f"themes/variants/{variant}"
+        def src(cat, fn):
+            return f"themes/variants/{variant}/{pfx}.{fn}"
 
-    def src(cat, fn):
-        return f"{base_sub}/{cat}/{pfx}.{fn}" if cat != "app" else f"{base_sub}/app/{pfx}.{fn}"
+    zed_src = (
+        "themes/editor/halloween-zed.json"
+        if variant == "dark"
+        else (f"themes/light/{pfx}-zed.json" if variant == "light" else f"themes/variants/{variant}/{pfx}-zed.json")
+    )
 
     candidates = [
         ("Ghostty", os.path.join(home, ".config", "ghostty", "themes"), f"{pfx}.ghostty", src("terminal", "ghostty")),
@@ -2278,7 +2286,7 @@ def interactive_install(variant=None, dry_run=False):
         ("Lazydocker", os.path.join(home, ".config", "lazydocker"), "config.yml", src("app", "lazydocker.yaml")),
         ("Fish", os.path.join(home, ".config", "fish", "conf.d"), f"{pfx}.fish", src("app", "fish")),
         ("tmux", os.path.join(home, ".tmux"), f"{pfx}.tmux.conf", src("app", "tmux.conf")),
-        ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", src("editor", "zed.json")),
+        ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", zed_src),
     # VS Code is not auto-applicable (requires full extension structure).
     # Users should install manually per README instructions.
     ]
