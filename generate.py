@@ -2268,17 +2268,17 @@ def interactive_install(variant=None, dry_run=False):
         return f"{base_sub}/{cat}/{pfx}.{fn}" if cat != "app" else f"{base_sub}/app/{pfx}.{fn}"
 
     candidates = [
-        ("Ghostty", os.path.join(home, ".config", "ghostty", "themes"), f"{pfx}.ghostty", "terminal/ghostty"),
-        ("Alacritty", os.path.join(home, ".config", "alacritty"), "alacritty.toml", "terminal/alacritty.toml"),
-        ("Kitty", os.path.join(home, ".config", "kitty"), "kitty.conf", "terminal/kitty.conf"),
-        ("WezTerm", os.path.join(home, ".config", "wezterm", "colors"), f"{pfx}.toml", "terminal/wezterm.toml"),
-        ("K9s", os.path.join(home, ".config", "k9s", "skins"), "skin.yaml", "terminal/k9s.yaml"),
-        ("Yazi", os.path.join(home, ".config", "yazi"), "theme.toml", "terminal/yazi.toml"),
-        ("Btop", os.path.join(home, ".config", "btop", "themes"), f"{pfx}.theme", "terminal/btop.theme"),
-        ("Lazydocker", os.path.join(home, ".config", "lazydocker"), "config.yml", "app/lazydocker.yaml"),
-        ("Fish", os.path.join(home, ".config", "fish", "conf.d"), f"{pfx}.fish", "app/fish"),
-        ("tmux", os.path.join(home, ".tmux"), f"{pfx}.tmux.conf", "app/tmux.conf"),
-        ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", "editor/zed.json"),
+        ("Ghostty", os.path.join(home, ".config", "ghostty", "themes"), f"{pfx}.ghostty", src("terminal", "ghostty")),
+        ("Alacritty", os.path.join(home, ".config", "alacritty"), "alacritty.toml", src("terminal", "alacritty.toml")),
+        ("Kitty", os.path.join(home, ".config", "kitty"), "kitty.conf", src("terminal", "kitty.conf")),
+        ("WezTerm", os.path.join(home, ".config", "wezterm", "colors"), f"{pfx}.toml", src("terminal", "wezterm.toml")),
+        ("K9s", os.path.join(home, ".config", "k9s", "skins"), "skin.yaml", src("terminal", "k9s.yaml")),
+        ("Yazi", os.path.join(home, ".config", "yazi"), "theme.toml", src("terminal", "yazi.toml")),
+        ("Btop", os.path.join(home, ".config", "btop", "themes"), f"{pfx}.theme", src("terminal", "btop.theme")),
+        ("Lazydocker", os.path.join(home, ".config", "lazydocker"), "config.yml", src("app", "lazydocker.yaml")),
+        ("Fish", os.path.join(home, ".config", "fish", "conf.d"), f"{pfx}.fish", src("app", "fish")),
+        ("tmux", os.path.join(home, ".tmux"), f"{pfx}.tmux.conf", src("app", "tmux.conf")),
+        ("Zed", os.path.join(home, ".config", "zed", "themes"), f"{pfx}.json", src("editor", "zed.json")),
     # VS Code is not auto-applicable (requires full extension structure).
     # Users should install manually per README instructions.
     ]
@@ -2363,6 +2363,26 @@ def interactive_install(variant=None, dry_run=False):
         try:
             os.makedirs(target_dir, exist_ok=True)
             shutil.copyfile(src_path, os.path.join(target_dir, target_fn))
+            # Ghostty: ensure config references the theme
+            if name == "Ghostty":
+                ghostty_config = os.path.join(home, ".config", "ghostty", "config")
+                try:
+                    existing = ""
+                    if os.path.exists(ghostty_config):
+                        with open(ghostty_config, "r") as f:
+                            existing = f.read()
+                    import re
+                    if re.search(r'^\s*theme\s*=', existing, re.MULTILINE):
+                        existing = re.sub(r'^\s*theme\s*=.*$', f'theme = {pfx}', existing, flags=re.MULTILINE)
+                        with open(ghostty_config, "w") as f:
+                            f.write(existing)
+                        print(f"  ✓ Ghostty: updated 'theme = {pfx}' in config")
+                    else:
+                        with open(ghostty_config, "a") as f:
+                            f.write(f"\n# Halloween theme\ntheme = {pfx}\n")
+                        print(f"  ✓ Ghostty: added 'theme = {pfx}' to config")
+                except Exception as e:
+                    print(f"  ⚠ Could not update Ghostty config: {e}")
             print(f"  ✓ {name}: installed → {os.path.join(target_dir, target_fn)}")
             applied += 1
         except Exception as e:
